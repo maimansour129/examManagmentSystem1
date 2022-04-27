@@ -9,5 +9,7 @@ package Accessibility;
  * @author Abelwahab El-Desoky
  */
 public class Assignment {
+
     String content;
+    String he5aYaMan;
 }
