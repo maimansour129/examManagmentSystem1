@@ -6,7 +6,5 @@ package Accessibility;
 
 public class Assignment {
 
-    String content;
-    String he5aYaMan;
-    String alooo;
+   
 }
