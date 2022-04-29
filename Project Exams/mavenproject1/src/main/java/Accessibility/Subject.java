@@ -28,9 +28,18 @@ public class Subject {
         examList.put("four", yearFour);
     }
 
-    public void addToExamList(String gradeyear, Exam exam) {
+    public String getName() {
+        return name;
+    }
+    
+
+   
+    
+   /* 
+     public void addToExamList(String gradeyear, Exam exam) {
        examList.get(gradeyear).add(exam);
     }
+    
     
     public boolean editExam(String gradeYear,String ExamID,char choice,Date date) {
         
@@ -47,7 +56,7 @@ public class Subject {
         }
         
         return false;   
-    }
+    }*/
 
     public HashMap<String, ArrayList<Exam>> getExamList() {
         return examList;

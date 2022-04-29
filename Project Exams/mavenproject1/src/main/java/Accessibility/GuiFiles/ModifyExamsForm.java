@@ -37,6 +37,11 @@ public class ModifyExamsForm extends javax.swing.JFrame {
         btnEditExam.setName("btnEdit"); // NOI18N
 
         btnAddExam.setText("Add Exam");
+        btnAddExam.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddExamActionPerformed(evt);
+            }
+        });
 
         btnDeleteExam.setText("Delete Exam");
         btnDeleteExam.setToolTipText("");
@@ -77,6 +82,12 @@ public class ModifyExamsForm extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnAddExamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddExamActionPerformed
+        new AddExamForm().setVisible(true);
+        
+        
+    }//GEN-LAST:event_btnAddExamActionPerformed
 
     /**
      * @param args the command line arguments
