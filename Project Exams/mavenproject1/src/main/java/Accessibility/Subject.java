@@ -48,6 +48,11 @@ public class Subject {
         
         return false;   
     }
+
+    public HashMap<String, ArrayList<Exam>> getExamList() {
+        return examList;
+    }
+    
     
 }
 
