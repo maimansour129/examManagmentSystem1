@@ -1,13 +1,11 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package Accessibility;
 
-/**
- *
- * @author Abelwahab El-Desoky
- */
+import java.util.ArrayList;
+import java.util.HashMap;
+
 public class Subject {
-    
+    private String name;
+    private HashMap<String ,ArrayList<Exam>> examList;
+    private ArrayList<Assignment> assignments;
 }
