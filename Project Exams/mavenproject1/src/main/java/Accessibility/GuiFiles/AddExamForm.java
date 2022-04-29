@@ -67,6 +67,11 @@ public class AddExamForm extends javax.swing.JFrame {
 
         btnAddExam.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
         btnAddExam.setText("Add Exam");
+        btnAddExam.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddExamActionPerformed(evt);
+            }
+        });
 
         cmbGradeYear.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
@@ -143,6 +148,10 @@ public class AddExamForm extends javax.swing.JFrame {
     private void txtDueDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDueDateActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtDueDateActionPerformed
+
+    private void btnAddExamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddExamActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAddExamActionPerformed
 
     /**
      * @param args the command line arguments

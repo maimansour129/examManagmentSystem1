@@ -57,7 +57,7 @@ public class Teacher {
 
     }
 
-    public bolean assignAssignment(Assignment assignment,int classID) {
+    public boolean assignAssignment(Assignment assignment,int classID) {
         for(Class i:assignedClasses){
            if(classID==i.getClassID()){
               i.getAssignments().get(subjectEnrolled.getName()).add(assignment);

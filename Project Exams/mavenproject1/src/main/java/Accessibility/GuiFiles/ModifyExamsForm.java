@@ -84,9 +84,7 @@ public class ModifyExamsForm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAddExamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddExamActionPerformed
-        new AddExamForm().setVisible(true);
-        
-        
+        // TODO add your handling code here:
     }//GEN-LAST:event_btnAddExamActionPerformed
 
     /**
