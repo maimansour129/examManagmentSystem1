@@ -4,12 +4,6 @@ import java.util.Date;
 
 public class Exam {
 
-    /*- id: string
-- status : boolean
-- startDate: Date
-- dueDate: Date
-- subject: String
-- grading: int*/
     private String id;
     private boolean status;
     private Date startDate;
@@ -17,6 +11,17 @@ public class Exam {
     private String subjectName;
     private int grading;
 
+    public Exam(String id, boolean status, Date startDate, Date dueDate, String subjectName) {
+        this.id = id;
+        this.status = status;
+        this.startDate = startDate;
+        this.dueDate = dueDate;
+        this.subjectName = subjectName;
+    }
+
+    
+    
+    
     public void setId(String id) {
         this.id = id;
     }
