@@ -8,12 +8,16 @@ public class Teacher {
     private Subject subjectEnrolled;
     private ArrayList<Class> assignedClasses;
 
-    public void addExam(Exam exam) {
-
+    public void addExam(String gradeYear,Exam exam) {
+        subjectEnrolled.addToExamList(gradeYear, exam);
     }
 
-    public void editExam(Exam exam) {
+    public boolean editExam(String gradeYear,String ExamID,char choice,Date date) {
 
+        boolean editResult=subjectEnrolled.editExam(gradeYear, ExamID, choice, date);
+        
+        return editResult;
+        
     }
 
     public void deleteExam(Exam exam) {
