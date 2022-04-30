@@ -1,5 +1,8 @@
 
 package Accessibility;
+
+import java.util.ArrayList;
+
 public abstract class User {
     
     private String name;
@@ -29,9 +32,38 @@ public abstract class User {
     public String getRole() {
         return role;
     }
-    public void Login(String username, String pass){
-        if(this.username.equals(username) && this.password.equals(pass)){
-            
+    
+    public static User Login(String username, String pass, ArrayList<Student> allstuds,ArrayList<Teacher> allteachers,int choice){
+        
+          
+        if(choice == 1){
+            if(username.equals("Hoba") && pass.equals("1")){
+                System.out.println("bate5a");
+                return null;
+            }
         }
+        else if(choice == 2){
+              for(int i=0; i<allteachers.size(); i++){
+                    if(allteachers.get(i).getUsername().equals(username) && allteachers.get(i).getPassword().equals(pass)){
+                        System.out.println("Hi teacher");
+                        return allteachers.get(i);
+                    }
+                }
+          }
+          else if(choice == 3){
+              for(int i=0; i<allstuds.size(); i++){
+                    if(allstuds.get(i).getUsername().equals(username) && allstuds.get(i).getPassword().equals(pass)){
+                        System.out.println("HI");
+                        return allstuds.get(i);
+                    }
+                }
+          }
+        return null;
+        
+          //StudentLogin(username, pass, allstuds);
+          
+//        if(this.username.equals(username) && this.password.equals(pass)){
+//            
+//        
     }
 }

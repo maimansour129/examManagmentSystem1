@@ -3,10 +3,14 @@ package Accessibility;
 import java.util.ArrayList;
 import java.util.*;
 
-public class Teacher {
+public class Teacher extends User{
 
     private Subject subjectEnrolled;
     private ArrayList<Class> assignedClasses;
+
+    public Teacher(String name, String username, String password, String role) {
+        super(name, username, password, role);
+    }
     
     
 

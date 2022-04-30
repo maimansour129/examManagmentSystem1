@@ -4,7 +4,10 @@
  */
 package Accessibility.GuiFiles;
 
+import Accessibility.Student;
+import Accessibility.Teacher;
 import Accessibility.User;
+import java.util.ArrayList;
 
 /**
  *
@@ -39,6 +42,11 @@ public class LoginForm extends javax.swing.JFrame {
         btnLogin = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
         jLabel1.setText("Login");
@@ -163,8 +171,29 @@ public class LoginForm extends javax.swing.JFrame {
     }//GEN-LAST:event_jRadioButton2ActionPerformed
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
-        new AddExamForm().setVisible(true);
+        if()
     }//GEN-LAST:event_btnLoginActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        User u1;
+        ArrayList<String> sub = new ArrayList<String>();
+        sub.add("Maths");
+        sub.add("English");
+        Student s1 = new Student(sub, 1, "Omar", "Othman", "123","Student", 2);
+        ArrayList<Student> allstudents= new ArrayList<Student>();
+        allstudents.add(s1);
+
+        //ArrayList<String> sub = new ArrayList<String>();
+        //sub.add("Maths");
+        //sub.add("English");
+        Teacher t1 = new Teacher("Seif", "Hossam", "34","Teacher");
+        ArrayList<Teacher> allteacher= new ArrayList<Teacher>();
+        allteacher.add(t1);
+        
+        
+        u1 = User.Login(txtUserName.getText(), txtPassword.getText(), allstudents, allteacher,2);
+        
+    }//GEN-LAST:event_formWindowOpened
 
     /**
      * @param args the command line arguments
@@ -194,6 +223,8 @@ public class LoginForm extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
+        
+        //s1.StudentLogin(s1.getUsername(), s1.getPassword(), allstudents);
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new LoginForm().setVisible(true);
@@ -206,10 +237,10 @@ public class LoginForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JRadioButton jRadioButton3;
-    private javax.swing.JTextField txtPassword;
-    private javax.swing.JTextField txtUserName;
+    public static javax.swing.JRadioButton jRadioButton1;
+    public static javax.swing.JRadioButton jRadioButton2;
+    public static javax.swing.JRadioButton jRadioButton3;
+    public static javax.swing.JTextField txtPassword;
+    public static javax.swing.JTextField txtUserName;
     // End of variables declaration//GEN-END:variables
 }

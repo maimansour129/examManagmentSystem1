@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Stack;
 import java.util.Date;
+import javax.swing.JFrame;
 //import java.time.format.DateTimeFormatterBuilder;
 
 public class Student extends User{
@@ -18,18 +19,16 @@ public class Student extends User{
     private Stack<String> notifications;
 
 
-    public Student(){
-        subjects = new ArrayList<String>();
-        issueReport = new HashMap<String, Report>();
-        allExams = new ArrayList<Exam>();
-        notifications = new Stack<String>();
-        
-    }
+    
     public Student(ArrayList<String> subjects, int enrolledclassID, String name, String username, String password, String role, int yearGrade) {
         super(name, username, password, role);
         this.subjects = subjects;
         this.yearGrade = yearGrade;
         this.enrolledclassID = enrolledclassID;
+        subjects = new ArrayList<String>();
+        issueReport = new HashMap<String, Report>();
+        allExams = new ArrayList<Exam>();
+        notifications = new Stack<String>();
     }
 
     public int getYearGrade() {
@@ -85,11 +84,24 @@ public class Student extends User{
        //DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");  
        Date now = new Date(System.currentTimeMillis());
        if(now.compareTo(exam.getDueDate())>0){
-           exam.get
-
+           exam.setAllowedStatus(false);
+        }
+       else if(now.compareTo(exam.getDueDate())<0){
+           exam.setTakenStatus(false);
+           exam.setAllowedStatus(false);
+           if(now.compareTo(exam.getDueDate())>0){
+               exam.setAllowedStatus(false);
+           }
+       }
+       
+    }
+    public void StudentLogin(String username,String pass, ArrayList<Student> allstuds){
+        for(int i=0; i<allstuds.size(); i++){
+          if(allstuds.get(i).getUsername().equals(username) && allstuds.get(i).getPassword().equals(pass)){
+              System.out.println("HI");
+        }
         }
     }
-    
     public void ViewFinalGrades(){
         
     }

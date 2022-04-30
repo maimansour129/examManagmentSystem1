@@ -7,7 +7,7 @@ public class Exam {
     private String id;
     private boolean takenStatus;
     private boolean markedStatus;
-    
+    private boolean allowedStatus;
     private Date startDate;
     private Date dueDate;
     private String subjectName;
@@ -19,6 +19,10 @@ public class Exam {
         this.startDate = startDate;
         this.dueDate = dueDate;
         this.subjectName = subjectName;
+    }
+
+    public void setAllowedStatus(boolean allowedStatus) {
+        this.allowedStatus = allowedStatus;
     }
 
     public void setId(String id) {
@@ -51,6 +55,10 @@ public class Exam {
 
     public boolean isTakenStatus() {
         return takenStatus;
+    }
+
+    public boolean isAllowedStatus() {
+        return allowedStatus;
     }
 
     public Date getStartDate() {
