@@ -21,9 +21,21 @@ public class Class {
     private String year;
     
     
+    // we need object of classAssignment hashmap
+    // we need to fill it with subject name and assignments
+    // 1) constructor for this class
+    
     public ArrayList<Student> getAllStudents()
     {
         return allStudents;
+    }
+
+    public HashMap<String, ArrayList<Assignment>> getClassAssignments() {
+        return classAssignments;
+    }
+
+    public int getClassId() {
+        return classId;
     }
     
     public HashMap<Date, Subject> getSchedule()
