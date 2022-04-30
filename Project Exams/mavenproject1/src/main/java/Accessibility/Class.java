@@ -16,7 +16,7 @@ public class Class {
     
     private ArrayList<Student> allStudents;
     private HashMap<Date, Subject> schedule;
-    private HashMap<String, ArrayList<Assignment>> classAssignments;
+    private HashMap<String, ArrayList<String>> subjectAssignments;
     private int classId;
     private String year;
     
@@ -25,13 +25,35 @@ public class Class {
     // we need to fill it with subject name and assignments
     // 1) constructor for this class
     
+    public Class(int classId, String year)
+    {
+        this.classId = classId;
+        this.year = year;
+    }
+    
+    public void setAllStudents(ArrayList<Student> allStudents)
+    {
+        this.allStudents = allStudents;
+    }
+    
+    public void setSchedule(HashMap<Date, Subject> schedule)
+    {
+        this.schedule = schedule;
+    }
+    
+            
+    public void setSubjectAssignments(HashMap<String, ArrayList<String>> subjectAssignments)
+    {
+        this.subjectAssignments = subjectAssignments;
+    }
+    
     public ArrayList<Student> getAllStudents()
     {
         return allStudents;
     }
 
-    public HashMap<String, ArrayList<Assignment>> getClassAssignments() {
-        return classAssignments;
+    public HashMap<String, ArrayList<String>> getClassAssignments() {
+        return subjectAssignments;
     }
 
     public int getClassId() {
@@ -43,9 +65,9 @@ public class Class {
         return schedule;
     }
     
-    public HashMap<String, ArrayList<Assignment>> getAssignments()
+    public HashMap<String, ArrayList<String>> getAssignments()
     {
-        return classAssignments;
+        return subjectAssignments;
     }
     
     public int getClassID(){
