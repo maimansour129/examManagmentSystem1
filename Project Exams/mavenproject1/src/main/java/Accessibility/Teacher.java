@@ -12,6 +12,7 @@ public class Teacher {
     public void addExam(String gradeYear,Exam exam) {
       //  subjectEnrolled.addToExamList(gradeYear, exam);
       subjectEnrolled.getExamList().get(gradeYear).add(exam);
+      
     }
 
     public boolean editExam(String gradeYear,String ExamID,char choice,Date date) {
@@ -50,17 +51,20 @@ public class Teacher {
        for(Class i:assignedClasses){
            if(className==i.getClassID()){
                for(Student j:i.getAllStudents()){
-                    //not Done yet waiting notification list
+                    j.getNotifications().push(text);
                }
            }
        }
 
     }
 
-    public boolean assignAssignment(Assignment assignment,int classID) {
+    public boolean assignAssignment(String assignment,int classID,Date date) {
+        
+        String notify=assignment+" has been released and will be delivered before "+date;
         for(Class i:assignedClasses){
            if(classID==i.getClassID()){
               i.getAssignments().get(subjectEnrolled.getName()).add(assignment);
+               sendNotification(classID, notify);
                return true;
            }
        }
@@ -95,7 +99,7 @@ public class Teacher {
     }
 
     public HashMap<String, Report> IssueReport(Student student) {
-        HashMap<String, Report> fReport = new HashMap<String, Report>();
+        HashMap<String, Report> fReport = new HashMap<>();
 
         return fReport;
         

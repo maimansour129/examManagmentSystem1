@@ -8,7 +8,7 @@ public class Subject {
 
     private String name;
     private HashMap<String, ArrayList<Exam>> examList;
-    private ArrayList<Assignment> assignments;
+    private ArrayList<String> assignments;
 
     ArrayList<Exam> yearOne = new ArrayList<>();
     ArrayList<Exam> yearTwo = new ArrayList<>();
