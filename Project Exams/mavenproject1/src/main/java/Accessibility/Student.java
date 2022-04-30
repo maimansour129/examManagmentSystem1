@@ -4,8 +4,6 @@ package Accessibility;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Stack;
-import java.time.format.DateTimeFormatter;
-import java.time.LocalDateTime; 
 import java.util.Date;
 //import java.time.format.DateTimeFormatterBuilder;
 
@@ -63,7 +61,7 @@ public class Student extends User{
     public String getNoteToPrinciple() {
         return noteToPrinciple;
     }
-     public int getGrade() {
+    public int getGrade() {
         return yearGrade;
     }
 
@@ -82,17 +80,20 @@ public class Student extends User{
     public void setIssueReport(HashMap<String,Report> issue_report) {
         this.issueReport = issue_report;
     }
+    
     public void TakeExam(Exam exam){
-        DateTimeFormatter formate = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
-        LocalDateTime now = LocalDateTime.now();
-        
-         
+       //DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");  
+       Date now = new Date(System.currentTimeMillis());
+       if(now.compareTo(exam.getDueDate())>0){
+           exam.get
+
+        }
     }
     
     public void ViewFinalGrades(){
         
     }
-     public void CalculateFinalGrade(){
+    public void CalculateFinalGrade(){
         
     }
     public void ShowExamGrades(){
