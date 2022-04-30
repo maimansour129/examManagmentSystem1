@@ -4,7 +4,30 @@
  */
 package Accessibility;
 
+import java.util.Date;
+
 public class Assignment {
 
+   private String id;
+   private Date duaDate;
+   private int grading;
+   private String issueReport;
+
+   
+    public String getId() {
+        return id;
+    }
+
+    public Date getDuaDate() {
+        return duaDate;
+    }
+
+    public int getGrading() {
+        return grading;
+    }
+
+    public String getIssueReport() {
+        return issueReport;
+    }
    
 }
