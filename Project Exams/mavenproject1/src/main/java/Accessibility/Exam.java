@@ -2,28 +2,25 @@ package Accessibility;
 
 import java.util.Date;
 
-public class Exam{
+public class Exam {
 
     private String id;
     private boolean takenStatus;
+    private boolean markedStatus;
+
     private Date startDate;
     private Date dueDate;
     private String subjectName;
     private int grading;
 
-<<<<<<< Updated upstream
-    
-    public Exam(String id, boolean status, Date startDate, Date dueDate, String subjectName) {
-=======
     public Exam(String id, Date startDate, Date dueDate, String subjectName) {
->>>>>>> Stashed changes
+
         this.id = id;
         this.startDate = startDate;
         this.dueDate = dueDate;
         this.subjectName = subjectName;
     }
-  
-    
+
     public void setId(String id) {
         this.id = id;
     }
@@ -72,4 +69,11 @@ public class Exam{
         return grading;
     }
 
+    public boolean isMarkedStatus() {
+        return markedStatus;
+    }
+
+    public void setMarkedStatus(boolean markedStatus) {
+        this.markedStatus = markedStatus;
+    }
 }
