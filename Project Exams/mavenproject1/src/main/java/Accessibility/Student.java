@@ -4,6 +4,10 @@ package Accessibility;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Stack;
+import java.time.format.DateTimeFormatter;
+import java.time.LocalDateTime; 
+import java.util.Date;
+//import java.time.format.DateTimeFormatterBuilder;
 
 public class Student extends User{
     
@@ -15,12 +19,18 @@ public class Student extends User{
     private int enrolledclassID;
     private Stack<String> notifications;
 
-    
-    
 
-    public Student(ArrayList<String> subjects, int enrolledclassID, String name, String username, String password, String role) {
+    public Student(){
+        subjects = new ArrayList<String>();
+        issueReport = new HashMap<String, Report>();
+        allExams = new ArrayList<Exam>();
+        notifications = new Stack<String>();
+        
+    }
+    public Student(ArrayList<String> subjects, int enrolledclassID, String name, String username, String password, String role, int yearGrade) {
         super(name, username, password, role);
         this.subjects = subjects;
+        this.yearGrade = yearGrade;
         this.enrolledclassID = enrolledclassID;
     }
 
@@ -53,6 +63,13 @@ public class Student extends User{
     public String getNoteToPrinciple() {
         return noteToPrinciple;
     }
+     public int getGrade() {
+        return yearGrade;
+    }
+
+    public HashMap<String, Report> getIssue_report() {
+        return issueReport;
+    }
 
     public void setNoteToPrinciple(String note_to_principle) {
         this.noteToPrinciple = note_to_principle;
@@ -61,17 +78,15 @@ public class Student extends User{
     public void setGrade(int grade) {
         this.yearGrade = grade;
     }
-
-    public int getGrade() {
-        return yearGrade;
-    }
-
-    public HashMap<String, Report> getIssue_report() {
-        return issueReport;
-    }
-
+    
     public void setIssueReport(HashMap<String,Report> issue_report) {
         this.issueReport = issue_report;
+    }
+    public void TakeExam(Exam exam){
+        DateTimeFormatter formate = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+        LocalDateTime now = LocalDateTime.now();
+        
+         
     }
     
     public void ViewFinalGrades(){
@@ -83,9 +98,7 @@ public class Student extends User{
     public void ShowExamGrades(){
         
     }
-    public void TakeExam(){
-        
-    }
+    
     public void ShowReport(){
         
     }

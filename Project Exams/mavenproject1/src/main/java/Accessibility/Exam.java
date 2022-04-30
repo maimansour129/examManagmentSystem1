@@ -11,6 +11,7 @@ public class Exam {
     private String subjectName;
     private int grading;
 
+    
     public Exam(String id, boolean status, Date startDate, Date dueDate, String subjectName) {
         this.id = id;
         this.status = status;
@@ -18,9 +19,7 @@ public class Exam {
         this.dueDate = dueDate;
         this.subjectName = subjectName;
     }
-
-    
-    
+  
     
     public void setId(String id) {
         this.id = id;
