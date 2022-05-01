@@ -22,14 +22,14 @@ public class Teacher extends User{
       
     }
 
-    public boolean editExam(String gradeYear,String ExamID,char choice,LocalDateTime date) {
+    public boolean editExam(String gradeYear,String ExamID,int choice,LocalDateTime date) {
 
       /*  boolean editResult=subjectEnrolled.editExam(gradeYear, ExamID, choice, date);
         
         return editResult;*/
       for(Exam i:subjectEnrolled.getExamList().get(gradeYear)){
             if(i.getId().equals(ExamID)){
-                if(choice=='s'){
+                if(choice==1){
                     i.setStartDate(date);
                 }
                 else {

@@ -3,9 +3,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package Accessibility.GuiFiles;
+
 import Accessibility.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -16,14 +19,13 @@ public class AddExamForm extends javax.swing.JFrame {
     /**
      * Creates new form AddExamForm
      */
-    
     Teacher ourTeacher;
-    
+
     public AddExamForm(Teacher teacher) {
         initComponents();
-        
-        ourTeacher=teacher;
-        
+
+        ourTeacher = teacher;
+
     }
 
     /**
@@ -46,6 +48,7 @@ public class AddExamForm extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
+        btnBack = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -98,6 +101,14 @@ public class AddExamForm extends javax.swing.JFrame {
 
         jLabel6.setText("yyyy-MM-dd HH:mm");
 
+        btnBack.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
+        btnBack.setText("Back");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -131,13 +142,18 @@ public class AddExamForm extends javax.swing.JFrame {
                             .addComponent(jLabel6)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(229, 229, 229)
-                        .addComponent(btnAddExam, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnAddExam, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(28, 28, 28)
+                        .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(81, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(110, 110, 110)
+                .addContainerGap()
+                .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(62, 62, 62)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtExamId, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
@@ -157,7 +173,7 @@ public class AddExamForm extends javax.swing.JFrame {
                     .addComponent(jLabel4))
                 .addGap(21, 21, 21)
                 .addComponent(btnAddExam, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(97, Short.MAX_VALUE))
+                .addContainerGap(93, Short.MAX_VALUE))
         );
 
         pack();
@@ -177,22 +193,33 @@ public class AddExamForm extends javax.swing.JFrame {
 
     private void btnAddExamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddExamActionPerformed
         // TODO add your handling code here:
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"); 
-        LocalDateTime StartdateTime = LocalDateTime.parse(txtStartDate.getText(), formatter);
-        LocalDateTime duedateTime = LocalDateTime.parse(txtDueDate.getText(), formatter);
-        Exam exam=new Exam(txtExamId.getText(),StartdateTime,duedateTime,ourTeacher.getSubjectEnrolled().getName());
-        
-        ourTeacher.addExam(cmbGradeYear.getSelectedItem().toString(), exam);
-        
-        
-        for(Exam i:ourTeacher.getSubjectEnrolled().getExamList().get(cmbGradeYear.getSelectedItem().toString())){
-            if(i.getId().equals(txtExamId.getText())){
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+        LocalDateTime StartdateTime = null;
+        LocalDateTime duedateTime = null;
+
+        try {
+            StartdateTime = LocalDateTime.parse(txtStartDate.getText(), formatter);
+            duedateTime = LocalDateTime.parse(txtDueDate.getText(), formatter);
+
+            Exam exam = new Exam(txtExamId.getText(), StartdateTime, duedateTime, ourTeacher.getSubjectEnrolled().getName());
+
+            ourTeacher.addExam(cmbGradeYear.getSelectedItem().toString(), exam);
+            JOptionPane.showMessageDialog(null, "Added successfully");
+
+        } catch (DateTimeParseException ex) {
+
+            JOptionPane.showMessageDialog(null, "write good format please");
+
+        }
+
+        for (Exam i : ourTeacher.getSubjectEnrolled().getExamList().get(cmbGradeYear.getSelectedItem().toString())) {
+            if (i.getId().equals(txtExamId.getText())) {
                 System.out.println(i.getId());
                 System.out.println(i.getStartDate());
                 break;
             }
         }
-        
+
     }//GEN-LAST:event_btnAddExamActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
@@ -202,8 +229,14 @@ public class AddExamForm extends javax.swing.JFrame {
         cmbGradeYear.addItem("two");
         cmbGradeYear.addItem("three");
         cmbGradeYear.addItem("four");
-        
+
     }//GEN-LAST:event_formWindowOpened
+
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        // TODO add your handling code here:
+        new ModifyExamsForm(ourTeacher).setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnBackActionPerformed
 
     /**
      * @param args the command line arguments
@@ -242,6 +275,7 @@ public class AddExamForm extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddExam;
+    private javax.swing.JButton btnBack;
     public static javax.swing.JComboBox<String> cmbGradeYear;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

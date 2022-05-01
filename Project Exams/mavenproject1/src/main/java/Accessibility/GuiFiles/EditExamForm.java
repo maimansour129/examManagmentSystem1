@@ -5,6 +5,10 @@
 package Accessibility.GuiFiles;
 
 import Accessibility.*;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -15,12 +19,11 @@ public class EditExamForm extends javax.swing.JFrame {
     /**
      * Creates new form EditExamForm
      */
-    
     Teacher ourTeacher;
-    
+
     public EditExamForm(Teacher teacher) {
         initComponents();
-        ourTeacher=teacher;
+        ourTeacher = teacher;
     }
 
     /**
@@ -32,7 +35,7 @@ public class EditExamForm extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        txtExamID = new javax.swing.JTextField();
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jLabel1 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         cmbGrade = new javax.swing.JComboBox<>();
@@ -41,12 +44,13 @@ public class EditExamForm extends javax.swing.JFrame {
         rdBtnDueDate = new javax.swing.JRadioButton();
         jLabel2 = new javax.swing.JLabel();
         txtDate = new javax.swing.JTextField();
+        cmbExamId = new javax.swing.JComboBox<>();
+        btnBack = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        txtExamID.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtExamIDActionPerformed(evt);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
             }
         });
 
@@ -57,13 +61,25 @@ public class EditExamForm extends javax.swing.JFrame {
         jLabel4.setText("Grade:");
 
         cmbGrade.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmbGrade.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cmbGradeItemStateChanged(evt);
+            }
+        });
 
         btnEditExam.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
         btnEditExam.setText("Edit Exam");
+        btnEditExam.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditExamActionPerformed(evt);
+            }
+        });
 
+        buttonGroup1.add(rdBtnStartDate);
         rdBtnStartDate.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         rdBtnStartDate.setText("Start Date");
 
+        buttonGroup1.add(rdBtnDueDate);
         rdBtnDueDate.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         rdBtnDueDate.setText("Due Date");
 
@@ -73,6 +89,16 @@ public class EditExamForm extends javax.swing.JFrame {
         txtDate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtDateActionPerformed(evt);
+            }
+        });
+
+        cmbExamId.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        btnBack.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
+        btnBack.setText("Back");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
             }
         });
 
@@ -90,34 +116,48 @@ public class EditExamForm extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(171, 171, 171)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtExamID, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jLabel4)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cmbGrade, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(39, 39, 39)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(rdBtnStartDate, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(rdBtnDueDate, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 0, Short.MAX_VALUE)))))
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(0, 0, Short.MAX_VALUE)
+                                        .addComponent(jLabel1)
+                                        .addGap(35, 35, 35))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel4)
+                                        .addGap(52, 52, 52)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(cmbGrade, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(cmbExamId, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                 .addGap(180, 180, 180))
             .addGroup(layout.createSequentialGroup()
-                .addGap(211, 211, 211)
-                .addComponent(btnEditExam, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(211, 211, 211)
+                        .addComponent(btnEditExam, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(77, 77, 77)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtExamID, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addGap(18, 18, 18)
+                .addContainerGap()
+                .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(24, 24, 24)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(19, 19, 19))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(cmbExamId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(13, 13, 13)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cmbGrade, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
@@ -131,19 +171,70 @@ public class EditExamForm extends javax.swing.JFrame {
                     .addComponent(jLabel2))
                 .addGap(18, 18, 18)
                 .addComponent(btnEditExam, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(59, Short.MAX_VALUE))
+                .addContainerGap(72, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtExamIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtExamIDActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtExamIDActionPerformed
-
     private void txtDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDateActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtDateActionPerformed
+
+    private void btnEditExamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditExamActionPerformed
+        // TODO add your handling code here:
+        int choice;
+        if (rdBtnStartDate.isSelected()) {
+            choice = 1;
+        } else {
+            choice = 2;
+        }
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+        LocalDateTime dateTime=null;
+        try {
+            dateTime = LocalDateTime.parse(txtDate.getText(), formatter);
+            ourTeacher.editExam(cmbGrade.getSelectedItem().toString(), cmbExamId.getSelectedItem().toString(), choice, dateTime);
+            JOptionPane.showMessageDialog(null, "Edited successfully");
+        } catch (DateTimeParseException ex) {
+            
+            JOptionPane.showMessageDialog(null, "write good format please");
+
+        }
+
+        
+        
+        
+
+
+    }//GEN-LAST:event_btnEditExamActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        // TODO add your handling code here:
+
+        cmbGrade.removeAllItems();
+        cmbExamId.removeAllItems();
+        cmbGrade.addItem("one");
+        cmbGrade.addItem("two");
+        cmbGrade.addItem("three");
+        cmbGrade.addItem("four");
+
+    }//GEN-LAST:event_formWindowOpened
+
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        // TODO add your handling code here:
+        new ModifyExamsForm(ourTeacher).setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnBackActionPerformed
+
+    private void cmbGradeItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbGradeItemStateChanged
+        // TODO add your handling code here:
+        if (evt.getStateChange() == java.awt.event.ItemEvent.SELECTED) {
+            cmbExamId.removeAllItems();
+            for (Exam i : ourTeacher.getSubjectEnrolled().getExamList().get(cmbGrade.getSelectedItem().toString())) {
+                cmbExamId.addItem(i.getId());
+            }
+        }
+    }//GEN-LAST:event_cmbGradeItemStateChanged
 
     /**
      * @param args the command line arguments
@@ -181,7 +272,10 @@ public class EditExamForm extends javax.swing.JFrame {
 //    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBack;
     private javax.swing.JButton btnEditExam;
+    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JComboBox<String> cmbExamId;
     private javax.swing.JComboBox<String> cmbGrade;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -189,6 +283,5 @@ public class EditExamForm extends javax.swing.JFrame {
     private javax.swing.JRadioButton rdBtnDueDate;
     private javax.swing.JRadioButton rdBtnStartDate;
     private javax.swing.JTextField txtDate;
-    private javax.swing.JTextField txtExamID;
     // End of variables declaration//GEN-END:variables
 }
