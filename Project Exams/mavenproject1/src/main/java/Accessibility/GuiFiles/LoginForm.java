@@ -4,6 +4,7 @@
  */
 package Accessibility.GuiFiles;
 
+import Accessibility.Principle;
 import Accessibility.Student;
 import Accessibility.Subject;
 import Accessibility.Teacher;
@@ -23,6 +24,8 @@ public class LoginForm extends javax.swing.JFrame {
     public LoginForm() {
         initComponents();
     }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -205,10 +208,15 @@ public class LoginForm extends javax.swing.JFrame {
                 this.setVisible(false);
             }
             
-            if(choice==3){
+            else if(choice==3){
                 new StudentOptions((Student)u1).setVisible(true);
                 this.setVisible(false);
             }
+            else if(choice==1){
+                new PrincipleView((Principle)u1).setVisible(true);
+                this.setVisible(false);
+            }
+            
         }
 
     }//GEN-LAST:event_btnLoginActionPerformed

@@ -37,9 +37,9 @@ public abstract class User {
         
           
         if(choice == 1){
-            if(username.equals("Hoba") && pass.equals("1")){
-                System.out.println("bate5a");
-                return null;
+            if(username.equals("Hoba") && pass.equals("69")){
+                
+                return Principle.getPrinciple();
             }
         }
         else if(choice == 2){

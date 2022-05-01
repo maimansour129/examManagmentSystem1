@@ -80,21 +80,20 @@ public class Student extends User{
         this.issueReport = issue_report;
     }
     
-    public void TakeExam(Exam exam){
-       //DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");  
-       Date now = new Date(System.currentTimeMillis());
-       if(now.compareTo(exam.getDueDate())>0){
-           exam.setAllowedStatus(false);
-        }
-       else if(now.compareTo(exam.getDueDate())<0){
-           exam.setTakenStatus(false);
-           exam.setAllowedStatus(false);
-           if(now.compareTo(exam.getDueDate())>0){
-               exam.setAllowedStatus(false);
-           }
-       }
-       
-    }
+//    public void TakeExam(Exam exam){
+//       //DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");  
+//       Date now = new Date(System.currentTimeMillis());
+//       if(now.compareTo(exam.getDueDate())>0){
+//           exam.setAllowedStatus(false);
+//        }
+//       else if(now.compareTo(exam.getDueDate())<0){
+//           exam.setTakenStatus(false);
+//           exam.setAllowedStatus(false);
+//           if(now.compareTo(exam.getDueDate())>0){
+//               exam.setAllowedStatus(false);
+//           }
+//       }
+//    }
     public void StudentLogin(String username,String pass, ArrayList<Student> allstuds){
         for(int i=0; i<allstuds.size(); i++){
           if(allstuds.get(i).getUsername().equals(username) && allstuds.get(i).getPassword().equals(pass)){

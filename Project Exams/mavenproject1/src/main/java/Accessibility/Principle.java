@@ -9,9 +9,16 @@ public class Principle extends User{
     private ArrayList<Student> students;
     private ArrayList<Class> classes;
     
-    public Principle(String name, String username, String password, String role) {
+    //Declaring the Principle
+    private static Principle p1 = new Principle("Johny","Hoba","69","Principle");
+    private Principle(String name, String username, String password, String role) {
         super(name, username, password, role);
     }
+    public static Principle getPrinciple(){
+        return p1;
+    }
+    
+    
     public void AddTeacher(Teacher teacher){
         
     }
