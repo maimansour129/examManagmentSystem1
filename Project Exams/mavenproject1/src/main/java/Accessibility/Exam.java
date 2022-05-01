@@ -1,5 +1,6 @@
 package Accessibility;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 public class Exam {
@@ -8,12 +9,12 @@ public class Exam {
     private boolean takenStatus;
     private boolean markedStatus;
     private boolean allowedStatus;
-    private Date startDate;
-    private Date dueDate;
+    private LocalDateTime startDate;
+    private LocalDateTime dueDate;
     private String subjectName;
     private int grading;
 
-    public Exam(String id, Date startDate, Date dueDate, String subjectName) {
+    public Exam(String id, LocalDateTime startDate, LocalDateTime dueDate, String subjectName) {
 
         this.id = id;
         this.startDate = startDate;
@@ -33,11 +34,11 @@ public class Exam {
         this.takenStatus = takenStatus;
     }
 
-    public void setStartDate(Date startDate) {
+    public void setStartDate(LocalDateTime startDate) {
         this.startDate = startDate;
     }
 
-    public void setDueDate(Date dueDate) {
+    public void setDueDate(LocalDateTime dueDate) {
         this.dueDate = dueDate;
     }
 
@@ -61,11 +62,11 @@ public class Exam {
         return allowedStatus;
     }
 
-    public Date getStartDate() {
+    public LocalDateTime getStartDate() {
         return startDate;
     }
 
-    public Date getDueDate() {
+    public LocalDateTime getDueDate() {
         return dueDate;
     }
 

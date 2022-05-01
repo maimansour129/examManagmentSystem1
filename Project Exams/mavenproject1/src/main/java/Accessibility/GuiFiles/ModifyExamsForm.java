@@ -4,6 +4,8 @@
  */
 package Accessibility.GuiFiles;
 
+import Accessibility.*;
+
 /**
  *
  * @author Abelwahab El-Desoky
@@ -13,8 +15,11 @@ public class ModifyExamsForm extends javax.swing.JFrame {
     /**
      * Creates new form ModifyExams
      */
-    public ModifyExamsForm() {
+    Teacher ourTeacher;
+
+    public ModifyExamsForm(Teacher teacher) {
         initComponents();
+        ourTeacher = teacher;
     }
 
     /**
@@ -35,6 +40,11 @@ public class ModifyExamsForm extends javax.swing.JFrame {
 
         btnEditExam.setText("Edit Exam");
         btnEditExam.setName("btnEdit"); // NOI18N
+        btnEditExam.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditExamActionPerformed(evt);
+            }
+        });
 
         btnAddExam.setText("Add Exam");
         btnAddExam.addActionListener(new java.awt.event.ActionListener() {
@@ -46,6 +56,11 @@ public class ModifyExamsForm extends javax.swing.JFrame {
         btnDeleteExam.setText("Delete Exam");
         btnDeleteExam.setToolTipText("");
         btnDeleteExam.setName("btnEdit"); // NOI18N
+        btnDeleteExam.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteExamActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
         jLabel1.setText("Exam Modifications");
@@ -85,43 +100,64 @@ public class ModifyExamsForm extends javax.swing.JFrame {
 
     private void btnAddExamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddExamActionPerformed
         // TODO add your handling code here:
+
+        new AddExamForm(ourTeacher).setVisible(true);
+
+        this.setVisible(false);
+
     }//GEN-LAST:event_btnAddExamActionPerformed
+
+    private void btnEditExamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditExamActionPerformed
+        // TODO add your handling code here:
+
+        new EditExamForm(ourTeacher).setVisible(true);
+        this.setVisible(false);
+
+    }//GEN-LAST:event_btnEditExamActionPerformed
+
+    private void btnDeleteExamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteExamActionPerformed
+        // TODO add your handling code here:
+
+        new DeleteExamForm(ourTeacher).setVisible(true);
+        this.setVisible(false);
+
+    }//GEN-LAST:event_btnDeleteExamActionPerformed
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ModifyExamsForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ModifyExamsForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ModifyExamsForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ModifyExamsForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new ModifyExamsForm().setVisible(true);
-            }
-        });
-    }
+//    public static void main(String args[]) {
+//        /* Set the Nimbus look and feel */
+//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+//         */
+//        try {
+//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+//                if ("Nimbus".equals(info.getName())) {
+//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//                    break;
+//                }
+//            }
+//        } catch (ClassNotFoundException ex) {
+//            java.util.logging.Logger.getLogger(ModifyExamsForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (InstantiationException ex) {
+//            java.util.logging.Logger.getLogger(ModifyExamsForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (IllegalAccessException ex) {
+//            java.util.logging.Logger.getLogger(ModifyExamsForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+//            java.util.logging.Logger.getLogger(ModifyExamsForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        }
+//        //</editor-fold>
+//        //</editor-fold>
+//
+//        /* Create and display the form */
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                new ModifyExamsForm().setVisible(true);
+//            }
+//        });
+//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddExam;

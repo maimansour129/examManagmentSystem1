@@ -30,7 +30,7 @@
               <EmptySpace min="-2" pref="115" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Component id="btnAssign" max="32767" attributes="0"/>
-                  <Component id="btnModifyExam" min="-2" pref="168" max="-2" attributes="0"/>
+                  <Component id="btnModifyExam" max="32767" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
@@ -53,8 +53,8 @@
               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace pref="98" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="btnModifyExam" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
                   <Component id="btnCheck" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
+                  <Component id="btnModifyExam" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -67,17 +67,6 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JButton" name="btnModifyExam">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Dialog" size="14" style="3"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Modify Exams"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnModifyExamActionPerformed"/>
-      </Events>
-    </Component>
     <Component class="javax.swing.JButton" name="btnAssign">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -118,6 +107,17 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Welcome Mr. Variable"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnModifyExam">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Dialog" size="14" style="3"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Modify Exams"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnModifyExamActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

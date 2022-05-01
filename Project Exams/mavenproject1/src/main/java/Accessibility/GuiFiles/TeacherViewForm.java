@@ -28,24 +28,16 @@ public class TeacherViewForm extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btnModifyExam = new javax.swing.JButton();
         btnAssign = new javax.swing.JButton();
         btnCheck = new javax.swing.JButton();
         btnIssuing = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        btnModifyExam = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
-            }
-        });
-
-        btnModifyExam.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
-        btnModifyExam.setText("Modify Exams");
-        btnModifyExam.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnModifyExamActionPerformed(evt);
             }
         });
 
@@ -76,6 +68,14 @@ public class TeacherViewForm extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
         jLabel1.setText("Welcome Mr. Variable");
 
+        btnModifyExam.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
+        btnModifyExam.setText("Modify Exams");
+        btnModifyExam.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModifyExamActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -84,7 +84,7 @@ public class TeacherViewForm extends javax.swing.JFrame {
                 .addGap(115, 115, 115)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnAssign, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnModifyExam, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnModifyExam, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnCheck, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -102,8 +102,8 @@ public class TeacherViewForm extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 98, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnModifyExam, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnCheck, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnCheck, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnModifyExam, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAssign, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -114,15 +114,14 @@ public class TeacherViewForm extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnModifyExamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModifyExamActionPerformed
-        new AddExamForm().setVisible(true);    }//GEN-LAST:event_btnModifyExamActionPerformed
-
     private void btnAssignActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnAssignActionPerformed
 
     private void btnCheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCheckActionPerformed
         // TODO add your handling code here:
+        new CheckStudentGradesForm(ourTeacher).setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_btnCheckActionPerformed
 
     private void btnIssuingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIssuingActionPerformed
@@ -135,6 +134,12 @@ public class TeacherViewForm extends javax.swing.JFrame {
         jLabel1.setText("Welcome yabnel Srma. "+ourTeacher.getName());
         
     }//GEN-LAST:event_formWindowOpened
+
+    private void btnModifyExamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModifyExamActionPerformed
+        // TODO add your handling code here:
+        new ModifyExamsForm((ourTeacher)).setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnModifyExamActionPerformed
 
     /**
      * @param args the command line arguments

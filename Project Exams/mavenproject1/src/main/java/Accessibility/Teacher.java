@@ -1,5 +1,6 @@
 package Accessibility;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.*;
 
@@ -7,6 +8,7 @@ public class Teacher extends User{
 
     private Subject subjectEnrolled;
     private ArrayList<Class> assignedClasses;
+    
 
     public Teacher(String name, String username, String password, String role) {
         super(name, username, password, role);
@@ -20,7 +22,7 @@ public class Teacher extends User{
       
     }
 
-    public boolean editExam(String gradeYear,String ExamID,char choice,Date date) {
+    public boolean editExam(String gradeYear,String ExamID,char choice,LocalDateTime date) {
 
       /*  boolean editResult=subjectEnrolled.editExam(gradeYear, ExamID, choice, date);
         
@@ -108,5 +110,20 @@ public class Teacher extends User{
 
         return fReport;
         
+    }
+    public Subject getSubjectEnrolled() {
+        return subjectEnrolled;
+    }
+
+    public void setSubjectEnrolled(Subject subjectEnrolled) {
+        this.subjectEnrolled = subjectEnrolled;
+    }
+
+    public ArrayList<Class> getAssignedClasses() {
+        return assignedClasses;
+    }
+
+    public void setAssignedClasses(ArrayList<Class> assignedClasses) {
+        this.assignedClasses = assignedClasses;
     }
 }
