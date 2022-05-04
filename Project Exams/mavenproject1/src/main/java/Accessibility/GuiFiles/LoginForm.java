@@ -191,6 +191,7 @@ public class LoginForm extends javax.swing.JFrame {
         allstudents.add(s1);
 
         ClassSchool classs=new ClassSchool(1,"two");
+        ClassSchool classs2=new ClassSchool(2,"two");
         classs.getAllStudents().add(s1);
         
         Teacher t1 = new Teacher("Seif", "Hossam", "34", "Teacher");
@@ -198,6 +199,7 @@ public class LoginForm extends javax.swing.JFrame {
         allteacher.add(t1);
         
         t1.getAssignedClasses().add(classs);
+        t1.getAssignedClasses().add(classs2);
         
         Subject subject=new Subject("English");
         

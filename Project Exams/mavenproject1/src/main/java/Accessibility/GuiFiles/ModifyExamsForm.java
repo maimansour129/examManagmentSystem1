@@ -39,6 +39,7 @@ public class ModifyExamsForm extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        btnEditExam.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
         btnEditExam.setText("Edit Exam");
         btnEditExam.setName("btnEdit"); // NOI18N
         btnEditExam.addActionListener(new java.awt.event.ActionListener() {
@@ -47,6 +48,7 @@ public class ModifyExamsForm extends javax.swing.JFrame {
             }
         });
 
+        btnAddExam.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
         btnAddExam.setText("Add Exam");
         btnAddExam.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -54,6 +56,7 @@ public class ModifyExamsForm extends javax.swing.JFrame {
             }
         });
 
+        btnDeleteExam.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
         btnDeleteExam.setText("Delete Exam");
         btnDeleteExam.setToolTipText("");
         btnDeleteExam.setName("btnEdit"); // NOI18N
@@ -66,7 +69,8 @@ public class ModifyExamsForm extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
         jLabel1.setText("Exam Modifications");
 
-        btnBack.setText("jButton1");
+        btnBack.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
+        btnBack.setText("Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBackActionPerformed(evt);
@@ -83,12 +87,12 @@ public class ModifyExamsForm extends javax.swing.JFrame {
                 .addGap(45, 45, 45)
                 .addComponent(btnEditExam, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(42, 42, 42)
-                .addComponent(btnDeleteExam, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(101, Short.MAX_VALUE))
+                .addComponent(btnDeleteExam)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 112, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(189, 189, 189))
         );

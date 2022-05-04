@@ -167,7 +167,7 @@ public class AssignExamForm extends javax.swing.JFrame {
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         // TODO add your handling code here:
-        new ModifyExamsForm(ourTeacher).setVisible(true);
+        new TeacherViewForm(ourTeacher).setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnBackActionPerformed
 

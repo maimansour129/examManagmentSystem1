@@ -29,13 +29,13 @@
               <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
               <Component id="btnEditExam" min="-2" pref="104" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
-              <Component id="btnDeleteExam" min="-2" pref="104" max="-2" attributes="0"/>
-              <EmptySpace pref="101" max="32767" attributes="0"/>
+              <Component id="btnDeleteExam" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Component id="btnBack" min="-2" pref="73" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace pref="112" max="32767" attributes="0"/>
               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="189" max="-2" attributes="0"/>
           </Group>
@@ -68,6 +68,9 @@
   <SubComponents>
     <Component class="javax.swing.JButton" name="btnEditExam">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Dialog" size="14" style="3"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Edit Exam"/>
         <Property name="name" type="java.lang.String" value="btnEdit" noResource="true"/>
       </Properties>
@@ -77,6 +80,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnAddExam">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Dialog" size="14" style="3"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Add Exam"/>
       </Properties>
       <Events>
@@ -85,6 +91,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnDeleteExam">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Dialog" size="14" style="3"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Delete Exam"/>
         <Property name="toolTipText" type="java.lang.String" value=""/>
         <Property name="name" type="java.lang.String" value="btnEdit" noResource="true"/>
@@ -103,7 +112,10 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnBack">
       <Properties>
-        <Property name="text" type="java.lang.String" value="jButton1"/>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Dialog" size="14" style="3"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Back"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBackActionPerformed"/>

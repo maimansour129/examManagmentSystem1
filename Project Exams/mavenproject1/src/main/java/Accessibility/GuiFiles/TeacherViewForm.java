@@ -130,6 +130,8 @@ public class TeacherViewForm extends javax.swing.JFrame {
 
     private void btnAssignActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignActionPerformed
         // TODO add your handling code here:
+        new AssignAssignment(ourTeacher).setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_btnAssignActionPerformed
 
     private void btnCheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCheckActionPerformed
