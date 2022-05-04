@@ -1,9 +1,8 @@
 package Accessibility;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 
-public class Exam {
+public class Exam implements Cloneable{
 
     private String id;
     private boolean takenStatus;
@@ -20,6 +19,7 @@ public class Exam {
         this.startDate = startDate;
         this.dueDate = dueDate;
         this.subjectName = subjectName;
+        this.grading=0;
     }
 
     public void setAllowedStatus(boolean allowedStatus) {
@@ -84,5 +84,16 @@ public class Exam {
 
     public void setMarkedStatus(boolean markedStatus) {
         this.markedStatus = markedStatus;
+    }
+
+    @Override
+    public Object clone()throws CloneNotSupportedException {
+        Object clone = null;
+        try {
+            clone = super.clone();
+        } catch (CloneNotSupportedException exp) {
+            exp.printStackTrace();
+        }
+        return clone;
     }
 }

@@ -12,6 +12,7 @@ public class Teacher extends User{
 
     public Teacher(String name, String username, String password, String role) {
         super(name, username, password, role);
+        assignedClasses=new ArrayList<>();
     }
     
     
@@ -125,5 +126,22 @@ public class Teacher extends User{
 
     public void setAssignedClasses(ArrayList<ClassSchool> assignedClasses) {
         this.assignedClasses = assignedClasses;
+    }
+    
+    public void assignExam(String gradeYear,String examID)throws CloneNotSupportedException{
+        Exam tmpExam=null;
+        for(Exam x:subjectEnrolled.getExamList().get(gradeYear)){
+            if(x.getId().equals(examID)){
+               tmpExam=x;
+               break;
+            }
+        }
+        for(ClassSchool i:assignedClasses){
+            if(i.getYear().equals(gradeYear)){
+                for(Student j:i.getAllStudents()){
+                    j.getAllExams().add((Exam)tmpExam.clone());
+                }
+            }
+        }
     }
 }

@@ -34,7 +34,7 @@ public class Principle extends User{
     public void ViewTeacherDetails(){
         
     }
-    public void RegisterStudent(ArrayList<String> subjects,int enrolledClass, String username, String password, String role,int yearGrade){
+    public void RegisterStudent(ArrayList<String> subjects,int enrolledClass, String username, String password, String role,String yearGrade){
         
         Student newStudent = new Student(subjects, enrolledClass, null, username, password, role,yearGrade);
     }

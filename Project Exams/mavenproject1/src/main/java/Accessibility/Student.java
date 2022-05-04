@@ -4,13 +4,12 @@ package Accessibility;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Stack;
-import java.util.Date;
-import javax.swing.JFrame;
+
 //import java.time.format.DateTimeFormatterBuilder;
 
 public class Student extends User{
     
-    private int yearGrade;
+    private String yearGrade;
     private ArrayList<String> subjects;
     private HashMap<String,Report> issueReport;
     private String noteToPrinciple;
@@ -20,7 +19,7 @@ public class Student extends User{
 
 
     
-    public Student(ArrayList<String> subjects, int enrolledclassID, String name, String username, String password, String role, int yearGrade) {
+    public Student(ArrayList<String> subjects, int enrolledclassID, String name, String username, String password, String role, String yearGrade) {
         super(name, username, password, role);
         this.subjects = subjects;
         this.yearGrade = yearGrade;
@@ -30,8 +29,8 @@ public class Student extends User{
         allExams = new ArrayList<Exam>();
         notifications = new Stack<String>();
     }
-
-    public int getYearGrade() {
+    
+    public String getYearGrade() {
         return yearGrade;
     }
     public String getRole() {
@@ -60,9 +59,6 @@ public class Student extends User{
     public String getNoteToPrinciple() {
         return noteToPrinciple;
     }
-    public int getGrade() {
-        return yearGrade;
-    }
 
     public HashMap<String, Report> getIssue_report() {
         return issueReport;
@@ -72,7 +68,7 @@ public class Student extends User{
         this.noteToPrinciple = note_to_principle;
     }
 
-    public void setGrade(int grade) {
+    public void setGrade(String grade) {
         this.yearGrade = grade;
     }
     

@@ -29,6 +29,9 @@ public class ClassSchool {
     {
         this.classId = classId;
         this.year = year;
+        allStudents=new ArrayList<>();
+        schedule=new HashMap<>();
+        subjectAssignments=new HashMap<>();
     }
     
     public void setAllStudents(ArrayList<Student> allStudents)

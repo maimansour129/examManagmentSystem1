@@ -4,6 +4,7 @@
  */
 package Accessibility.GuiFiles;
 
+import Accessibility.ClassSchool;
 import Accessibility.Principle;
 import Accessibility.Student;
 import Accessibility.Subject;
@@ -182,18 +183,24 @@ public class LoginForm extends javax.swing.JFrame {
         }
 
         User u1;
-        ArrayList<String> sub = new ArrayList<String>();
+        ArrayList<String> sub = new ArrayList<>();
         sub.add("Maths");
         sub.add("English");
-        Student s1 = new Student(sub, 1, "Omar", "Othman", "123", "Student", 2);
-        ArrayList<Student> allstudents = new ArrayList<Student>();
+        Student s1 = new Student(sub, 1, "Omar", "Othman", "123", "Student", "two");
+        ArrayList<Student> allstudents = new ArrayList<>();
         allstudents.add(s1);
 
+        ClassSchool classs=new ClassSchool(1,"two");
+        classs.getAllStudents().add(s1);
+        
         Teacher t1 = new Teacher("Seif", "Hossam", "34", "Teacher");
-        ArrayList<Teacher> allteacher = new ArrayList<Teacher>();
+        ArrayList<Teacher> allteacher = new ArrayList<>();
         allteacher.add(t1);
         
+        t1.getAssignedClasses().add(classs);
+        
         Subject subject=new Subject("English");
+        
         
         t1.setSubjectEnrolled(subject);
 
