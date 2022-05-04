@@ -66,7 +66,7 @@ public class Teacher extends User{
 
     }
 
-    public boolean assignAssignment(String assignment,int classID,Date date) {
+    public boolean assignAssignment(String assignment,int classID,LocalDateTime date) {
         
         String notify=assignment+" has been released and will be delivered before "+date;
         for(ClassSchool i:assignedClasses){
