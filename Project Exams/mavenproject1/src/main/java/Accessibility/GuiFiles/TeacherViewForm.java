@@ -120,7 +120,7 @@ public class TeacherViewForm extends javax.swing.JFrame {
 
     private void btnCheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCheckActionPerformed
         // TODO add your handling code here:
-        new CheckStudentGradesForm(ourTeacher).setVisible(true);
+        new TeacherCheckGrades(ourTeacher).setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnCheckActionPerformed
 
@@ -131,7 +131,7 @@ public class TeacherViewForm extends javax.swing.JFrame {
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
         
-        jLabel1.setText("Welcome yabnel Srma. "+ourTeacher.getName());
+        jLabel1.setText("Welcome "+ourTeacher.getName());
         
     }//GEN-LAST:event_formWindowOpened
 

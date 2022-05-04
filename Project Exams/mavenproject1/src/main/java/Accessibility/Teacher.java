@@ -7,7 +7,7 @@ import java.util.*;
 public class Teacher extends User{
 
     private Subject subjectEnrolled;
-    private ArrayList<Class> assignedClasses;
+    private ArrayList<ClassSchool> assignedClasses;
     
 
     public Teacher(String name, String username, String password, String role) {
@@ -55,7 +55,7 @@ public class Teacher extends User{
 
     public void sendNotification(int className , String text){
         
-       for(Class i:assignedClasses){
+       for(ClassSchool i:assignedClasses){
            if(className==i.getClassID()){
                for(Student j:i.getAllStudents()){
                     j.getNotifications().push(text);
@@ -68,7 +68,7 @@ public class Teacher extends User{
     public boolean assignAssignment(String assignment,int classID,Date date) {
         
         String notify=assignment+" has been released and will be delivered before "+date;
-        for(Class i:assignedClasses){
+        for(ClassSchool i:assignedClasses){
            if(classID==i.getClassID()){
               i.getAssignments().get(subjectEnrolled.getName()).add(assignment);
                sendNotification(classID, notify);
@@ -81,7 +81,7 @@ public class Teacher extends User{
 
     public void checkStudentGrade(int classID){
         ArrayList<Student> classStudents;
-         for(Class i:assignedClasses){
+         for(ClassSchool i:assignedClasses){
            if(classID==i.getClassID()){
              classStudents=i.getAllStudents();
             //not Done yet 
@@ -92,7 +92,7 @@ public class Teacher extends User{
     public void markGrades(String username,int classID, String examID){
         ArrayList<Student> classStudents=null;
         Student currentStudent;
-        for(Class i:assignedClasses){
+        for(ClassSchool i:assignedClasses){
            if(classID==i.getClassID()){
              classStudents=i.getAllStudents();
            }
@@ -119,11 +119,11 @@ public class Teacher extends User{
         this.subjectEnrolled = subjectEnrolled;
     }
 
-    public ArrayList<Class> getAssignedClasses() {
+    public ArrayList<ClassSchool> getAssignedClasses() {
         return assignedClasses;
     }
 
-    public void setAssignedClasses(ArrayList<Class> assignedClasses) {
+    public void setAssignedClasses(ArrayList<ClassSchool> assignedClasses) {
         this.assignedClasses = assignedClasses;
     }
 }

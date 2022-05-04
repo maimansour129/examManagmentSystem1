@@ -7,7 +7,7 @@ public class Principle extends User{
 
     private ArrayList<Teacher> teachers;
     private ArrayList<Student> students;
-    private ArrayList<Class> classes;
+    private ArrayList<ClassSchool> classes;
     
     //Declaring the Principle
     private static Principle p1 = new Principle("Johny","Hoba","69","Principle");
@@ -28,7 +28,7 @@ public class Principle extends User{
     public void Delete(Teacher teacher){
         
     }
-    public void SetTimetable(Class c){
+    public void SetTimetable(ClassSchool c){
         
     }
     public void ViewTeacherDetails(){

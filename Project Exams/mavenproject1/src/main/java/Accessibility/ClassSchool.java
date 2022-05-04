@@ -12,7 +12,7 @@ import java.util.Date;
  *
  * @author Abelwahab El-Desoky
  */
-public class Class {
+public class ClassSchool {
     
     private ArrayList<Student> allStudents;
     private HashMap<Date, Subject> schedule;
@@ -25,7 +25,7 @@ public class Class {
     // we need to fill it with subject name and assignments
     // 1) constructor for this class
     
-    public Class(int classId, String year)
+    public ClassSchool(int classId, String year)
     {
         this.classId = classId;
         this.year = year;
