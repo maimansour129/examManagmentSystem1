@@ -33,19 +33,16 @@
           </Group>
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="115" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Component id="btnExamAssign" max="32767" attributes="0"/>
-                  <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="btnAssign" max="32767" attributes="0"/>
-                          <Component id="btnModifyExam" max="32767" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="btnCheck" max="32767" attributes="0"/>
-                          <Component id="btnIssuing" max="32767" attributes="0"/>
-                      </Group>
-                  </Group>
+                  <Component id="btnAssign" max="32767" attributes="0"/>
+                  <Component id="btnModifyExam" max="32767" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="btnCheck" max="32767" attributes="0"/>
+                  <Component id="btnIssuing" max="32767" attributes="0"/>
+                  <Component id="btnMarkExam" alignment="0" max="32767" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="116" max="-2" attributes="0"/>
           </Group>
@@ -67,7 +64,10 @@
                   <Component id="btnIssuing" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="btnExamAssign" min="-2" pref="37" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="btnExamAssign" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
+                  <Component id="btnMarkExam" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
+              </Group>
               <EmptySpace min="-2" pref="109" max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -135,6 +135,17 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnExamAssignActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnMarkExam">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Dialog" size="14" style="3"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Assign exam"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnMarkExamActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

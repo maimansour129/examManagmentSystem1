@@ -157,7 +157,9 @@ public class AssignExamForm extends javax.swing.JFrame {
             int x=ourTeacher.getSubjectEnrolled().getExamList().size();
             if(x!=0){
             for (Exam i : ourTeacher.getSubjectEnrolled().getExamList().get(cmbGrade.getSelectedItem().toString())) {
-                cmbExamID.addItem(i.getId());
+                if(!i.isAssignedStatus()){
+                    cmbExamID.addItem(i.getId());
+                }
             }}
             else{
                 JOptionPane.showMessageDialog(null, "No Exams Found for this Grade!!");

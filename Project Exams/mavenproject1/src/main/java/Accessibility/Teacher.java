@@ -132,6 +132,7 @@ public class Teacher extends User{
         Exam tmpExam=null;
         for(Exam x:subjectEnrolled.getExamList().get(gradeYear)){
             if(x.getId().equals(examID)){
+               x.setAssignedStatus(true);
                tmpExam=x;
                break;
             }

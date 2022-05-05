@@ -8,6 +8,7 @@ public class Exam implements Cloneable{
     private boolean takenStatus;
     private boolean markedStatus;
     private boolean allowedStatus;
+    private boolean assignedStatus;
     private LocalDateTime startDate;
     private LocalDateTime dueDate;
     private String subjectName;
@@ -20,6 +21,10 @@ public class Exam implements Cloneable{
         this.dueDate = dueDate;
         this.subjectName = subjectName;
         this.grading=0;
+        this.assignedStatus=false;
+        this.allowedStatus=false;
+        this.takenStatus=false;
+        this.markedStatus=false;
     }
 
     public void setAllowedStatus(boolean allowedStatus) {
@@ -96,4 +101,13 @@ public class Exam implements Cloneable{
         }
         return clone;
     }
+
+    public boolean isAssignedStatus() {
+        return assignedStatus;
+    }
+
+    public void setAssignedStatus(boolean assignedStatus) {
+        this.assignedStatus = assignedStatus;
+    }
+    
 }

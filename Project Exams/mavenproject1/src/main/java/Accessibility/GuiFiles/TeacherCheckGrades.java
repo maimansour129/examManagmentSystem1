@@ -182,7 +182,9 @@ public class TeacherCheckGrades extends javax.swing.JFrame {
         if (evt.getStateChange() == java.awt.event.ItemEvent.SELECTED) {
             cmbExamId.removeAllItems();
             for (Exam i : ourTeacher.getSubjectEnrolled().getExamList().get(cmbGradeYear.getSelectedItem().toString())) {
-                cmbExamId.addItem(i.getId());
+                if(i.isAssignedStatus()){
+                    cmbExamId.addItem(i.getId());
+                }
             }
         }
     }//GEN-LAST:event_cmbGradeYearItemStateChanged
