@@ -16,6 +16,7 @@ public class Student extends User{
     private ArrayList<Exam> allExams;
     private int enrolledclassID;
     private Stack<String> notifications;
+    private HashMap<String, ArrayList<String>> Assignments;
 
 
     
@@ -28,6 +29,15 @@ public class Student extends User{
         issueReport = new HashMap<String, Report>();
         allExams = new ArrayList<Exam>();
         notifications = new Stack<String>();
+        Assignments=new HashMap<>();
+    }
+
+    public HashMap<String, ArrayList<String>> getAssignments() {
+        return Assignments;
+    }
+
+    public void setAssignments(HashMap<String, ArrayList<String>> Assignments) {
+        this.Assignments = Assignments;
     }
     
     public String getYearGrade() {

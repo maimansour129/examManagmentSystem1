@@ -16,7 +16,6 @@ public class ClassSchool {
     
     private ArrayList<Student> allStudents;
     private HashMap<Date, Subject> schedule;
-    private HashMap<String, ArrayList<String>> subjectAssignments;
     private int classId;
     private String year;
     
@@ -31,7 +30,6 @@ public class ClassSchool {
         this.year = year;
         allStudents=new ArrayList<>();
         schedule=new HashMap<>();
-        subjectAssignments=new HashMap<>();
     }
     
     public void setAllStudents(ArrayList<Student> allStudents)
@@ -45,19 +43,12 @@ public class ClassSchool {
     }
     
             
-    public void setSubjectAssignments(HashMap<String, ArrayList<String>> subjectAssignments)
-    {
-        this.subjectAssignments = subjectAssignments;
-    }
     
     public ArrayList<Student> getAllStudents()
     {
         return allStudents;
     }
 
-    public HashMap<String, ArrayList<String>> getClassAssignments() {
-        return subjectAssignments;
-    }
 
     public int getClassId() {
         return classId;
@@ -68,10 +59,6 @@ public class ClassSchool {
         return schedule;
     }
     
-    public HashMap<String, ArrayList<String>> getAssignments()
-    {
-        return subjectAssignments;
-    }
     
     public int getClassID(){
         return classId;

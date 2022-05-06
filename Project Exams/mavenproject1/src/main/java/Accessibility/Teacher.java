@@ -71,9 +71,18 @@ public class Teacher extends User{
         String notify=assignment+" has been released and will be delivered before "+date;
         for(ClassSchool i:assignedClasses){
            if(classID==i.getClassID()){
-              i.getAssignments().get(subjectEnrolled.getName()).add(assignment);
-               sendNotification(classID, notify);
-               return true;
+              for(Student s:i.getAllStudents()){
+                  if(s.getAssignments().containsKey(subjectEnrolled.getName())){
+                     s.getAssignments().get(subjectEnrolled.getName()).add(assignment); 
+                  }
+                  else{
+                      ArrayList<String> tmp=new ArrayList<>();
+                      s.getAssignments().put(subjectEnrolled.getName(),tmp);
+                      s.getAssignments().get(subjectEnrolled.getName()).add(assignment);
+                  }
+                  sendNotification(classID, notify);
+                  return true;
+              }
            }
        }
         return false;
