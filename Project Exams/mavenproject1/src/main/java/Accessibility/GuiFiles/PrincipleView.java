@@ -22,6 +22,15 @@ public class PrincipleView extends javax.swing.JFrame {
         ourPrinciple = p;
     }
 
+    ////////created by Seif when i tried to make the back button functional in registringStudents form
+    public PrincipleView() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    
+
+    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -32,7 +41,7 @@ public class PrincipleView extends javax.swing.JFrame {
     private void initComponents() {
 
         jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        btnRegStud = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
 
@@ -46,8 +55,13 @@ public class PrincipleView extends javax.swing.JFrame {
             }
         });
 
-        jButton3.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
-        jButton3.setText("Register a Student");
+        btnRegStud.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
+        btnRegStud.setText("Register a Student");
+        btnRegStud.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegStudActionPerformed(evt);
+            }
+        });
 
         jButton4.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
         jButton4.setText("Set Schedule");
@@ -63,7 +77,7 @@ public class PrincipleView extends javax.swing.JFrame {
                 .addGap(52, 52, 52)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnRegStud, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(376, Short.MAX_VALUE))
@@ -76,7 +90,7 @@ public class PrincipleView extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jButton4)
                 .addGap(18, 18, 18)
-                .addComponent(jButton3)
+                .addComponent(btnRegStud)
                 .addGap(18, 18, 18)
                 .addComponent(jButton5)
                 .addContainerGap(186, Short.MAX_VALUE))
@@ -90,6 +104,11 @@ public class PrincipleView extends javax.swing.JFrame {
         new ModifyTeacherView().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void btnRegStudActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegStudActionPerformed
+        new RegisteringStudents().setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnRegStudActionPerformed
 
     /**
      * @param args the command line arguments
@@ -127,8 +146,8 @@ public class PrincipleView extends javax.swing.JFrame {
 //    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnRegStud;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     // End of variables declaration//GEN-END:variables
