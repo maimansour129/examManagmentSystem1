@@ -18,6 +18,9 @@ public class Principle extends User{
         return p1;
     }
     
+    public ArrayList<Teacher> getTeachers(){
+        return teachers;
+    }
     
     public void AddTeacher(Teacher teacher){
         
@@ -34,8 +37,8 @@ public class Principle extends User{
     public void ViewTeacherDetails(){
         
     }
-    public void RegisterStudent(ArrayList<String> subjects,int enrolledClass, String username, String password, String role,String yearGrade){
+    public void RegisterStudent(ArrayList<String> subjects,int enrolledClass,String name, String username, String password, String role,String yearGrade){
         
-        Student newStudent = new Student(subjects, enrolledClass, null, username, password, role,yearGrade);
+        Student newStudent = new Student(subjects, enrolledClass, name, username, password, role,yearGrade);
     }
 }
