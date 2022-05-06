@@ -73,10 +73,7 @@ public class GoToSubject extends javax.swing.JFrame {
 
         tbl_current_assignments.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null},
-                {null},
-                {null},
-                {null}
+
             },
             new String [] {
                 "Current Assignments"
@@ -97,10 +94,7 @@ public class GoToSubject extends javax.swing.JFrame {
 
         tbl_subjectGrade.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+
             },
             new String [] {
                 "Exam id", "Grade"
@@ -181,12 +175,17 @@ public class GoToSubject extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
     
-        //addRowToTable(new Object[]{ourStudent.ge},tbl_current_assignments);
+        
+        addRowToTable(new Object[]{ourStudent.getAssignments().get(subject)},tbl_current_assignments);
+//        for(Exam i: ourStudent.getAllExams())
         
         cmb_examIDs.removeAllItems();
         for(Exam i: ourStudent.getAllExams()){
             if(subject.equals(i.getSubjectName())){
                 cmb_examIDs.addItem(i.getId());
+            }
+            if(i.isMarkedStatus()){
+                addRowToTable(new Object[]{i.getId(),i.getGrading()}, tbl_subjectGrade);
             }
         }
     }//GEN-LAST:event_formWindowOpened
