@@ -69,6 +69,11 @@ public class PrincipleView extends javax.swing.JFrame {
 
         jButton5.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
         jButton5.setText("View Teachers' Details");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         jButton1.setText("Back");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -128,6 +133,12 @@ public class PrincipleView extends javax.swing.JFrame {
         new LoginForm().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+        new ViewTeacherDetails().setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton5ActionPerformed
 
     /**
      * @param args the command line arguments

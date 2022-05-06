@@ -7,6 +7,7 @@ package Accessibility.GuiFiles;
 
 import Accessibility.Exam;
 import Accessibility.Student;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -193,7 +194,7 @@ public class GoToSubject extends javax.swing.JFrame {
     private void btn_takeExamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_takeExamActionPerformed
         for(Exam i: ourStudent.getAllExams()){
             if(i.getId().equals(cmb_examIDs.getSelectedItem().toString())){
-                JOptionPane.showMessageDialog(null,"Your duedate is at: " +i.getDueDate().toString());
+                JOptionPane.showMessageDialog(null,"Your duedate is at: " +DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm").format(i.getDueDate()));
             }
         }
     }//GEN-LAST:event_btn_takeExamActionPerformed

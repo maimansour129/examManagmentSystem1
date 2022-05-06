@@ -5,15 +5,12 @@
  */
 package Accessibility.GuiFiles;
 
-import Accessibility.*;
-import Accessibility.GuiFiles.PrincipleView;
 import Accessibility.Principle;
-import java.security.Principal;
+
 import java.util.ArrayList;
-import java.util.List;
+import javax.swing.JOptionPane;
+
 import javax.swing.table.DefaultTableModel;
-
-
 
 /**
  *
@@ -25,6 +22,8 @@ public class RegisteringStudents extends javax.swing.JFrame {
      * Creates new form RegisteringStudents
      */
     Principle p1;
+    ArrayList<String> myList = new ArrayList<String>();
+
     public RegisteringStudents(Principle p) {
         initComponents();
         p1 = p;
@@ -115,6 +114,9 @@ public class RegisteringStudents extends javax.swing.JFrame {
             public String getElementAt(int i) { return strings[i]; }
         });
         listStudentSubjects.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                listStudentSubjectsMouseClicked(evt);
+            }
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 listStudentSubjectsMousePressed(evt);
             }
@@ -211,35 +213,20 @@ public class RegisteringStudents extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_btnBackActionPerformed
 
-    
-    
+
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
-       // Student s1;
-       
-       ArrayList<String> myList = new ArrayList<String>();
-       ArrayList<String> raz3 = new ArrayList<String>();
-       
-       
-       
-       
-       for(int i=0; i<listStudentSubjects.getSelectedValuesList().size(); i++){
-           myList.add(listStudentSubjects.getSelectedValuesList().get(i));
-       }
-//       myList = listStudentSubjects.getSelectedValuesList();
-//       raz3.addAll(myList);
-       
-       p1.RegisterStudent(myList, Integer.parseInt(cmbStudentClass.getSelectedItem().toString()),
-       txtStudentName.getText(), txtStudentUsername.getText(), txtStudentPassword.getText(), "Student", cmbStudentGrade.getSelectedItem().toString());
-       
-       //DefaultTableModel tbl = (DefaultTableModel) tbl_SelectedSubjects.getModel();
-//       for(String i :myList){
-//            addRowToTable(new Object[]{i});
-//       }
-       
+
+        p1.RegisterStudent(myList, Integer.parseInt(cmbStudentClass.getSelectedItem().toString()),
+                txtStudentName.getText(), txtStudentUsername.getText(), txtStudentPassword.getText(), "Student", cmbStudentGrade.getSelectedItem().toString());
+
+        JOptionPane.showMessageDialog(null, "Registered Succesfully");
+        new PrincipleView(p1).setVisible(true);
+        this.setVisible(false);
+
     }//GEN-LAST:event_btnSaveActionPerformed
-    public void addRowToTable(Object[] dataRow){
-        
-        DefaultTableModel model = (DefaultTableModel)tbl_SelectedSubjects.getModel();
+    public void addRowToTable(Object[] dataRow) {
+
+        DefaultTableModel model = (DefaultTableModel) tbl_SelectedSubjects.getModel();
         model.addRow(dataRow);
     }
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
@@ -248,7 +235,7 @@ public class RegisteringStudents extends javax.swing.JFrame {
         cmbStudentGrade.addItem("two");
         cmbStudentGrade.addItem("three");
         cmbStudentGrade.addItem("four");
-        
+
         cmbStudentClass.removeAllItems();
         cmbStudentClass.addItem("1");
         cmbStudentClass.addItem("2");
@@ -257,12 +244,25 @@ public class RegisteringStudents extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowOpened
 
     private void listStudentSubjectsMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listStudentSubjectsMousePressed
+
+        DefaultTableModel model = (DefaultTableModel) tbl_SelectedSubjects.getModel();
+
+        for (int i = 0; i < model.getRowCount(); i++) {
+            if (listStudentSubjects.getSelectedValue().equals(model.getValueAt(i, 0).toString())) {
+                JOptionPane.showMessageDialog(null, "Already Selected");
+                return;
+            }
+        }
+
         addRowToTable(new Object[]{listStudentSubjects.getSelectedValue()});
-        
-//        if(listStudentSubjects.getSelectedIndex()>0){
-//           listStudentSubjects.remove(listStudentSubjects.getSelectedIndex());
-//        }
+
+        myList.add(listStudentSubjects.getSelectedValue());
+
     }//GEN-LAST:event_listStudentSubjectsMousePressed
+
+    private void listStudentSubjectsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listStudentSubjectsMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_listStudentSubjectsMouseClicked
 
     /**
      * @param args the command line arguments

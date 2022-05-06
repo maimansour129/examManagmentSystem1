@@ -215,7 +215,7 @@ public class AddExamForm extends javax.swing.JFrame {
         for (Exam i : ourTeacher.getSubjectEnrolled().getExamList().get(cmbGradeYear.getSelectedItem().toString())) {
             if (i.getId().equals(txtExamId.getText())) {
                 System.out.println(i.getId());
-                System.out.println(i.getStartDate());
+                System.out.println(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm").format(i.getStartDate()));
                 break;
             }
         }
