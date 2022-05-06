@@ -175,14 +175,18 @@ public class LoginForm extends javax.swing.JFrame {
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
 
-        int choice;
+        int choice = 0;
 
         if (jRadioButton1.isSelected()) {
             choice = 1;
         } else if (jRadioButton2.isSelected()) {
             choice = 2;
-        } else {
+        } else if(jRadioButton3.isSelected()) {
             choice = 3;
+        }
+        else{
+            JOptionPane.showMessageDialog(null,"Please select type of the user");
+            return;
         }
         
         u1 = User.Login(txtUserName.getText(), txtPass.getText(), allstudents, allteacher, choice);
@@ -218,11 +222,13 @@ public class LoginForm extends javax.swing.JFrame {
      */
     public static void main(String args[]) {
         
+          Principle ourPrinciple = Principle.getPrinciple();
+          allstudents = ourPrinciple.getStudents();
+          allteacher = ourPrinciple.getTeachers();
         ArrayList<String> sub = new ArrayList<>();
         sub.add("Maths");
         sub.add("English");
-        Student s1 = new Student(sub, 1, "Omar", "Othman", "123", "Student", "two");
-        allstudents = new ArrayList<>();
+         Student s1 = new Student(sub, 1, "Omar", "Othman", "123", "Student", "two");
         allstudents.add(s1);
 
         ClassSchool classs=new ClassSchool(1,"two");
@@ -230,7 +236,6 @@ public class LoginForm extends javax.swing.JFrame {
         classs.getAllStudents().add(s1);
         
         Teacher t1 = new Teacher("Seif", "Hossam", "34", "Teacher");
-        allteacher = new ArrayList<>();
         allteacher.add(t1);
         
         t1.getAssignedClasses().add(classs);

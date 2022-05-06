@@ -79,7 +79,7 @@ public class StudentOptions extends javax.swing.JFrame {
         jLabel2.setText("Choose subject");
 
         btn_gotosubject.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        btn_gotosubject.setText("Go to subject");
+        btn_gotosubject.setText("Go to Subject");
         btn_gotosubject.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_gotosubjectActionPerformed(evt);
@@ -159,13 +159,16 @@ public class StudentOptions extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void btn_gotosubjectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_gotosubjectActionPerformed
-        new GoToSubject(ourStudent).setVisible(true);
+        new GoToSubject(ourStudent,cmb_subjectname.getSelectedItem().toString()).setVisible(true);
         this.setVisible(false);
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_gotosubjectActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-//       
+        cmb_subjectname.removeAllItems();
+        for(String s : ourStudent.getSubjects()){
+            cmb_subjectname.addItem(s);
+        }
     }//GEN-LAST:event_formWindowOpened
 
     private void btn_backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_backActionPerformed

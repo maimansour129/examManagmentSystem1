@@ -9,6 +9,7 @@ import Accessibility.Exam;
 import Accessibility.Student;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -17,14 +18,20 @@ import javax.swing.JOptionPane;
 public class GoToSubject extends javax.swing.JFrame {
 
     Student ourStudent;
+    String subject;
     /**
      * Creates new form GoToSubject
      */
-    public GoToSubject(Student stud) {
+    public GoToSubject(Student stud, String subjectSelected) {
         ourStudent = stud;
+        subject = subjectSelected;
         initComponents();
     }
-
+    public void addRowToTable(Object[] dataRow, javax.swing.JTable tbl){
+        
+        DefaultTableModel model = (DefaultTableModel)tbl.getModel();
+        model.addRow(dataRow);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -39,9 +46,9 @@ public class GoToSubject extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         cmb_examIDs = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tbl_current_assignments = new javax.swing.JTable();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        tbl_subjectGrade = new javax.swing.JTable();
         btn_takeExam = new javax.swing.JButton();
         btn_back = new javax.swing.JButton();
 
@@ -64,7 +71,7 @@ public class GoToSubject extends javax.swing.JFrame {
         cmb_examIDs.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         cmb_examIDs.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tbl_current_assignments.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null},
                 {null},
@@ -83,12 +90,12 @@ public class GoToSubject extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(0).setResizable(false);
+        jScrollPane1.setViewportView(tbl_current_assignments);
+        if (tbl_current_assignments.getColumnModel().getColumnCount() > 0) {
+            tbl_current_assignments.getColumnModel().getColumn(0).setResizable(false);
         }
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        tbl_subjectGrade.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
                 {null, null},
@@ -99,7 +106,7 @@ public class GoToSubject extends javax.swing.JFrame {
                 "Exam id", "Grade"
             }
         ));
-        jScrollPane2.setViewportView(jTable2);
+        jScrollPane2.setViewportView(tbl_subjectGrade);
 
         btn_takeExam.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         btn_takeExam.setText("Take Exam");
@@ -150,8 +157,8 @@ public class GoToSubject extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(30, 30, 30)
-                .addComponent(btn_back)
-                .addGap(18, 18, 18)
+                .addComponent(btn_back, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cmb_examIDs, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -174,9 +181,13 @@ public class GoToSubject extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
     
+        //addRowToTable(new Object[]{ourStudent.ge},tbl_current_assignments);
+        
         cmb_examIDs.removeAllItems();
         for(Exam i: ourStudent.getAllExams()){
-            cmb_examIDs.addItem(i.getId());
+            if(subject.equals(i.getSubjectName())){
+                cmb_examIDs.addItem(i.getId());
+            }
         }
     }//GEN-LAST:event_formWindowOpened
 
@@ -237,7 +248,7 @@ public class GoToSubject extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
+    private javax.swing.JTable tbl_current_assignments;
+    private javax.swing.JTable tbl_subjectGrade;
     // End of variables declaration//GEN-END:variables
 }
