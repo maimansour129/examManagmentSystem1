@@ -13,6 +13,7 @@ public class Exam implements Cloneable{
     private LocalDateTime dueDate;
     private String subjectName;
     private int grading;
+    
 
     public Exam(String id, LocalDateTime startDate, LocalDateTime dueDate, String subjectName) {
 
@@ -109,5 +110,8 @@ public class Exam implements Cloneable{
     public void setAssignedStatus(boolean assignedStatus) {
         this.assignedStatus = assignedStatus;
     }
+    public Report getReport(){
     
+        return null;
+    }
 }

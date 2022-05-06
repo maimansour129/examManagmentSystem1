@@ -22,6 +22,9 @@ public class LoginForm extends javax.swing.JFrame {
     /**
      * Creates new form LoginForm
      */
+    User u1;
+    static ArrayList<Student> allstudents;
+    static ArrayList<Teacher> allteacher;
     public LoginForm() {
         initComponents();
     }
@@ -181,31 +184,7 @@ public class LoginForm extends javax.swing.JFrame {
         } else {
             choice = 3;
         }
-
-        User u1;
-        ArrayList<String> sub = new ArrayList<>();
-        sub.add("Maths");
-        sub.add("English");
-        Student s1 = new Student(sub, 1, "Omar", "Othman", "123", "Student", "two");
-        ArrayList<Student> allstudents = new ArrayList<>();
-        allstudents.add(s1);
-
-        ClassSchool classs=new ClassSchool(1,"two");
-        ClassSchool classs2=new ClassSchool(2,"two");
-        classs.getAllStudents().add(s1);
         
-        Teacher t1 = new Teacher("Seif", "Hossam", "34", "Teacher");
-        ArrayList<Teacher> allteacher = new ArrayList<>();
-        allteacher.add(t1);
-        
-        t1.getAssignedClasses().add(classs);
-        t1.getAssignedClasses().add(classs2);
-        
-        Subject subject=new Subject("English");
-        
-        
-        t1.setSubjectEnrolled(subject);
-
         u1 = User.Login(txtUserName.getText(), txtPass.getText(), allstudents, allteacher, choice);
 
         if (u1 == null) {
@@ -238,6 +217,30 @@ public class LoginForm extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
+        
+        ArrayList<String> sub = new ArrayList<>();
+        sub.add("Maths");
+        sub.add("English");
+        Student s1 = new Student(sub, 1, "Omar", "Othman", "123", "Student", "two");
+        allstudents = new ArrayList<>();
+        allstudents.add(s1);
+
+        ClassSchool classs=new ClassSchool(1,"two");
+        ClassSchool classs2=new ClassSchool(2,"two");
+        classs.getAllStudents().add(s1);
+        
+        Teacher t1 = new Teacher("Seif", "Hossam", "34", "Teacher");
+        allteacher = new ArrayList<>();
+        allteacher.add(t1);
+        
+        t1.getAssignedClasses().add(classs);
+        t1.getAssignedClasses().add(classs2);
+        
+        Subject subject=new Subject("English");
+        
+        
+        t1.setSubjectEnrolled(subject);
+
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
