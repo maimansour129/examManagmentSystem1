@@ -32,7 +32,7 @@ public class StudentOptions extends javax.swing.JFrame {
     private void initComponents() {
 
         jButton2 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        btn_sendmessage = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtAreanoteToPrinciple = new javax.swing.JTextArea();
@@ -57,11 +57,16 @@ public class StudentOptions extends javax.swing.JFrame {
             }
         });
 
-        jButton4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jButton4.setText("Send");
-        jButton4.addMouseListener(new java.awt.event.MouseAdapter() {
+        btn_sendmessage.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btn_sendmessage.setText("Send");
+        btn_sendmessage.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                jButton4MousePressed(evt);
+                btn_sendmessageMousePressed(evt);
+            }
+        });
+        btn_sendmessage.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_sendmessageActionPerformed(evt);
             }
         });
 
@@ -106,7 +111,7 @@ public class StudentOptions extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(64, 64, 64)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btn_sendmessage, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
@@ -144,7 +149,7 @@ public class StudentOptions extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton4)
+                .addComponent(btn_sendmessage)
                 .addContainerGap(33, Short.MAX_VALUE))
         );
 
@@ -177,9 +182,14 @@ public class StudentOptions extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_backActionPerformed
 
-    private void jButton4MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MousePressed
+    private void btn_sendmessageMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_sendmessageMousePressed
+        //ourStudent.setNoteToPrinciple(txtAreanoteToPrinciple.getText());
+    }//GEN-LAST:event_btn_sendmessageMousePressed
+
+    private void btn_sendmessageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_sendmessageActionPerformed
         ourStudent.setNoteToPrinciple(txtAreanoteToPrinciple.getText());
-    }//GEN-LAST:event_jButton4MousePressed
+        System.out.println(ourStudent.getNoteToPrinciple());
+    }//GEN-LAST:event_btn_sendmessageActionPerformed
 
     /**
      * @param args the command line arguments
@@ -222,9 +232,9 @@ public class StudentOptions extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_back;
     private javax.swing.JButton btn_gotosubject;
+    private javax.swing.JButton btn_sendmessage;
     private javax.swing.JComboBox<String> cmb_subjectname;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
