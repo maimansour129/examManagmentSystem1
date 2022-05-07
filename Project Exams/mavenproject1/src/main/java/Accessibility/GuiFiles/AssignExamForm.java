@@ -157,9 +157,11 @@ public class AssignExamForm extends javax.swing.JFrame {
 
             int x = ourTeacher.getSubjectEnrolled().getExamList().get(cmbGrade.getSelectedItem().toString()).size();
 
+            System.out.println(x);
             if (x != 0) {
-
+                
                 for (Exam i : ourTeacher.getSubjectEnrolled().getExamList().get(cmbGrade.getSelectedItem().toString())) {
+                    
                     if (!i.isAssignedStatus()) {
                         cmbExamID.addItem(i.getId());
                     }

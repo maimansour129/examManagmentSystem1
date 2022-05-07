@@ -7,7 +7,7 @@ public class weeklyExam extends Exam {
 
     public weeklyExam(String id, LocalDateTime startDate, LocalDateTime dueDate, String subjectName) {
         super(id, startDate, dueDate, subjectName);
-         this.type = "weekly Exam";
+         this.type = "Weekly Exam";
     }
 
    

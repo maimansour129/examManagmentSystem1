@@ -16,16 +16,18 @@ public class ExamFactory {
         if(type==null){
             return null;
         }
-        else if(type=="Final Exam"){
+        else if(type.equals("Final Exam")){
             return new finalExam( id,  startDate,  dueDate,  subjectName);
         }
-        else if(type=="Monthly Exam"){
+        else if(type.equals("Monthly Exam")){
             return new monthlyExam(id,  startDate,  dueDate,  subjectName);
         }
-        else if(type=="Weekly Exam"){
+        else if(type.equals("Weekly Exam")){
             return new weeklyExam(id,  startDate,  dueDate,  subjectName);
         }
-        return null;
+        else{
+            return null;
+        }
     }
     
 }

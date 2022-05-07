@@ -252,7 +252,7 @@ public class AddExamForm extends javax.swing.JFrame {
         cmbGradeYear.addItem("three");
         cmbGradeYear.addItem("four");
         cmbtype.removeAllItems();
-        cmbtype.addItem("weekly Exam");
+        cmbtype.addItem("Weekly Exam");
         cmbtype.addItem("Monthly Exam");
         cmbtype.addItem("Final Exam");
 
