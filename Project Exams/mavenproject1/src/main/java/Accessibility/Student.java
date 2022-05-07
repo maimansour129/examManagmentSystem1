@@ -1,13 +1,14 @@
 
 package Accessibility;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Stack;
 
 //import java.time.format.DateTimeFormatterBuilder;
 
-public class Student extends User{
+public class Student extends User implements Serializable {
     
     private String yearGrade;
     private ArrayList<String> subjects;
@@ -17,6 +18,7 @@ public class Student extends User{
     private int enrolledclassID;
     private Stack<String> notifications;
     private HashMap<String, ArrayList<String>> Assignments;
+    private static final long serialVersionUID = 4262226727166753310L;
 
 
     

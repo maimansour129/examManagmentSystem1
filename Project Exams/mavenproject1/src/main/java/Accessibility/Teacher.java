@@ -1,13 +1,15 @@
 package Accessibility;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.*;
 
-public class Teacher extends User{
+public class Teacher extends User implements Serializable {
 
     private Subject subjectEnrolled;
     private ArrayList<ClassSchool> assignedClasses;
+    private static final long serialVersionUID = 855691359342641201L;
     
 
     public Teacher(String name, String username, String password, String role) {

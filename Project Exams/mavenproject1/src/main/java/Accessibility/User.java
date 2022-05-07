@@ -1,14 +1,19 @@
 
 package Accessibility;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public abstract class User {
+public abstract class User implements Serializable{
     
     private String name;
     private String username;
     private String password;
     public String role;
+    
+    //private static final long serialVersionUID = 855691359342641201L;
+    private static final long serialVersionUID = 6529685098267757690L;
+    
 
     public User(String name, String username, String password, String role) {
         this.name = name;

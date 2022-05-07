@@ -1,10 +1,11 @@
 package Accessibility;
 
 
+import java.io.Serializable;
 import java.util.*;
 
 
-public class Subject {
+public class Subject implements Serializable{
 
     private String name;
     private HashMap<String, ArrayList<Exam>> examList;

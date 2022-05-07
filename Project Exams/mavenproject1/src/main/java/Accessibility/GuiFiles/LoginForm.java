@@ -25,6 +25,7 @@ public class LoginForm extends javax.swing.JFrame {
     User u1;
     static ArrayList<Student> allstudents;
     static ArrayList<Teacher> allteacher;
+    //static Principle ourPrinciple = Principle.getPrinciple();
     
     public LoginForm() {
         initComponents();
@@ -51,6 +52,7 @@ public class LoginForm extends javax.swing.JFrame {
         jRadioButton3 = new javax.swing.JRadioButton();
         btnLogin = new javax.swing.JButton();
         txtPass = new javax.swing.JPasswordField();
+        btnExit = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -89,43 +91,57 @@ public class LoginForm extends javax.swing.JFrame {
 
         txtPass.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
 
+        btnExit.setText("Exit");
+        btnExit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExitActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(132, Short.MAX_VALUE)
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(btnExit, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel1)
                         .addGap(250, 250, 250))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(185, 185, 185))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jRadioButton1)
-                        .addGap(47, 47, 47)
-                        .addComponent(jRadioButton2)
-                        .addGap(40, 40, 40)
-                        .addComponent(jRadioButton3)
-                        .addGap(141, 141, 141))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtUserName, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtPass, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(131, 131, 131))))
+                        .addGap(0, 120, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(185, 185, 185))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jRadioButton1)
+                                .addGap(47, 47, 47)
+                                .addComponent(jRadioButton2)
+                                .addGap(40, 40, 40)
+                                .addComponent(jRadioButton3)
+                                .addGap(141, 141, 141))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel2)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(txtUserName, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel3)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(txtPass, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(131, 131, 131))))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addComponent(btnExit))
                 .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jRadioButton1)
@@ -190,36 +206,47 @@ public class LoginForm extends javax.swing.JFrame {
 
     }//GEN-LAST:event_formWindowOpened
 
+    private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnExitActionPerformed
+
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
         
-          Principle ourPrinciple = Principle.getPrinciple();
-          allstudents = ourPrinciple.getStudents();
-          allteacher = ourPrinciple.getTeachers();
-        ArrayList<String> sub = new ArrayList<>();
-        
-        sub.add("Maths");
-        sub.add("English");
-        
-        Student s1 = new Student(sub, 1, "Omar", "Othman", "123", "Student", "two");
-        allstudents.add(s1);
-
-        ClassSchool classs=new ClassSchool(1,"two");
-        ClassSchool classs2=new ClassSchool(2,"two");
-        classs.getAllStudents().add(s1);
-        
-        Teacher t1 = new Teacher("Seif", "Hossam", "34", "Teacher");
-        allteacher.add(t1);
-        
-        t1.getAssignedClasses().add(classs);
-        t1.getAssignedClasses().add(classs2);
-        
-        Subject subject=new Subject("English");
+        Principle.readPrinciple();
         
         
-        t1.setSubjectEnrolled(subject);
+        Principle p1 = Principle.getPrinciple();
+        System.out.println(p1.getName());
+        System.out.println(p1.getTeachers().size());
+        allstudents = p1.getStudents();
+        allteacher = p1.getTeachers();
+//        ArrayList<String> sub = new ArrayList<>();
+//        
+//        sub.add("Maths");
+//        sub.add("English");
+//        
+//        Student s1 = new Student(sub, 1, "Omar", "Othman", "123", "Student", "two");
+//        allstudents.add(s1);
+//
+//        ClassSchool classs=new ClassSchool(1,"two");
+//        ClassSchool classs2=new ClassSchool(2,"two");
+//        classs.getAllStudents().add(s1);
+//        
+//        Teacher t1 = new Teacher("Seif", "Hossam", "34", "Teacher");
+//        allteacher.add(t1);
+//        
+//        t1.getAssignedClasses().add(classs);
+//        t1.getAssignedClasses().add(classs2);
+//        
+//        Subject subject=new Subject("English");
+//        
+//        
+//        t1.setSubjectEnrolled(subject);
+        //ourPrinciple.savePrinciple(ourPrinciple);
+//        System.out.println(ourPrinciple.getTeachers().get(0).getName());
 
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -254,6 +281,7 @@ public class LoginForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnExit;
     private javax.swing.JButton btnLogin;
     public static javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JLabel jLabel1;

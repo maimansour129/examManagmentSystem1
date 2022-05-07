@@ -5,6 +5,7 @@
 
 package Accessibility;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Date;
@@ -12,7 +13,7 @@ import java.util.Date;
  *
  * @author Abelwahab El-Desoky
  */
-public class ClassSchool {
+public class ClassSchool implements Serializable {
     
     private ArrayList<Student> allStudents;
     private HashMap<Date, Subject> schedule;
