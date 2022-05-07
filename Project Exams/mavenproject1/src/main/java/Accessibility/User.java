@@ -50,6 +50,8 @@ public abstract class User implements Serializable{
         return role;
     }
     
+    //comment for pushing only
+    
     public static User Login(String username, String pass, ArrayList<Student> allstuds,ArrayList<Teacher> allteachers,int choice){
         
           
