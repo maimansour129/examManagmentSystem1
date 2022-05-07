@@ -12,6 +12,7 @@ public class Student extends User implements Serializable {
     
     private String yearGrade;
     private ArrayList<String> subjects;
+    private Report report;
     private HashMap<String,Report> issueReport;
     private String noteToPrinciple;
     private ArrayList<Exam> allExams;
@@ -109,6 +110,11 @@ public class Student extends User implements Serializable {
         }
         }
     }
+
+    public void setReport(Report report) {
+        this.report = report;
+    }
+    
     public void ViewFinalGrades(){
         
     }

@@ -1,5 +1,6 @@
 package Accessibility;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 /**
@@ -8,17 +9,21 @@ import java.util.Date;
  */
 public class Report {
 
-    private Date date;
+    private LocalDateTime date;
     private int grade;
     private String comment;
+    private String examId;
 
-    public Report(Date date, int grade, String comment) {
+    public Report(LocalDateTime date, int grade, String comment,String examId) {
         this.date = date;
         this.grade = grade;
         this.comment = comment;
+        this.examId = examId;
     }
 
-    public Date getDate() {
+   
+
+    public LocalDateTime getDate() {
         return date;
     }
 
@@ -28,6 +33,14 @@ public class Report {
 
     public String getComment() {
         return comment;
+    }
+
+    public void setExamId(String examId) {
+        this.examId = examId;
+    }
+
+    public String getExamId() {
+        return examId;
     }
 
 }
