@@ -67,4 +67,5 @@ public class ClassSchool {
     public String getYear(){
         return year;
     }
+    
 }

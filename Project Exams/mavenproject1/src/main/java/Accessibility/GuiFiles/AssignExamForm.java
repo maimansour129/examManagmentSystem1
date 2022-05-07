@@ -152,13 +152,19 @@ public class AssignExamForm extends javax.swing.JFrame {
 
     private void cmbGradeItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbGradeItemStateChanged
         // TODO add your handling code here:
+       
         if (evt.getStateChange() == java.awt.event.ItemEvent.SELECTED) {
             cmbExamID.removeAllItems();
-            int x=ourTeacher.getSubjectEnrolled().getExamList().size();
+            
+            int x=ourTeacher.getSubjectEnrolled().getExamList().get(cmbGrade.getSelectedItem().toString()).size();
+           
             if(x!=0){
+               
             for (Exam i : ourTeacher.getSubjectEnrolled().getExamList().get(cmbGrade.getSelectedItem().toString())) {
+                System.out.println("xxxxxxxxx");
                 if(!i.isAssignedStatus()){
                     cmbExamID.addItem(i.getId());
+                    System.out.println("yyyyyyy");
                 }
             }}
             else{

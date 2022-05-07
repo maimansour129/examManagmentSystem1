@@ -2,7 +2,7 @@ package Accessibility;
 
 import java.time.LocalDateTime;
 
-public class Exam implements Cloneable{
+public abstract class Exam implements Cloneable{
 
     private String id;
     private boolean takenStatus;
@@ -12,7 +12,9 @@ public class Exam implements Cloneable{
     private LocalDateTime startDate;
     private LocalDateTime dueDate;
     private String subjectName;
-    private int grading;
+    protected int maxGrading;
+    private int studentGrade;
+    protected String type;
     
 
     public Exam(String id, LocalDateTime startDate, LocalDateTime dueDate, String subjectName) {
@@ -21,7 +23,7 @@ public class Exam implements Cloneable{
         this.startDate = startDate;
         this.dueDate = dueDate;
         this.subjectName = subjectName;
-        this.grading=0;
+        this.maxGrading=0;
         this.assignedStatus=false;
         this.allowedStatus=false;
         this.takenStatus=false;
@@ -52,9 +54,9 @@ public class Exam implements Cloneable{
         this.subjectName = subjectName;
     }
 
-    public void setGrading(int grading) {
-        this.grading = grading;
-    }
+//    public void setGrading(int grading) {
+//        this.grading = grading;
+//    }
 
     public String getId() {
         return id;
@@ -81,7 +83,7 @@ public class Exam implements Cloneable{
     }
 
     public int getGrading() {
-        return grading;
+        return maxGrading;
     }
 
     public boolean isMarkedStatus() {
@@ -110,8 +112,21 @@ public class Exam implements Cloneable{
     public void setAssignedStatus(boolean assignedStatus) {
         this.assignedStatus = assignedStatus;
     }
-    public Report getReport(){
-    
-        return null;
+  
+
+    public void setStudentGrade(int studentGrade) {
+        this.studentGrade = studentGrade;
     }
+
+    public int getStudentGrade() {
+        return studentGrade;
+    }
+
+    public String getType() {
+        return type;
+    }
+    
+    
+       
+    
 }

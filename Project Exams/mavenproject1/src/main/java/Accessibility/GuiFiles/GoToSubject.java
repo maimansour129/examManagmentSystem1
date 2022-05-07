@@ -192,8 +192,10 @@ public class GoToSubject extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowOpened
 
     private void btn_takeExamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_takeExamActionPerformed
+        
         for(Exam i: ourStudent.getAllExams()){
             if(i.getId().equals(cmb_examIDs.getSelectedItem().toString())){
+                System.out.println(i.getType());
                 JOptionPane.showMessageDialog(null,"Your duedate is at: " +DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm").format(i.getDueDate()));
             }
         }

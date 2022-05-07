@@ -17,7 +17,7 @@ public class Teacher extends User{
     
     
 
-    public void addExam(String gradeYear,Exam exam) {
+    public void addExam(String gradeYear,Exam exam){
       //  subjectEnrolled.addToExamList(gradeYear, exam);
       subjectEnrolled.getExamList().get(gradeYear).add(exam);
       
@@ -99,7 +99,7 @@ public class Teacher extends User{
        }
     }
     
-    public void markGrades(String username,int classID, String examID){
+    public void markGrades(String username,int classID, String examID,int grade){
         ArrayList<Student> classStudents=null;
         Student currentStudent;
         for(ClassSchool i:assignedClasses){
@@ -107,10 +107,13 @@ public class Teacher extends User{
              classStudents=i.getAllStudents();
            }
         }
-         for(int j=0;j<classStudents.size();j++){
-                if(username.equals(classStudents.get(j).getUsername())){
-                    currentStudent=classStudents.get(j);
-                    //not done yet waiting for get All exams
+         for(Student x:classStudents){
+                if(username.equals(x.getName())){
+                    for(Exam i:x.getAllExams()){
+                        if(examID.equals(i.getId())){
+                            i.setStudentGrade(grade);
+                        }
+                    }
                 }
             }
     }

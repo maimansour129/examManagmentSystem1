@@ -88,7 +88,7 @@ public class TeacherViewForm extends javax.swing.JFrame {
         });
 
         btnMarkExam.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
-        btnMarkExam.setText("Assign exam");
+        btnMarkExam.setText("Mark Exam");
         btnMarkExam.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMarkExamActionPerformed(evt);
@@ -188,7 +188,8 @@ public class TeacherViewForm extends javax.swing.JFrame {
     }//GEN-LAST:event_btnExamAssignActionPerformed
 
     private void btnMarkExamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMarkExamActionPerformed
-        // TODO add your handling code here:
+        new MarkExamForm(ourTeacher).setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_btnMarkExamActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
