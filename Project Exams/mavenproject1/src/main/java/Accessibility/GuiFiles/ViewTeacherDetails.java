@@ -17,19 +17,25 @@ public class ViewTeacherDetails extends javax.swing.JFrame {
     /**
      * Creates new form ViewTeachersDetails
      */
+    Principle p = Principle.getPrinciple();
+    
     public ViewTeacherDetails() {
         initComponents();
     }
     
     public void addingTeacherToViewTable(ArrayList<Teacher> teacher){
+       
         DefaultTableModel model = (DefaultTableModel)tableTeacher.getModel();
         
-       
+       // = p.getTeachers();
         
         Object rowData[] = new Object[3];
+         
         for(int i=0;i<teacher.size();i++){
+            
             String tmp="";
              for(ClassSchool c:teacher.get(i).getAssignedClasses()){
+                 //nshel ',' mn akher whda
                  tmp=tmp+Integer.toString(c.getClassID())+",";
              }
             rowData[0] = teacher.get(i).getName();
@@ -80,6 +86,11 @@ public class ViewTeacherDetails extends javax.swing.JFrame {
 
         jButton1.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
         jButton1.setText("Back");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Dialog", 3, 18)); // NOI18N
         jLabel1.setText("All Teachers Details");
@@ -116,10 +127,16 @@ public class ViewTeacherDetails extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-       Principle p1 = Principle.getPrinciple();
+      // Principle p1 = Principle.getPrinciple();
       // ArrayList<Teacher> alt = p1.getTeachers();
-       addingTeacherToViewTable(p1.getTeachers());
+       addingTeacherToViewTable(p.getTeachers());
     }//GEN-LAST:event_formWindowOpened
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        new PrincipleView(p).setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments

@@ -5,9 +5,9 @@
  */
 package Accessibility.GuiFiles;
 
-import Accessibility.Principle;
-import Accessibility.Teacher;
+import Accessibility.*;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -18,10 +18,16 @@ public class ModifyTeacherView extends javax.swing.JFrame {
     /**
      * Creates new form ModifyTeacherView
      */
-    
-    
+    Principle p = Principle.getPrinciple();
+
     public ModifyTeacherView() {
+
         initComponents();
+
+        cmbTeachers.removeAllItems();
+        for (int i = 0; i < p.getTeachers().size(); i++) {
+            cmbTeachers.addItem(p.getTeachers().get(i).getName());
+        }
     }
 
     /**
@@ -34,11 +40,23 @@ public class ModifyTeacherView extends javax.swing.JFrame {
     private void initComponents() {
 
         jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         cmbTeachers = new javax.swing.JComboBox<>();
         chbAddTeacher = new javax.swing.JCheckBox();
         txtName = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        txtUsername = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        txtPassword = new javax.swing.JTextField();
+        txtSubject = new javax.swing.JTextField();
+        btnAddTeacher = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        cmbClassID = new javax.swing.JComboBox<>();
+        jLabel6 = new javax.swing.JLabel();
+        cmbGradeYear = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -50,89 +68,251 @@ public class ModifyTeacherView extends javax.swing.JFrame {
         jButton2.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
         jButton2.setText("Edit");
 
-        jButton3.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
-        jButton3.setText("Back");
-
         jButton4.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
         jButton4.setText("Delete");
 
         cmbTeachers.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        chbAddTeacher.setText("jCheckBox1");
+        chbAddTeacher.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        chbAddTeacher.setText("Add Teacher");
         chbAddTeacher.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chbAddTeacherActionPerformed(evt);
             }
         });
 
-        txtName.setText("jTextField1");
+        jButton1.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        jButton1.setText("Back");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setText("Teacher Name:");
+
+        jLabel2.setText("Teacher Username:");
+
+        jLabel3.setText("Teacher Password:");
+
+        jLabel4.setText("Teacher Subject:");
+
+        btnAddTeacher.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        btnAddTeacher.setText("Add");
+        btnAddTeacher.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddTeacherActionPerformed(evt);
+            }
+        });
+
+        jLabel5.setText("Assigned Class ID:");
+
+        jLabel6.setText("Assign Grade Year:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(chbAddTeacher, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE)
-                        .addComponent(jButton3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(69, 69, 69)
+                        .addGap(37, 37, 37)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel4)
+                                .addComponent(jLabel3)
+                                .addComponent(jLabel1)
+                                .addComponent(jLabel2))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel5)
+                                .addGap(17, 17, 17)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cmbTeachers, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(161, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(110, 110, 110)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(txtPassword, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtSubject, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(1, 1, 1)
+                                .addComponent(cmbClassID, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel6)
+                                .addGap(18, 18, 18)
+                                .addComponent(cmbGradeYear, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton1)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(88, 88, 88)
+                                .addComponent(cmbTeachers, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(184, 184, 184)
+                        .addComponent(btnAddTeacher))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(164, 164, 164)
+                        .addComponent(chbAddTeacher)))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jButton3)
-                .addGap(15, 15, 15)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cmbTeachers, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2))
-                .addGap(18, 18, 18)
-                .addComponent(jButton4)
-                .addGap(18, 18, 18)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(7, 7, 7)
+                .addComponent(jButton1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(39, 39, 39)
+                        .addComponent(cmbTeachers, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton4)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
                 .addComponent(chbAddTeacher)
                 .addGap(18, 18, 18)
-                .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(162, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtSubject, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4))
+                        .addGap(20, 20, 20)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(cmbGradeYear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel6)
+                            .addComponent(cmbClassID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel5))
+                        .addGap(18, 18, 18)
+                        .addComponent(btnAddTeacher))
+                    .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(13, 13, 13))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    
-    
+
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
-      
+
         txtName.setVisible(false);
-        Principle p = Principle.getPrinciple();
-        cmbTeachers.removeAllItems();
-        for(int i=0; i<p.getTeachers().size();i++){
-            cmbTeachers.addItem(p.getTeachers().get(i).getName());
-        }
-        
-        
+        txtUsername.setVisible(false);
+        txtPassword.setVisible(false);
+        txtSubject.setVisible(false);
+        cmbClassID.setVisible(false);
+        cmbGradeYear.setVisible(false);
+
+        jLabel1.setVisible(false);
+        jLabel2.setVisible(false);
+        jLabel3.setVisible(false);
+        jLabel4.setVisible(false);
+        jLabel5.setVisible(false);
+        jLabel6.setVisible(false);
+
+        btnAddTeacher.setVisible(false);
+
+        cmbGradeYear.removeAllItems();
+        cmbGradeYear.addItem("one");
+        cmbGradeYear.addItem("two");
+        cmbGradeYear.addItem("three");
+        cmbGradeYear.addItem("four");
+
+        cmbClassID.removeAllItems();
+        cmbClassID.addItem("1");
+        cmbClassID.addItem("2");
+        cmbClassID.addItem("3");
+        cmbClassID.addItem("4");
     }//GEN-LAST:event_formWindowOpened
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        new PrincipleView(p).setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     private void chbAddTeacherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chbAddTeacherActionPerformed
         // TODO add your handling code here:
-        if(chbAddTeacher.isSelected()){
+        if (chbAddTeacher.isSelected()) {
+
             txtName.setVisible(true);
-            
-        }
-        else{
+            txtUsername.setVisible(true);
+            txtPassword.setVisible(true);
+            txtSubject.setVisible(true);
+            cmbClassID.setVisible(true);
+            cmbGradeYear.setVisible(true);
+
+            jLabel1.setVisible(true);
+            jLabel2.setVisible(true);
+            jLabel3.setVisible(true);
+            jLabel4.setVisible(true);
+            jLabel5.setVisible(true);
+            jLabel6.setVisible(true);
+
+            btnAddTeacher.setVisible(true);
+        } 
+        else {
+
             txtName.setVisible(false);
-            
+            txtUsername.setVisible(false);
+            txtPassword.setVisible(false);
+            txtSubject.setVisible(false);
+            cmbClassID.setVisible(false);
+            cmbGradeYear.setVisible(false);
+
+            jLabel1.setVisible(false);
+            jLabel2.setVisible(false);
+            jLabel3.setVisible(false);
+            jLabel4.setVisible(false);
+            jLabel5.setVisible(false);
+            jLabel6.setVisible(false);
+
+            btnAddTeacher.setVisible(false);
         }
     }//GEN-LAST:event_chbAddTeacherActionPerformed
+
+    private void btnAddTeacherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddTeacherActionPerformed
+        // TODO add your handling code here:
+
+        if (txtUsername.getText().isEmpty() || txtPassword.getText().isEmpty()) {
+
+            JOptionPane.showMessageDialog(null, "Please Add Teacher Information First");
+        } 
+        else {
+            Teacher newTeacher = new Teacher(txtName.getText(), txtUsername.getText(), txtPassword.getText(), "Teacher");
+
+            p.AddTeacher(newTeacher);
+
+            Subject subject = new Subject(txtSubject.getText());
+            newTeacher.setSubjectEnrolled(subject);
+
+            ClassSchool assignClass = new ClassSchool(Integer.parseInt(cmbClassID.getSelectedItem().toString()),
+                    cmbGradeYear.getSelectedItem().toString());
+
+            newTeacher.getAssignedClasses().add(assignClass);
+
+            JOptionPane.showMessageDialog(null, "Added Succesfully");
+
+            new PrincipleView(p).setVisible(true);
+            this.setVisible(false);
+        }
+    }//GEN-LAST:event_btnAddTeacherActionPerformed
 
     /**
      * @param args the command line arguments
@@ -170,15 +350,25 @@ public class ModifyTeacherView extends javax.swing.JFrame {
 //        
 //        
 //    }
-    
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAddTeacher;
     private javax.swing.JCheckBox chbAddTeacher;
+    private javax.swing.JComboBox<String> cmbClassID;
+    private javax.swing.JComboBox<String> cmbGradeYear;
     private javax.swing.JComboBox<String> cmbTeachers;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JTextField txtName;
+    private javax.swing.JTextField txtPassword;
+    private javax.swing.JTextField txtSubject;
+    private javax.swing.JTextField txtUsername;
     // End of variables declaration//GEN-END:variables
 }

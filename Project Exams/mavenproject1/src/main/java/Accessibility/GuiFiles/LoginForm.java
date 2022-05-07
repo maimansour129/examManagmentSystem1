@@ -25,6 +25,7 @@ public class LoginForm extends javax.swing.JFrame {
     User u1;
     static ArrayList<Student> allstudents;
     static ArrayList<Teacher> allteacher;
+    
     public LoginForm() {
         initComponents();
     }
@@ -63,11 +64,6 @@ public class LoginForm extends javax.swing.JFrame {
 
         txtUserName.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         txtUserName.setToolTipText("");
-        txtUserName.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtUserNameActionPerformed(evt);
-            }
-        });
 
         jLabel2.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabel2.setText("Username: ");
@@ -77,19 +73,9 @@ public class LoginForm extends javax.swing.JFrame {
 
         buttonGroup1.add(jRadioButton1);
         jRadioButton1.setText("Principle");
-        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton1ActionPerformed(evt);
-            }
-        });
 
         buttonGroup1.add(jRadioButton2);
         jRadioButton2.setText("Teacher");
-        jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton2ActionPerformed(evt);
-            }
-        });
 
         buttonGroup1.add(jRadioButton3);
         jRadioButton3.setText("Student");
@@ -161,18 +147,6 @@ public class LoginForm extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtUserNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUserNameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtUserNameActionPerformed
-
-    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton1ActionPerformed
-
-    private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton2ActionPerformed
-
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
 
         int choice = 0;
@@ -195,7 +169,11 @@ public class LoginForm extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Not Found Try again Please");
         }
         else{
-            if(choice==2){
+            if(choice==1){
+                new PrincipleView((Principle)u1).setVisible(true);
+                this.setVisible(false);
+            }
+            else if(choice==2){
                 new TeacherViewForm((Teacher)u1).setVisible(true);
                 this.setVisible(false);
             }
@@ -203,12 +181,7 @@ public class LoginForm extends javax.swing.JFrame {
             else if(choice==3){
                 new StudentOptions((Student)u1).setVisible(true);
                 this.setVisible(false);
-            }
-            else if(choice==1){
-                new PrincipleView((Principle)u1).setVisible(true);
-                this.setVisible(false);
-            }
-            
+            }            
         }
 
     }//GEN-LAST:event_btnLoginActionPerformed
@@ -226,9 +199,11 @@ public class LoginForm extends javax.swing.JFrame {
           allstudents = ourPrinciple.getStudents();
           allteacher = ourPrinciple.getTeachers();
         ArrayList<String> sub = new ArrayList<>();
+        
         sub.add("Maths");
         sub.add("English");
-         Student s1 = new Student(sub, 1, "Omar", "Othman", "123", "Student", "two");
+        
+        Student s1 = new Student(sub, 1, "Omar", "Othman", "123", "Student", "two");
         allstudents.add(s1);
 
         ClassSchool classs=new ClassSchool(1,"two");

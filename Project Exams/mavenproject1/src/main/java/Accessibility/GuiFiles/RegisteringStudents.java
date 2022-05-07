@@ -217,18 +217,21 @@ public class RegisteringStudents extends javax.swing.JFrame {
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
 
         p1.RegisterStudent(myList, Integer.parseInt(cmbStudentClass.getSelectedItem().toString()),
-                txtStudentName.getText(), txtStudentUsername.getText(), txtStudentPassword.getText(), "Student", cmbStudentGrade.getSelectedItem().toString());
+                             txtStudentName.getText(), txtStudentUsername.getText(), txtStudentPassword.getText(),
+                              "Student", cmbStudentGrade.getSelectedItem().toString());
 
         JOptionPane.showMessageDialog(null, "Registered Succesfully");
         new PrincipleView(p1).setVisible(true);
         this.setVisible(false);
 
     }//GEN-LAST:event_btnSaveActionPerformed
+    
     public void addRowToTable(Object[] dataRow) {
 
         DefaultTableModel model = (DefaultTableModel) tbl_SelectedSubjects.getModel();
         model.addRow(dataRow);
     }
+    
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         cmbStudentGrade.removeAllItems();
         cmbStudentGrade.addItem("one");

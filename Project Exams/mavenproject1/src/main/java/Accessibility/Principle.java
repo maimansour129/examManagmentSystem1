@@ -8,6 +8,7 @@ public class Principle extends User{
     private ArrayList<Teacher> teachers;
     private ArrayList<Student> students;
     private ArrayList<ClassSchool> classes;
+   // private ArrayList<String> subjects;
     
     //Declaring the Principle
     private static Principle p1 = new Principle("Johny","Hoba","69","Principle");
@@ -25,6 +26,18 @@ public class Principle extends User{
         return teachers;
     }
 
+//    public ArrayList<String> getSubjects() {
+//        return subjects;
+//    }
+//
+//    public void setSubjects(ArrayList<String> subjects) {
+//        this.subjects = subjects;
+//    }
+
+    public void setTeachers(ArrayList<Teacher> teachers) {
+        this.teachers = teachers;
+    }
+    
     public ArrayList<Student> getStudents() {
         return students;
     }
@@ -42,8 +55,10 @@ public class Principle extends User{
     }
     
     public void AddTeacher(Teacher teacher){
-        
+        teachers.add(teacher);
+        //this.getTeachers().add(teacher);
     }
+    
     public void EditTeacher(Teacher teacher){
         
     }
