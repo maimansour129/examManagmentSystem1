@@ -40,7 +40,7 @@ public class ModifyTeacherView extends javax.swing.JFrame {
     private void initComponents() {
 
         btnEdit = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        btnDelete = new javax.swing.JButton();
         cmbTeachers = new javax.swing.JComboBox<>();
         chbAddTeacher = new javax.swing.JCheckBox();
         txtName = new javax.swing.JTextField();
@@ -74,8 +74,13 @@ public class ModifyTeacherView extends javax.swing.JFrame {
             }
         });
 
-        jButton4.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
-        jButton4.setText("Delete");
+        btnDelete.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        btnDelete.setText("Delete");
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteActionPerformed(evt);
+            }
+        });
 
         cmbTeachers.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
         cmbTeachers.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -165,7 +170,7 @@ public class ModifyTeacherView extends javax.swing.JFrame {
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(cmbTeachers, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addComponent(txtPassword, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtSubject, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -198,7 +203,7 @@ public class ModifyTeacherView extends javax.swing.JFrame {
                     .addComponent(cmbTeachers, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton4)
+                    .addComponent(btnDelete)
                     .addComponent(btnEdit))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(chbAddTeacher)
@@ -348,11 +353,32 @@ public class ModifyTeacherView extends javax.swing.JFrame {
             if(cmbTeachers.getSelectedItem().toString().equals(p.getTeachers().get(i).getName())){
                 
                 teacher = p.getTeachers().get(i);
+                
                 new EditTeacherForm(teacher).setVisible(true);
                 this.setVisible(false);
             }
         }
     }//GEN-LAST:event_btnEditActionPerformed
+
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+        // TODO add your handling code here:
+        
+        Teacher teacher;
+        
+        for (int i = 0; i < p.getTeachers().size(); i++) {
+            
+            if(cmbTeachers.getSelectedItem().toString().equals(p.getTeachers().get(i).getName())){
+                
+                teacher = p.getTeachers().get(i);
+                p.Delete(teacher);
+                
+                JOptionPane.showMessageDialog(null, "Teacher Account Deleted Succesfully");
+                
+                new PrincipleView(p).setVisible(true);
+                this.setVisible(false);
+            }
+        }
+    }//GEN-LAST:event_btnDeleteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -393,13 +419,13 @@ public class ModifyTeacherView extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddTeacher;
+    private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnEdit;
     private javax.swing.JCheckBox chbAddTeacher;
     private javax.swing.JComboBox<String> cmbClassID;
     private javax.swing.JComboBox<String> cmbGradeYear;
     private javax.swing.JComboBox<String> cmbTeachers;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

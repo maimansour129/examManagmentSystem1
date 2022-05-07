@@ -63,7 +63,7 @@ public class Principle extends User{
         
     }
     public void Delete(Teacher teacher){
-        
+        teachers.remove(teacher);
     }
     public void SetTimetable(ClassSchool c){
         
