@@ -271,17 +271,17 @@ public class EditTeacherForm extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_btnBackActionPerformed
 
-    private void cmbClassIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbClassIDActionPerformed
-        // TODO add your handling code here:
-        
-        this.classID = Integer.parseInt(cmbClassID.getSelectedItem().toString());
-    }//GEN-LAST:event_cmbClassIDActionPerformed
-
     private void cmbGradeYearItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbGradeYearItemStateChanged
         // TODO add your handling code here:
-        
+
         this.gradeYear = cmbGradeYear.getSelectedItem().toString();
     }//GEN-LAST:event_cmbGradeYearItemStateChanged
+
+    private void cmbClassIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbClassIDActionPerformed
+        // TODO add your handling code here:
+
+        this.classID = Integer.parseInt(cmbClassID.getSelectedItem().toString());
+    }//GEN-LAST:event_cmbClassIDActionPerformed
 
     /**
      * @param args the command line arguments
