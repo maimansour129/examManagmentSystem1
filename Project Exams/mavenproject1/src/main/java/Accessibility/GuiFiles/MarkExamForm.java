@@ -3,9 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package Accessibility.GuiFiles;
+
 import Accessibility.*;
 import javax.swing.table.DefaultTableModel;
-
 
 /**
  *
@@ -17,9 +17,10 @@ public class MarkExamForm extends javax.swing.JFrame {
      * Creates new form MarkExamForm
      */
     Teacher ourTeacher;
+
     public MarkExamForm(Teacher teacher) {
         initComponents();
-        ourTeacher=teacher;
+        ourTeacher = teacher;
     }
 
     /**
@@ -59,12 +60,7 @@ public class MarkExamForm extends javax.swing.JFrame {
 
         tableStudents.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+
             },
             new String [] {
                 "Student Name", "Grade"
@@ -211,20 +207,21 @@ public class MarkExamForm extends javax.swing.JFrame {
     }//GEN-LAST:event_cmbClassIDActionPerformed
 
     private void btnShowStudentsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowStudentsActionPerformed
-        for(ClassSchool i:ourTeacher.getAssignedClasses()){
-            if(cmbClassID.getSelectedItem().toString().equals(i.getClassID())){
-                for(Student j:i.getAllStudents()){
-                    for(Exam x:j.getAllExams()){
-                        if(cmbExamId.getSelectedItem().toString().equals(x.getId())){
-                            addRowToTable(new Object[]{j.getName(),x.getStudentGrade()});
+        for (ClassSchool i : ourTeacher.getAssignedClasses()) {
+            if (cmbClassID.getSelectedItem().toString().equals(i.getClassID())) {
+                for (Student j : i.getAllStudents()) {
+                    for (Exam x : j.getAllExams()) {
+                        if (cmbExamId.getSelectedItem().toString().equals(x.getId())) {
+                            addRowToTable(new Object[]{j.getName(), x.getStudentGrade()});
+                        }
                     }
                 }
             }
-        }}
+        }
     }//GEN-LAST:event_btnShowStudentsActionPerformed
-public void addRowToTable(Object[] dataRow){
-        
-        DefaultTableModel model = (DefaultTableModel)tableStudents.getModel();
+    public void addRowToTable(Object[] dataRow) {
+
+        DefaultTableModel model = (DefaultTableModel) tableStudents.getModel();
         model.addRow(dataRow);
     }
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
@@ -235,19 +232,19 @@ public void addRowToTable(Object[] dataRow){
         cmbGrade.addItem("two");
         cmbGrade.addItem("three");
         cmbGrade.addItem("four");
-        
-        
+
+
     }//GEN-LAST:event_formWindowOpened
 
     private void cmbClassIDItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbClassIDItemStateChanged
-         if (evt.getStateChange() == java.awt.event.ItemEvent.SELECTED) {
+        if (evt.getStateChange() == java.awt.event.ItemEvent.SELECTED) {
             cmbExamId.removeAllItems();
-            
-         for (Exam i : ourTeacher.getSubjectEnrolled().getExamList().get(cmbGrade.getSelectedItem().toString())) {
+
+            for (Exam i : ourTeacher.getSubjectEnrolled().getExamList().get(cmbGrade.getSelectedItem().toString())) {
                 cmbExamId.addItem(i.getId());
             }
-         
-         }
+
+        }
     }//GEN-LAST:event_cmbClassIDItemStateChanged
 
     private void cmbGradeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbGradeActionPerformed
@@ -255,17 +252,20 @@ public void addRowToTable(Object[] dataRow){
     }//GEN-LAST:event_cmbGradeActionPerformed
 
     private void cmbGradeItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbGradeItemStateChanged
-         for(ClassSchool s:ourTeacher.getAssignedClasses()){
-             if(s.getYear().equals(cmbGrade.getSelectedItem().toString())){
-              cmbClassID.addItem(Integer.toString(s.getClassID()));
-          
-        }}
+        if (evt.getStateChange() == java.awt.event.ItemEvent.SELECTED) {
+            for (ClassSchool s : ourTeacher.getAssignedClasses()) {
+                if (s.getYear().equals(cmbGrade.getSelectedItem().toString())) {
+                    cmbClassID.addItem(Integer.toString(s.getClassID()));
+
+                }
+            }
+        }
     }//GEN-LAST:event_cmbGradeItemStateChanged
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-            new TeacherViewForm(ourTeacher).setVisible(true);
-            this.setVisible(false);
+        new TeacherViewForm(ourTeacher).setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**

@@ -66,7 +66,7 @@ public class ModifyTeacherView extends javax.swing.JFrame {
             }
         });
 
-        btnEdit.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        btnEdit.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         btnEdit.setText("Edit");
         btnEdit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -74,7 +74,7 @@ public class ModifyTeacherView extends javax.swing.JFrame {
             }
         });
 
-        btnDelete.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        btnDelete.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         btnDelete.setText("Delete");
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -82,10 +82,10 @@ public class ModifyTeacherView extends javax.swing.JFrame {
             }
         });
 
-        cmbTeachers.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        cmbTeachers.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         cmbTeachers.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        chbAddTeacher.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        chbAddTeacher.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         chbAddTeacher.setText("Add Teacher");
         chbAddTeacher.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -95,7 +95,7 @@ public class ModifyTeacherView extends javax.swing.JFrame {
 
         txtName.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
 
-        jButton1.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        jButton1.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jButton1.setText("Back");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -103,25 +103,25 @@ public class ModifyTeacherView extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel1.setText("Teacher Name:");
 
         txtUsername.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel2.setText("Teacher Username:");
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel3.setText("Teacher Password:");
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel4.setText("Teacher Subject:");
 
         txtPassword.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
 
         txtSubject.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
 
-        btnAddTeacher.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        btnAddTeacher.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         btnAddTeacher.setText("Add");
         btnAddTeacher.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -129,17 +129,17 @@ public class ModifyTeacherView extends javax.swing.JFrame {
             }
         });
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel5.setText("Assigned Class ID:");
 
         cmbClassID.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
 
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel6.setText("Assign Grade Year:");
 
         cmbGradeYear.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
 
-        jLabel7.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel7.setText("Select Teacher:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -197,14 +197,14 @@ public class ModifyTeacherView extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(7, 7, 7)
                 .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(cmbTeachers, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnDelete)
-                    .addComponent(btnEdit))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnEdit)
+                    .addComponent(btnDelete))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(chbAddTeacher)
                 .addGap(12, 12, 12)

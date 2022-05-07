@@ -126,18 +126,17 @@ public class AssignExamForm extends javax.swing.JFrame {
     private void btnAssignActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignActionPerformed
 
         // TODO add your handling code here:
-        if(cmbExamID.getSelectedItem()!=null){
+        if (cmbExamID.getSelectedItem() != null) {
             try {
-            ourTeacher.assignExam(cmbGrade.getSelectedItem().toString(), cmbExamID.getSelectedItem().toString());
-            JOptionPane.showMessageDialog(null, "Assigned Successfully");
-        } catch (CloneNotSupportedException ex) {
-            Logger.getLogger(AssignExamForm.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        }
-        else{
+                ourTeacher.assignExam(cmbGrade.getSelectedItem().toString(), cmbExamID.getSelectedItem().toString());
+                JOptionPane.showMessageDialog(null, "Assigned Successfully");
+            } catch (CloneNotSupportedException ex) {
+                Logger.getLogger(AssignExamForm.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else {
             JOptionPane.showMessageDialog(null, "Choose Exam Please");
         }
-        
+
     }//GEN-LAST:event_btnAssignActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
@@ -152,24 +151,20 @@ public class AssignExamForm extends javax.swing.JFrame {
 
     private void cmbGradeItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbGradeItemStateChanged
         // TODO add your handling code here:
-       
+
         if (evt.getStateChange() == java.awt.event.ItemEvent.SELECTED) {
             cmbExamID.removeAllItems();
-            
-            int x=ourTeacher.getSubjectEnrolled().getExamList().get(cmbGrade.getSelectedItem().toString()).size();
-           
-            if(x!=0){
-               
-            for (Exam i : ourTeacher.getSubjectEnrolled().getExamList().get(cmbGrade.getSelectedItem().toString())) {
-                System.out.println("xxxxxxxxx");
-                if(!i.isAssignedStatus()){
-                    cmbExamID.addItem(i.getId());
-                    System.out.println("yyyyyyy");
+
+            int x = ourTeacher.getSubjectEnrolled().getExamList().get(cmbGrade.getSelectedItem().toString()).size();
+
+            if (x != 0) {
+
+                for (Exam i : ourTeacher.getSubjectEnrolled().getExamList().get(cmbGrade.getSelectedItem().toString())) {
+                    if (!i.isAssignedStatus()) {
+                        cmbExamID.addItem(i.getId());
+                    }
                 }
-            }}
-            else{
-                JOptionPane.showMessageDialog(null, "No Exams Found for this Grade!!");
-            }
+            } 
         }
     }//GEN-LAST:event_cmbGradeItemStateChanged
 
