@@ -332,6 +332,7 @@ public class ModifyTeacherView extends javax.swing.JFrame {
             Subject subject = new Subject(txtSubject.getText());
             newTeacher.setSubjectEnrolled(subject);
 
+            //if()
             ClassSchool assignClass = new ClassSchool(Integer.parseInt(cmbClassID.getSelectedItem().toString()),
                     cmbGradeYear.getSelectedItem().toString());
 

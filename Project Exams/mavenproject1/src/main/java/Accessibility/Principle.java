@@ -42,7 +42,7 @@ public class Principle extends User {
 //        this.subjects = subjects;
 //    }
 
-    public void savePrinciple(Principle p) {
+    public static void savePrinciple(Principle p) {
         
         try {
             FileHandler.writeData("principle.txt", p);
