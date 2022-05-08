@@ -26,6 +26,12 @@ public class SetSchedule extends javax.swing.JFrame {
     public SetSchedule() {
 
         initComponents();
+        
+        cmbSubjects.removeAllItems();
+        for (int i = 0; i < p.getTeachers().size(); i++) {
+            cmbSubjects.addItem(p.getTeachers().get(i).getSubjectEnrolled().getName());
+        }
+        
     }
 
     /**
@@ -50,6 +56,8 @@ public class SetSchedule extends javax.swing.JFrame {
         labelTime = new javax.swing.JLabel();
         cmbTime = new javax.swing.JComboBox<>();
         cmbAddSchedule = new javax.swing.JCheckBox();
+        labelSubjects = new javax.swing.JLabel();
+        cmbSubjects = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -100,8 +108,10 @@ public class SetSchedule extends javax.swing.JFrame {
         jLabel5.setText("Select Grade Year:");
 
         cmbDay.setFont(new java.awt.Font("Dialog", 3, 18)); // NOI18N
+        cmbDay.setSelectedItem(" ");
 
         cmbGradeYear.setFont(new java.awt.Font("Dialog", 3, 18)); // NOI18N
+        cmbGradeYear.setSelectedItem(" ");
         cmbGradeYear.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 cmbGradeYearItemStateChanged(evt);
@@ -109,6 +119,7 @@ public class SetSchedule extends javax.swing.JFrame {
         });
 
         cmbClassId.setFont(new java.awt.Font("Dialog", 3, 18)); // NOI18N
+        cmbClassId.setSelectedItem(" ");
         cmbClassId.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 cmbClassIdItemStateChanged(evt);
@@ -122,6 +133,7 @@ public class SetSchedule extends javax.swing.JFrame {
         labelTime.setText("Select Time:");
 
         cmbTime.setFont(new java.awt.Font("Dialog", 3, 18)); // NOI18N
+        cmbTime.setSelectedItem(" ");
 
         cmbAddSchedule.setFont(new java.awt.Font("Dialog", 3, 18)); // NOI18N
         cmbAddSchedule.setText("Add To The Schedule?");
@@ -131,34 +143,16 @@ public class SetSchedule extends javax.swing.JFrame {
             }
         });
 
+        labelSubjects.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        labelSubjects.setText("Select Subject:");
+
+        cmbSubjects.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        cmbSubjects.setSelectedItem(" ");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(labelDay, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cmbDay, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(45, 45, 45)
-                        .addComponent(labelTime))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel6)
-                        .addGap(18, 18, 18)
-                        .addComponent(cmbClassId, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(41, 41, 41)
-                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(cmbTime, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(cmbGradeYear, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(25, Short.MAX_VALUE))))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -166,20 +160,51 @@ public class SetSchedule extends javax.swing.JFrame {
                         .addComponent(cmbAddSchedule))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(42, 42, 42)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 507, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(236, 236, 236)
-                        .addComponent(btnAddDay, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 507, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnAddDay, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(71, 71, 71))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel6)
+                                .addGap(18, 18, 18)
+                                .addComponent(cmbClassId, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(41, 41, 41)
+                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(labelDay, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(labelSubjects))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(cmbDay, 0, 138, Short.MAX_VALUE)
+                                    .addComponent(cmbSubjects, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(45, 45, 45)
+                                .addComponent(labelTime)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(cmbTime, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(cmbGradeYear, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(25, Short.MAX_VALUE))))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(15, Short.MAX_VALUE)
+                .addContainerGap(14, Short.MAX_VALUE)
                 .addComponent(btnBack)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -195,9 +220,12 @@ public class SetSchedule extends javax.swing.JFrame {
                     .addComponent(labelDay)
                     .addComponent(cmbTime, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(labelTime))
-                .addGap(18, 18, 18)
-                .addComponent(btnAddDay)
-                .addGap(18, 18, 18)
+                .addGap(24, 24, 24)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnAddDay)
+                    .addComponent(labelSubjects)
+                    .addComponent(cmbSubjects, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(47, 47, 47))
         );
@@ -208,7 +236,26 @@ public class SetSchedule extends javax.swing.JFrame {
     private void btnAddDayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddDayActionPerformed
         // TODO add your handling code here:
 
-        
+        String firstSlot = "8 - 10",SecondSlot = "10 - 12",thirdSlot = "12 - 2",forthSlot = "2 - 4";
+        if(cmbDay.getSelectedItem()== null || cmbTime.getSelectedItem() == null){
+            
+            JOptionPane.showMessageDialog(null, "Please Choose The Day And Time First");
+        }
+        else{
+//            if(cmbTime.getSelectedItem().equals("8 - 10")){
+//                firstSlot = "8 - 10";SecondSlot;thirdSlot;forthSlot;
+//            }
+            String data[] = {cmbDay.getSelectedItem().toString(),cmbClassId.getSelectedItem().toString()};
+            
+            DefaultTableModel model = (DefaultTableModel)tblSchedule.getModel();
+            
+            model.addRow(data);
+        }
+        cmbDay.setSelectedItem(" ");
+        cmbTime.setSelectedItem(" ");
+        cmbClassId.setSelectedItem(" ");
+        cmbGradeYear.setSelectedItem(" ");
+        cmbSubjects.setSelectedItem(" ");
     }//GEN-LAST:event_btnAddDayActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
@@ -217,8 +264,10 @@ public class SetSchedule extends javax.swing.JFrame {
         
         labelDay.setVisible(false);
         labelTime.setVisible(false);
+        labelSubjects.setVisible(false);
         cmbDay.setVisible(false);
         cmbTime.setVisible(false);
+        cmbSubjects.setVisible(false);
         btnAddDay.setVisible(false);
         //tblSchedule.setVisible(false);
 
@@ -266,15 +315,19 @@ public class SetSchedule extends javax.swing.JFrame {
 
             labelDay.setVisible(true);
             labelTime.setVisible(true);
+            labelSubjects.setVisible(true);
             cmbDay.setVisible(true);
             cmbTime.setVisible(true);
+            cmbSubjects.setVisible(true);
             btnAddDay.setVisible(true);
         } 
         else {
             labelDay.setVisible(false);
             labelTime.setVisible(false);
+            labelSubjects.setVisible(false);
             cmbDay.setVisible(false);
             cmbTime.setVisible(false);
+            cmbSubjects.setVisible(false);
             btnAddDay.setVisible(false);
         }
     }//GEN-LAST:event_cmbAddScheduleActionPerformed
@@ -327,11 +380,13 @@ public class SetSchedule extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cmbClassId;
     private javax.swing.JComboBox<String> cmbDay;
     private javax.swing.JComboBox<String> cmbGradeYear;
+    private javax.swing.JComboBox<String> cmbSubjects;
     private javax.swing.JComboBox<String> cmbTime;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel labelDay;
+    private javax.swing.JLabel labelSubjects;
     private javax.swing.JLabel labelTime;
     private javax.swing.JTable tblSchedule;
     // End of variables declaration//GEN-END:variables
