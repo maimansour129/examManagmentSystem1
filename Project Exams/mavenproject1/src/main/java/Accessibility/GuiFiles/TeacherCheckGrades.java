@@ -8,6 +8,8 @@ import Accessibility.ClassSchool;
 import Accessibility.Exam;
 import Accessibility.Student;
 import Accessibility.Teacher;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -24,6 +26,9 @@ public class TeacherCheckGrades extends javax.swing.JFrame {
     public TeacherCheckGrades(Teacher ourTeacher) {
         
         initComponents();
+        Toolkit toolKit=getToolkit();
+        Dimension size=toolKit.getScreenSize();
+        setLocation(size.width/2-getWidth()/2,size.height/2-getHeight()/2);
         this.ourTeacher = ourTeacher;
     }
 

@@ -6,6 +6,8 @@
 package Accessibility.GuiFiles;
 
 import Accessibility.Principle;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
@@ -26,6 +28,9 @@ public class RegisteringStudents extends javax.swing.JFrame {
 
     public RegisteringStudents(Principle p) {
         initComponents();
+        Toolkit toolKit=getToolkit();
+        Dimension size=toolKit.getScreenSize();
+        setLocation(size.width/2-getWidth()/2,size.height/2-getHeight()/2);
         p1 = p;
     }
 

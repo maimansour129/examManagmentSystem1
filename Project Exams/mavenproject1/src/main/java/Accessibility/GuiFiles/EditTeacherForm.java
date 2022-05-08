@@ -6,6 +6,8 @@ package Accessibility.GuiFiles;
 
 import javax.swing.JOptionPane;
 import Accessibility.*;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 /**
  *
  * @author Sema Gheith
@@ -23,7 +25,9 @@ public class EditTeacherForm extends javax.swing.JFrame {
     public EditTeacherForm(Teacher teacher) {
         
         initComponents();
-        
+        Toolkit toolKit=getToolkit();
+        Dimension size=toolKit.getScreenSize();
+        setLocation(size.width/2-getWidth()/2,size.height/2-getHeight()/2);
         this.teacher = teacher;
     }
 

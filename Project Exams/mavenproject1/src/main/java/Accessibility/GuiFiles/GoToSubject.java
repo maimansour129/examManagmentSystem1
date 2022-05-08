@@ -7,6 +7,8 @@ package Accessibility.GuiFiles;
 
 import Accessibility.Exam;
 import Accessibility.Student;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
@@ -24,9 +26,13 @@ public class GoToSubject extends javax.swing.JFrame {
      * Creates new form GoToSubject
      */
     public GoToSubject(Student stud, String subjectSelected) {
+        initComponents();
+        Toolkit toolKit=getToolkit();
+        Dimension size=toolKit.getScreenSize();
+        setLocation(size.width/2-getWidth()/2,size.height/2-getHeight()/2);
         ourStudent = stud;
         subject = subjectSelected;
-        initComponents();
+        
     }
     public void addRowToTable(Object[] dataRow, javax.swing.JTable tbl){
         

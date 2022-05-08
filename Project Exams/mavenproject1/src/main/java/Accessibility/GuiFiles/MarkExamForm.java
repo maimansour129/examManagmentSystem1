@@ -5,6 +5,8 @@
 package Accessibility.GuiFiles;
 
 import Accessibility.*;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.time.LocalDateTime;
 import java.util.Date;
 import javax.swing.table.DefaultTableModel;
@@ -22,6 +24,9 @@ public class MarkExamForm extends javax.swing.JFrame {
 
     public MarkExamForm(Teacher teacher) {
         initComponents();
+        Toolkit toolKit=getToolkit();
+        Dimension size=toolKit.getScreenSize();
+        setLocation(size.width/2-getWidth()/2,size.height/2-getHeight()/2);
         ourTeacher = teacher;
     }
 

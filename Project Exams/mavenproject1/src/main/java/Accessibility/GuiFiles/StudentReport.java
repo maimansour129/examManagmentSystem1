@@ -5,6 +5,8 @@
 package Accessibility.GuiFiles;
 
 import Accessibility.*;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.time.format.DateTimeFormatter;
 import javax.swing.table.DefaultTableModel;
 
@@ -21,6 +23,9 @@ public class StudentReport extends javax.swing.JFrame {
 
     public StudentReport(Student student) {
         initComponents();
+        Toolkit toolKit=getToolkit();
+        Dimension size=toolKit.getScreenSize();
+        setLocation(size.width/2-getWidth()/2,size.height/2-getHeight()/2);
         ourStudent = student;
     }
 

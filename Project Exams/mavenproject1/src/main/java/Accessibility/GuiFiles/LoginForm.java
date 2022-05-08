@@ -8,9 +8,10 @@ import Accessibility.Principle;
 import Accessibility.Student;
 import Accessibility.Teacher;
 import Accessibility.User;
+import java.awt.Dimension;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
-
+import java.awt.Toolkit;
 /**
  *
  * @author Abelwahab El-Desoky
@@ -26,7 +27,13 @@ public class LoginForm extends javax.swing.JFrame {
     //static Principle ourPrinciple = Principle.getPrinciple();
     
     public LoginForm() {
+        
         initComponents();
+        
+        Toolkit toolKit=getToolkit();
+        Dimension size=toolKit.getScreenSize();
+        setLocation(size.width/2-getWidth()/2,size.height/2-getHeight()/2);
+        
     }
     
     /////this is a comment to push again only

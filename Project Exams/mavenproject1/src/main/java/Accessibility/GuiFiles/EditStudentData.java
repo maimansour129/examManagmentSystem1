@@ -5,6 +5,8 @@
 package Accessibility.GuiFiles;
 
 import Accessibility.Student;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 
 /**
  *
@@ -18,6 +20,9 @@ public class EditStudentData extends javax.swing.JFrame {
     Student ourStudent;
     public EditStudentData(Student student) {
         initComponents();
+        Toolkit toolKit=getToolkit();
+        Dimension size=toolKit.getScreenSize();
+        setLocation(size.width/2-getWidth()/2,size.height/2-getHeight()/2);
         ourStudent = student;
     }
 
