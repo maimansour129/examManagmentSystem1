@@ -6,6 +6,8 @@ package Accessibility.GuiFiles;
 
 import Accessibility.*;
 import Accessibility.Teacher;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -23,6 +25,10 @@ public class ViewTeacherSchedule extends javax.swing.JFrame {
     public ViewTeacherSchedule(Teacher t) {
         ourTeacher = t;
         initComponents();
+        Toolkit toolKit=getToolkit();
+        Dimension size=toolKit.getScreenSize();
+        setLocation(size.width/2-getWidth()/2,size.height/2-getHeight()/2);
+
         
     }
 
