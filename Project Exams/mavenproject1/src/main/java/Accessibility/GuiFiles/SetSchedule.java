@@ -8,6 +8,8 @@ package Accessibility.GuiFiles;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
+import Accessibility.*;
+
 /**
  *
  * @author world
@@ -17,9 +19,13 @@ public class SetSchedule extends javax.swing.JFrame {
     /**
      * Creates new form SetSchedule
      */
+    int classID;
+    String gradeYear;
+    Principle p = Principle.getPrinciple();
+    
     public SetSchedule() {
+
         initComponents();
-        
     }
 
     /**
@@ -33,63 +39,56 @@ public class SetSchedule extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         tblSchedule = new javax.swing.JTable();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        txtDay = new javax.swing.JTextField();
-        txtSubject1 = new javax.swing.JTextField();
-        txtSubject2 = new javax.swing.JTextField();
-        txtSubject3 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        labelDay = new javax.swing.JLabel();
+        btnBack = new javax.swing.JButton();
         btnAddDay = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
-        txtClass = new javax.swing.JTextField();
+        cmbDay = new javax.swing.JComboBox<>();
+        cmbGradeYear = new javax.swing.JComboBox<>();
+        cmbClassId = new javax.swing.JComboBox<>();
+        jLabel6 = new javax.swing.JLabel();
+        labelTime = new javax.swing.JLabel();
+        cmbTime = new javax.swing.JComboBox<>();
+        cmbAddSchedule = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         tblSchedule.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Days/Time", "Class", "8-10", "10-12", "12-2"
+                "Days", "Class", "8-10", "10-12", "12-2", "2-4"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, true, true
+                false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
+        tblSchedule.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jScrollPane1.setViewportView(tblSchedule);
 
-        jLabel1.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
-        jLabel1.setText("Add Day");
+        labelDay.setFont(new java.awt.Font("Dialog", 3, 18)); // NOI18N
+        labelDay.setText("Select Day:");
 
-        jLabel2.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
-        jLabel2.setText("8-10 Subject");
+        btnBack.setFont(new java.awt.Font("Dialog", 3, 18)); // NOI18N
+        btnBack.setText("Back");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
 
-        jLabel3.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
-        jLabel3.setText("10-12 Subject");
-
-        jLabel4.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
-        jLabel4.setText("12-2 Subject");
-
-        txtDay.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
-
-        txtSubject1.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
-
-        txtSubject2.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
-
-        txtSubject3.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
-
-        jButton1.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
-        jButton1.setText("Back");
-
-        btnAddDay.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
+        btnAddDay.setFont(new java.awt.Font("Dialog", 3, 18)); // NOI18N
         btnAddDay.setText("Add Day");
         btnAddDay.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -97,74 +96,110 @@ public class SetSchedule extends javax.swing.JFrame {
             }
         });
 
-        jLabel5.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
-        jLabel5.setText("Add Class");
+        jLabel5.setFont(new java.awt.Font("Dialog", 3, 18)); // NOI18N
+        jLabel5.setText("Select Grade Year:");
 
-        txtClass.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
+        cmbDay.setFont(new java.awt.Font("Dialog", 3, 18)); // NOI18N
+
+        cmbGradeYear.setFont(new java.awt.Font("Dialog", 3, 18)); // NOI18N
+        cmbGradeYear.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cmbGradeYearItemStateChanged(evt);
+            }
+        });
+
+        cmbClassId.setFont(new java.awt.Font("Dialog", 3, 18)); // NOI18N
+        cmbClassId.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cmbClassIdItemStateChanged(evt);
+            }
+        });
+
+        jLabel6.setFont(new java.awt.Font("Dialog", 3, 18)); // NOI18N
+        jLabel6.setText("Select Class ID:");
+
+        labelTime.setFont(new java.awt.Font("Dialog", 3, 18)); // NOI18N
+        labelTime.setText("Select Time:");
+
+        cmbTime.setFont(new java.awt.Font("Dialog", 3, 18)); // NOI18N
+
+        cmbAddSchedule.setFont(new java.awt.Font("Dialog", 3, 18)); // NOI18N
+        cmbAddSchedule.setText("Add To The Schedule?");
+        cmbAddSchedule.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbAddScheduleActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(136, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 394, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(100, 100, 100))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(labelDay, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cmbDay, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(45, 45, 45)
+                        .addComponent(labelTime))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel6)
+                        .addGap(18, 18, 18)
+                        .addComponent(cmbClassId, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(41, 41, 41)
+                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(cmbTime, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(cmbGradeYear, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(25, Short.MAX_VALUE))))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 138, Short.MAX_VALUE)
-                                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGap(30, 30, 30)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtClass, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtDay, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtSubject1, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtSubject2, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtSubject3, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(176, 176, 176)
+                        .addComponent(cmbAddSchedule))
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
+                        .addGap(42, 42, 42)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 507, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(236, 236, 236)
                         .addComponent(btnAddDay, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+                .addContainerGap(15, Short.MAX_VALUE)
+                .addComponent(btnBack)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(txtDay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
                     .addComponent(jLabel5)
-                    .addComponent(txtClass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(cmbClassId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmbGradeYear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(23, 23, 23)
+                .addComponent(cmbAddSchedule)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(txtSubject1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(txtSubject2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(txtSubject3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cmbDay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelDay)
+                    .addComponent(cmbTime, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelTime))
                 .addGap(18, 18, 18)
                 .addComponent(btnAddDay)
-                .addGap(14, 14, 14)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(47, 47, 47))
         );
 
         pack();
@@ -172,75 +207,151 @@ public class SetSchedule extends javax.swing.JFrame {
 
     private void btnAddDayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddDayActionPerformed
         // TODO add your handling code here:
-        if(txtDay.getText().equals("")||txtClass.getText().equals("")||txtSubject1.getText().equals("")||txtSubject2.getText().equals("")||txtSubject3.getText().equals("")){
-            JOptionPane.showMessageDialog(null, "You have to fill all text Fields");
-        }
-        
-        else{
-            String data[] = {txtDay.getText(),txtClass.getText(),txtSubject1.getText(),txtSubject2.getText(),txtSubject3.getText()};
-            
-            DefaultTableModel model = (DefaultTableModel)tblSchedule.getModel();
-            
-            model.addRow(data);
-        }
-        
-        txtDay.setText("");
-        txtClass.setText("");
-        txtSubject1.setText("");
-        txtSubject2.setText("");
-        txtSubject3.setText("");
+
         
     }//GEN-LAST:event_btnAddDayActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(SetSchedule.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(SetSchedule.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(SetSchedule.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(SetSchedule.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        // TODO add your handling code here:
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new SetSchedule().setVisible(true);
-            }
-        });
-    }
+        
+        labelDay.setVisible(false);
+        labelTime.setVisible(false);
+        cmbDay.setVisible(false);
+        cmbTime.setVisible(false);
+        btnAddDay.setVisible(false);
+        //tblSchedule.setVisible(false);
+
+        cmbGradeYear.removeAllItems();
+        cmbGradeYear.addItem("one");
+        cmbGradeYear.addItem("two");
+        cmbGradeYear.addItem("three");
+        cmbGradeYear.addItem("four");
+
+        cmbClassId.removeAllItems();
+        cmbClassId.addItem("1");
+        cmbClassId.addItem("2");
+        cmbClassId.addItem("3");
+        cmbClassId.addItem("4");
+        
+        cmbDay.removeAllItems();
+        cmbDay.addItem("Saturday");
+        cmbDay.addItem("Sunday");
+        cmbDay.addItem("Monday");
+        cmbDay.addItem("Tuesday");
+        cmbDay.addItem("Wednesday");
+        cmbDay.addItem("Thursday");
+        
+        cmbTime.removeAllItems();
+        cmbTime.addItem("8 - 10");
+        cmbTime.addItem("10 - 12");
+        cmbTime.addItem("12 - 2");
+        cmbTime.addItem("2 - 4");
+    }//GEN-LAST:event_formWindowOpened
+
+
+    private void cmbClassIdItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbClassIdItemStateChanged
+        // TODO add your handling code here:
+        this.classID = Integer.parseInt(cmbClassId.getSelectedItem().toString());
+    }//GEN-LAST:event_cmbClassIdItemStateChanged
+
+    private void cmbGradeYearItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbGradeYearItemStateChanged
+        // TODO add your handling code here:
+        this.gradeYear = cmbGradeYear.getSelectedItem().toString();
+    }//GEN-LAST:event_cmbGradeYearItemStateChanged
+
+    private void cmbAddScheduleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbAddScheduleActionPerformed
+        // TODO add your handling code here:
+        if (cmbAddSchedule.isSelected()) {
+
+            labelDay.setVisible(true);
+            labelTime.setVisible(true);
+            cmbDay.setVisible(true);
+            cmbTime.setVisible(true);
+            btnAddDay.setVisible(true);
+        } 
+        else {
+            labelDay.setVisible(false);
+            labelTime.setVisible(false);
+            cmbDay.setVisible(false);
+            cmbTime.setVisible(false);
+            btnAddDay.setVisible(false);
+        }
+    }//GEN-LAST:event_cmbAddScheduleActionPerformed
+
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        // TODO add your handling code here:
+        new PrincipleView(p).setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnBackActionPerformed
+
+//    /**
+//     * @param args the command line arguments
+//     */
+//    public static void main(String args[]) {
+//        /* Set the Nimbus look and feel */
+//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+//         */
+//        try {
+//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+//                if ("Nimbus".equals(info.getName())) {
+//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//                    break;
+//                }
+//            }
+//        } catch (ClassNotFoundException ex) {
+//            java.util.logging.Logger.getLogger(SetSchedule.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (InstantiationException ex) {
+//            java.util.logging.Logger.getLogger(SetSchedule.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (IllegalAccessException ex) {
+//            java.util.logging.Logger.getLogger(SetSchedule.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+//            java.util.logging.Logger.getLogger(SetSchedule.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        }
+//        //</editor-fold>
+//
+//        /* Create and display the form */
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                new SetSchedule().setVisible(true);
+//            }
+//        });
+//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddDay;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
+    private javax.swing.JButton btnBack;
+    private javax.swing.JCheckBox cmbAddSchedule;
+    private javax.swing.JComboBox<String> cmbClassId;
+    private javax.swing.JComboBox<String> cmbDay;
+    private javax.swing.JComboBox<String> cmbGradeYear;
+    private javax.swing.JComboBox<String> cmbTime;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel labelDay;
+    private javax.swing.JLabel labelTime;
     private javax.swing.JTable tblSchedule;
-    private javax.swing.JTextField txtClass;
-    private javax.swing.JTextField txtDay;
-    private javax.swing.JTextField txtSubject1;
-    private javax.swing.JTextField txtSubject2;
-    private javax.swing.JTextField txtSubject3;
     // End of variables declaration//GEN-END:variables
 }
+/*
+//        if(txtDay.getText().equals("")||txtClass.getText().equals("")||txtSubject1.getText().equals("")||txtSubject2.getText().equals("")||txtSubject3.getText().equals("")){
+//            JOptionPane.showMessageDialog(null, "You have to fill all text Fields");
+//        }
+//        
+//        else{
+//            String data[] = {txtDay.getText(),txtClass.getText(),txtSubject1.getText(),txtSubject2.getText(),txtSubject3.getText()};
+//            
+//            DefaultTableModel model = (DefaultTableModel)tblSchedule.getModel();
+//            
+//            model.addRow(data);
+//        }
+//        
+//        txtDay.setText("");
+//        txtClass.setText("");
+//        txtSubject1.setText("");
+//        txtSubject2.setText("");
+//        txtSubject3.setText("");
+*/
