@@ -5,6 +5,8 @@
 package Accessibility.GuiFiles;
 
 import Accessibility.*;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import javax.swing.JOptionPane;
 
 /**
@@ -19,6 +21,10 @@ public class AddClassForm extends javax.swing.JFrame {
     Principle p = Principle.getPrinciple();
     public AddClassForm() {
         initComponents();
+        Toolkit toolKit=getToolkit();
+        Dimension size=toolKit.getScreenSize();
+        setLocation(size.width/2-getWidth()/2,size.height/2-getHeight()/2);
+
     }
 
     /**
