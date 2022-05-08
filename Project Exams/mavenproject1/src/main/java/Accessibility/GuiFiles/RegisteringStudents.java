@@ -5,9 +5,11 @@
  */
 package Accessibility.GuiFiles;
 
+import Accessibility.ClassSchool;
 import Accessibility.Principle;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.security.Principal;
 
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
@@ -239,16 +241,11 @@ public class RegisteringStudents extends javax.swing.JFrame {
     
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         cmbStudentGrade.removeAllItems();
-        cmbStudentGrade.addItem("one");
-        cmbStudentGrade.addItem("two");
-        cmbStudentGrade.addItem("three");
-        cmbStudentGrade.addItem("four");
-
         cmbStudentClass.removeAllItems();
-        cmbStudentClass.addItem("1");
-        cmbStudentClass.addItem("2");
-        cmbStudentClass.addItem("3");
-        cmbStudentClass.addItem("4");
+        for(ClassSchool i: p1.getClasses()){
+            cmbStudentGrade.addItem(i.getYear());
+            cmbStudentClass.addItem(Integer.toString(i.getClassID()));
+        }
     }//GEN-LAST:event_formWindowOpened
 
     private void listStudentSubjectsMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listStudentSubjectsMousePressed

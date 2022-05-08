@@ -55,7 +55,7 @@ public class SetSchedule extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         labelTime = new javax.swing.JLabel();
         cmbTime = new javax.swing.JComboBox<>();
-        cmbAddSchedule = new javax.swing.JCheckBox();
+        chbAddSchedule = new javax.swing.JCheckBox();
         labelSubjects = new javax.swing.JLabel();
         cmbSubjects = new javax.swing.JComboBox<>();
 
@@ -71,11 +71,11 @@ public class SetSchedule extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Days", "Class", "8-10", "10-12", "12-2", "2-4"
+                "Days", "8-10", "10-12", "12-2", "2-4"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
+                false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -135,11 +135,11 @@ public class SetSchedule extends javax.swing.JFrame {
         cmbTime.setFont(new java.awt.Font("Dialog", 3, 18)); // NOI18N
         cmbTime.setSelectedItem(" ");
 
-        cmbAddSchedule.setFont(new java.awt.Font("Dialog", 3, 18)); // NOI18N
-        cmbAddSchedule.setText("Add To The Schedule?");
-        cmbAddSchedule.addActionListener(new java.awt.event.ActionListener() {
+        chbAddSchedule.setFont(new java.awt.Font("Dialog", 3, 18)); // NOI18N
+        chbAddSchedule.setText("Add To The Schedule?");
+        chbAddSchedule.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmbAddScheduleActionPerformed(evt);
+                chbAddScheduleActionPerformed(evt);
             }
         });
 
@@ -157,7 +157,7 @@ public class SetSchedule extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(176, 176, 176)
-                        .addComponent(cmbAddSchedule))
+                        .addComponent(chbAddSchedule))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(42, 42, 42)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 507, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -213,7 +213,7 @@ public class SetSchedule extends javax.swing.JFrame {
                     .addComponent(cmbClassId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cmbGradeYear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(23, 23, 23)
-                .addComponent(cmbAddSchedule)
+                .addComponent(chbAddSchedule)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cmbDay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -234,33 +234,57 @@ public class SetSchedule extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAddDayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddDayActionPerformed
-        // TODO add your handling code here:
-
+        int row=-1,col=-1;
         String firstSlot = "8 - 10",SecondSlot = "10 - 12",thirdSlot = "12 - 2",forthSlot = "2 - 4";
-        if(cmbDay.getSelectedItem()== null || cmbTime.getSelectedItem() == null){
-            
-            JOptionPane.showMessageDialog(null, "Please Choose The Day And Time First");
+        switch (cmbDay.getSelectedItem().toString()) {
+            case "Saturday":
+                row=0;
+                break;
+            case "Sunday":
+                row = 1;
+                break;
+            case "Monday":
+                row = 2;
+                break;
+            case "Tuesday":
+                row = 3;
+                break;
+            case "Wednesday":
+                row = 4;
+                break; 
+            case "Thursday":
+                row = 5;
+                break;
+            default:
+                break;
         }
-        else{
-//            if(cmbTime.getSelectedItem().equals("8 - 10")){
-//                firstSlot = "8 - 10";SecondSlot;thirdSlot;forthSlot;
-//            }
-            String data[] = {cmbDay.getSelectedItem().toString(),cmbClassId.getSelectedItem().toString()};
-            
-            DefaultTableModel model = (DefaultTableModel)tblSchedule.getModel();
-            
-            model.addRow(data);
+        switch (cmbTime.getSelectedItem().toString()) {
+            case "8 - 10":
+                col=1;
+                break;
+            case "10 - 12":
+                col =2;
+                break;
+            case "12 - 2":
+                col = 3;
+                break;
+            case "2 - 4":
+                col=4;
+                break;
+            default:
+                break;
         }
-        cmbDay.setSelectedItem(" ");
-        cmbTime.setSelectedItem(" ");
-        cmbClassId.setSelectedItem(" ");
-        cmbGradeYear.setSelectedItem(" ");
-        cmbSubjects.setSelectedItem(" ");
+        DefaultTableModel model = (DefaultTableModel)tblSchedule.getModel();
+        model.setValueAt(cmbSubjects.getSelectedItem().toString(), row, col);
+        for(ClassSchool i:p.getClasses()){
+            if(i.getClassID() == Integer.parseInt(cmbClassId.getSelectedItem().toString()) && i.getYear().equals(cmbGradeYear.getSelectedItem().toString())){
+                i.addtoschedule(cmbDay.getSelectedItem().toString()+cmbTime.getSelectedItem().toString(),cmbSubjects.getSelectedItem().toString());
+            }
+        }
+        
     }//GEN-LAST:event_btnAddDayActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        // TODO add your handling code here:
-
         
         labelDay.setVisible(false);
         labelTime.setVisible(false);
@@ -272,16 +296,11 @@ public class SetSchedule extends javax.swing.JFrame {
         //tblSchedule.setVisible(false);
 
         cmbGradeYear.removeAllItems();
-        cmbGradeYear.addItem("one");
-        cmbGradeYear.addItem("two");
-        cmbGradeYear.addItem("three");
-        cmbGradeYear.addItem("four");
-
         cmbClassId.removeAllItems();
-        cmbClassId.addItem("1");
-        cmbClassId.addItem("2");
-        cmbClassId.addItem("3");
-        cmbClassId.addItem("4");
+        for(ClassSchool i: p.getClasses()){
+            cmbGradeYear.addItem(i.getYear());
+            cmbClassId.addItem(Integer.toString(i.getClassID()));
+        }
         
         cmbDay.removeAllItems();
         cmbDay.addItem("Saturday");
@@ -300,19 +319,45 @@ public class SetSchedule extends javax.swing.JFrame {
 
 
     private void cmbClassIdItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbClassIdItemStateChanged
-        // TODO add your handling code here:
+
         this.classID = Integer.parseInt(cmbClassId.getSelectedItem().toString());
+        if(chbAddSchedule.isSelected()){
+            
+            DefaultTableModel model = (DefaultTableModel)tblSchedule.getModel();
+            for(int i=0; i<=5;i++){
+               model.removeRow(0);
+            }
+            model.addRow(new Object[]{"Saturday"});
+            model.addRow(new Object[]{"Sunday"});
+            model.addRow(new Object[]{"Monday"});
+            model.addRow(new Object[]{"Tuesday"});
+            model.addRow(new Object[]{"Wednesday"});
+            model.addRow(new Object[]{"Thursday"});
+        }
+//        else {
+//            
+//        }
     }//GEN-LAST:event_cmbClassIdItemStateChanged
 
     private void cmbGradeYearItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbGradeYearItemStateChanged
         // TODO add your handling code here:
         this.gradeYear = cmbGradeYear.getSelectedItem().toString();
+        
     }//GEN-LAST:event_cmbGradeYearItemStateChanged
 
-    private void cmbAddScheduleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbAddScheduleActionPerformed
+    private void chbAddScheduleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chbAddScheduleActionPerformed
         // TODO add your handling code here:
-        if (cmbAddSchedule.isSelected()) {
-
+              
+        //tblSchedule.removeAll();
+        DefaultTableModel model = (DefaultTableModel)tblSchedule.getModel();
+        if (chbAddSchedule.isSelected()==true) {
+            
+            model.addRow(new Object[]{"Saturday"});
+            model.addRow(new Object[]{"Sunday"});
+            model.addRow(new Object[]{"Monday"});
+            model.addRow(new Object[]{"Tuesday"});
+            model.addRow(new Object[]{"Wednesday"});
+            model.addRow(new Object[]{"Thursday"});
             labelDay.setVisible(true);
             labelTime.setVisible(true);
             labelSubjects.setVisible(true);
@@ -322,6 +367,9 @@ public class SetSchedule extends javax.swing.JFrame {
             btnAddDay.setVisible(true);
         } 
         else {
+            for(int i=0; i<=5;i++){
+               model.removeRow(0);
+            }
             labelDay.setVisible(false);
             labelTime.setVisible(false);
             labelSubjects.setVisible(false);
@@ -330,7 +378,7 @@ public class SetSchedule extends javax.swing.JFrame {
             cmbSubjects.setVisible(false);
             btnAddDay.setVisible(false);
         }
-    }//GEN-LAST:event_cmbAddScheduleActionPerformed
+    }//GEN-LAST:event_chbAddScheduleActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         // TODO add your handling code here:
@@ -376,7 +424,7 @@ public class SetSchedule extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddDay;
     private javax.swing.JButton btnBack;
-    private javax.swing.JCheckBox cmbAddSchedule;
+    private javax.swing.JCheckBox chbAddSchedule;
     private javax.swing.JComboBox<String> cmbClassId;
     private javax.swing.JComboBox<String> cmbDay;
     private javax.swing.JComboBox<String> cmbGradeYear;

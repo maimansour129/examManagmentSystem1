@@ -265,16 +265,16 @@ public class ModifyTeacherView extends javax.swing.JFrame {
         btnAddTeacher.setVisible(false);
 
         cmbGradeYear.removeAllItems();
-        cmbGradeYear.addItem("one");
-        cmbGradeYear.addItem("two");
-        cmbGradeYear.addItem("three");
-        cmbGradeYear.addItem("four");
-
         cmbClassID.removeAllItems();
-        cmbClassID.addItem("1");
-        cmbClassID.addItem("2");
-        cmbClassID.addItem("3");
-        cmbClassID.addItem("4");
+        
+//        cmbGradeYear.addItem("one");
+//        cmbGradeYear.addItem("two");
+//        cmbGradeYear.addItem("three");
+//        cmbGradeYear.addItem("four");
+        for(ClassSchool  i : Principle.getPrinciple().getClasses()){
+            cmbClassID.addItem(Integer.toString(i.getClassID()));
+            cmbGradeYear.addItem(i.getYear());
+        }
     }//GEN-LAST:event_formWindowOpened
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -339,10 +339,15 @@ public class ModifyTeacherView extends javax.swing.JFrame {
             newTeacher.setSubjectEnrolled(subject);
 
             //if()
-            ClassSchool assignClass = new ClassSchool(Integer.parseInt(cmbClassID.getSelectedItem().toString()),
-                    cmbGradeYear.getSelectedItem().toString());
+//            ClassSchool assignClass = new ClassSchool(Integer.parseInt(cmbClassID.getSelectedItem().toString()),
+//                    cmbGradeYear.getSelectedItem().toString());
 
-            newTeacher.getAssignedClasses().add(assignClass);
+            for(ClassSchool i: Principle.getPrinciple().getClasses()){
+              if(Integer.parseInt(cmbClassID.getSelectedItem().toString())==i.getClassID()){
+                  newTeacher.getAssignedClasses().add(i);
+              }  
+            }
+            
 
             JOptionPane.showMessageDialog(null, "Added Succesfully");
 

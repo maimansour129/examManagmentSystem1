@@ -16,9 +16,10 @@ import java.util.Date;
 public class ClassSchool implements Serializable {
     
     private ArrayList<Student> allStudents;
-    private HashMap<Date, Subject> schedule;
+    private HashMap<String, String> schedule;
     private int classId;
     private String year;
+    public static final long serialVersionUID = 9012406228533285031L;
     
     
     // we need object of classAssignment hashmap
@@ -38,7 +39,7 @@ public class ClassSchool implements Serializable {
         this.allStudents = allStudents;
     }
     
-    public void setSchedule(HashMap<Date, Subject> schedule)
+    public void setSchedule(HashMap<String, String> schedule)
     {
         this.schedule = schedule;
     }
@@ -54,8 +55,17 @@ public class ClassSchool implements Serializable {
     public int getClassId() {
         return classId;
     }
+    public void addtoschedule(String date_time,String sub){
+        if(schedule.containsKey(date_time)){
+            schedule.replace(date_time, sub);
+        }
+        else{
+            schedule.put(date_time, sub);
+        }
+        
+    }
     
-    public HashMap<Date, Subject> getSchedule()
+    public HashMap<String, String> getSchedule()
     {
         return schedule;
     }
