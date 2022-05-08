@@ -1,5 +1,6 @@
 package Accessibility;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Date;
 
@@ -7,7 +8,7 @@ import java.util.Date;
  *
  * @author Abelwahab El-Desoky
  */
-public class Report {
+public class Report implements Serializable{
 
     private LocalDateTime date;
     private int grade;

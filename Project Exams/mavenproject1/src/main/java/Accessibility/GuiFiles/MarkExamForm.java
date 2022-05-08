@@ -73,7 +73,7 @@ public class MarkExamForm extends javax.swing.JFrame {
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.Float.class
+                java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
                 false, true
@@ -244,7 +244,7 @@ public class MarkExamForm extends javax.swing.JFrame {
 
     private void btnShowStudentsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowStudentsActionPerformed
         for (ClassSchool i : ourTeacher.getAssignedClasses()) {
-            if (cmbClassID.getSelectedItem().toString().equals(i.getClassID())) {
+            if (cmbClassID.getSelectedItem().toString().equals(Integer.toString(i.getClassID()))) {
                 for (Student j : i.getAllStudents()) {
                     for (Exam x : j.getAllExams()) {
                         if (cmbExamId.getSelectedItem().toString().equals(x.getId())) {
@@ -306,23 +306,23 @@ public class MarkExamForm extends javax.swing.JFrame {
 
     private void btnSendReportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendReportActionPerformed
         Report report;
-      //  LocalDateTime date;
         int grade;
-        int y=1;
+        int y=0;
         Exam E = null;
         DefaultTableModel model = (DefaultTableModel) tableStudents.getModel();
         for (ClassSchool i : ourTeacher.getAssignedClasses()) {
-            if (cmbClassID.getSelectedItem().toString().equals(i.getClassID())) {
+            if (cmbClassID.getSelectedItem().toString().equals(Integer.toString(i.getClassID()))) {
                 for (Student j : i.getAllStudents()) {
                     for (Exam x : j.getAllExams()) {
                         if (cmbExamId.getSelectedItem().toString().equals(x.getId())) {
                            E=x;
                         }
                     }
-                    grade=Integer.parseInt((String) model.getValueAt(y, 2));
+                    grade=Integer.parseInt((String)model.getValueAt(y, 1));
                     y++;
-                    report=new Report( E.getDueDate(), grade, txtcomment.getText().toString(),cmbExamId.getSelectedItem().toString());
+                    report=new Report( E.getDueDate(), grade, txtcomment.getText(),cmbExamId.getSelectedItem().toString());
                     j.getIssueReport().put(ourTeacher.getSubjectEnrolled().getName(), report);
+                    
                     
                 }
             }

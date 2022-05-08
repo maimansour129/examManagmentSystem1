@@ -247,10 +247,9 @@ public class AddExamForm extends javax.swing.JFrame {
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
         cmbGradeYear.removeAllItems();
-        cmbGradeYear.addItem("one");
-        cmbGradeYear.addItem("two");
-        cmbGradeYear.addItem("three");
-        cmbGradeYear.addItem("four");
+        for(ClassSchool c:ourTeacher.getAssignedClasses()){
+            cmbGradeYear.addItem(c.getYear());
+        }
         cmbtype.removeAllItems();
         cmbtype.addItem("Weekly Exam");
         cmbtype.addItem("Monthly Exam");

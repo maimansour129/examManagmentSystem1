@@ -133,11 +133,9 @@ public class DeleteExamForm extends javax.swing.JFrame {
         
         cmbGrade.removeAllItems();
         cmbExamId.removeAllItems();
-        cmbGrade.addItem("one");
-        cmbGrade.addItem("two");
-        cmbGrade.addItem("three");
-        cmbGrade.addItem("four");
-        
+        for(ClassSchool c:ourTeacher.getAssignedClasses()){
+            cmbGrade.addItem(c.getYear());
+        }
     }//GEN-LAST:event_formWindowOpened
 
     private void cmbGradeItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbGradeItemStateChanged

@@ -1,8 +1,9 @@
 package Accessibility;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
-public abstract class Exam implements Cloneable{
+public abstract class Exam implements Cloneable, Serializable {
 
     private String id;
     private boolean takenStatus;

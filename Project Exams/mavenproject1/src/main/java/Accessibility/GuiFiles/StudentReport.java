@@ -5,6 +5,7 @@
 package Accessibility.GuiFiles;
 
 import Accessibility.*;
+import java.time.format.DateTimeFormatter;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -44,10 +45,7 @@ public class StudentReport extends javax.swing.JFrame {
 
         tblReport.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
                 "Exam ID", "Date", "Grade", "Comment"
@@ -88,10 +86,14 @@ public class StudentReport extends javax.swing.JFrame {
         model.addRow(dataRow);}
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
-        for (int i = 0; i < ourStudent.getIssueReport().size(); i++) {
-            addRowToTable(new Object[]{ourStudent.getIssueReport().get(i),ourStudent.getIssueReport().get(i).getExamId(),ourStudent.getIssueReport().get(i).getDate(),ourStudent.getIssueReport().get(i).getGrade(),ourStudent.getIssueReport().get(i).getComment()});
-
-        }
+        System.out.println("Ana hna ahoooooooooo he5a ya 3mna");
+        System.out.println(ourStudent.getIssueReport().size());
+        ourStudent.getIssueReport().forEach((k, v) -> {System.out.println(v.getExamId());
+            addRowToTable(new Object[]{v.getExamId(),DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm").format(v.getDate()),v.getGrade(),v.getComment()});});
+//        for (int i = 0; i < ourStudent.getIssueReport().size(); i++) {
+//            addRowToTable(new Object[]{ourStudent.getIssueReport().get(i),ourStudent.getIssueReport().get(i).getExamId(),ourStudent.getIssueReport().get(i).getDate(),ourStudent.getIssueReport().get(i).getGrade(),ourStudent.getIssueReport().get(i).getComment()});
+//
+//        }
     }//GEN-LAST:event_formWindowOpened
 
     /**

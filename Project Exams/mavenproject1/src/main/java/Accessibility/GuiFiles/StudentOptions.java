@@ -42,7 +42,7 @@ public class StudentOptions extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         btn_back = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        btnShowReport = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -111,10 +111,10 @@ public class StudentOptions extends javax.swing.JFrame {
             }
         });
 
-        jButton3.setText("Show reports");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btnShowReport.setText("Show reports");
+        btnShowReport.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                btnShowReportActionPerformed(evt);
             }
         });
 
@@ -146,7 +146,7 @@ public class StudentOptions extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(btn_sendmessage, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton3)
+                                .addComponent(btnShowReport)
                                 .addGap(139, 139, 139))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(50, 50, 50)
@@ -176,7 +176,7 @@ public class StudentOptions extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_sendmessage)
-                    .addComponent(jButton3))
+                    .addComponent(btnShowReport))
                 .addContainerGap(33, Short.MAX_VALUE))
         );
 
@@ -225,9 +225,12 @@ public class StudentOptions extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void btnShowReportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowReportActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+        new StudentReport(ourStudent).setVisible(true);
+        this.setVisible(false);
+        
+    }//GEN-LAST:event_btnShowReportActionPerformed
 
     /**
      * @param args the command line arguments
@@ -268,13 +271,13 @@ public class StudentOptions extends javax.swing.JFrame {
 //    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnShowReport;
     private javax.swing.JButton btn_back;
     private javax.swing.JButton btn_gotosubject;
     private javax.swing.JButton btn_sendmessage;
     private javax.swing.JComboBox<String> cmb_subjectname;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

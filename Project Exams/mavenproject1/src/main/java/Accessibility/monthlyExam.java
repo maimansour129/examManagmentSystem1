@@ -1,9 +1,10 @@
 
 package Accessibility;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
-public class monthlyExam extends Exam {
+public class monthlyExam extends Exam implements Serializable{
 
     public monthlyExam(String id, LocalDateTime startDate, LocalDateTime dueDate, String subjectName) {
         super(id, startDate, dueDate, subjectName);

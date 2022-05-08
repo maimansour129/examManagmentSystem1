@@ -130,6 +130,7 @@ public class AssignExamForm extends javax.swing.JFrame {
             try {
                 ourTeacher.assignExam(cmbGrade.getSelectedItem().toString(), cmbExamID.getSelectedItem().toString());
                 JOptionPane.showMessageDialog(null, "Assigned Successfully");
+                cmbExamID.remove(cmbExamID.getSelectedIndex());
             } catch (CloneNotSupportedException ex) {
                 Logger.getLogger(AssignExamForm.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -143,10 +144,9 @@ public class AssignExamForm extends javax.swing.JFrame {
         // TODO add your handling code here:
         cmbGrade.removeAllItems();
         cmbExamID.removeAllItems();
-        cmbGrade.addItem("one");
-        cmbGrade.addItem("two");
-        cmbGrade.addItem("three");
-        cmbGrade.addItem("four");
+         for(ClassSchool c:ourTeacher.getAssignedClasses()){
+            cmbGrade.addItem(c.getYear());
+        }
     }//GEN-LAST:event_formWindowOpened
 
     private void cmbGradeItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbGradeItemStateChanged

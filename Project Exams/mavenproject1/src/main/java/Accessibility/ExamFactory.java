@@ -4,13 +4,14 @@
  */
 package Accessibility;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 /**
  *
  * @author maima
  */
-public class ExamFactory {
+public class ExamFactory implements Serializable {
     
     public Exam getExamType(String type,String id, LocalDateTime startDate, LocalDateTime dueDate, String subjectName){
         if(type==null){
