@@ -225,6 +225,7 @@ public class LoginForm extends javax.swing.JFrame {
         Principle p1 = Principle.getPrinciple();
         System.out.println(p1.getName());
         System.out.println(p1.getTeachers().size());
+        System.out.println(p1.getClasses().size());
         allstudents = p1.getStudents();
         allteacher = p1.getTeachers();
 //        ArrayList<String> sub = new ArrayList<>();
