@@ -160,12 +160,12 @@ public class AssignExamForm extends javax.swing.JFrame {
         if (evt.getStateChange() == java.awt.event.ItemEvent.SELECTED) {
             cmbExamID.removeAllItems();
 
-            int x = ourTeacher.getSubjectEnrolled().getExamList().get(cmbGrade.getSelectedItem().toString()).size();
+            int x = ourTeacher.getSubjectEnrolled().getExamList().size();
 
             System.out.println(x);
             if (x != 0) {
                 
-                for (Exam i : ourTeacher.getSubjectEnrolled().getExamList().get(cmbGrade.getSelectedItem().toString())) {
+                for (Exam i : ourTeacher.getSubjectEnrolled().getExamList()) {
                     
                     if (!i.isAssignedStatus()) {
                         cmbExamID.addItem(i.getId());

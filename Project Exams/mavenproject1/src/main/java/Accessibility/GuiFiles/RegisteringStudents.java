@@ -1,18 +1,14 @@
-
 package Accessibility.GuiFiles;
 
-import Accessibility.ClassSchool;
-import Accessibility.Principle;
-import Accessibility.Subject;
+import Accessibility.*;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
-
 public class RegisteringStudents extends javax.swing.JFrame {
-    
+
     Principle p1;
     ArrayList<String> myList = new ArrayList<>();
 
@@ -171,6 +167,16 @@ public class RegisteringStudents extends javax.swing.JFrame {
                 txtStudentName.getText(), txtStudentUsername.getText(), txtStudentPassword.getText(),
                 "Student", cmbStudentGrade.getSelectedItem().toString());
 
+        for (ClassSchool i : p1.getClasses()) {
+            if (cmbStudentGrade.getSelectedItem().toString().equals(i.getYear()) && cmbStudentClass.getSelectedItem().toString().equals(Integer.toString(i.getClassID()))) {
+                for (Student j : p1.getStudents()) {
+                    if (txtStudentUsername.getText().equals(j.getUsername())) {
+                        i.getAllStudents().add(j);
+                    }
+                }
+            }
+        }
+
         JOptionPane.showMessageDialog(null, "Registered Succesfully");
         new PrincipleView(p1).setVisible(true);
         this.setVisible(false);
@@ -188,7 +194,7 @@ public class RegisteringStudents extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowOpened
 
     private void cmbStudentGradeItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbStudentGradeItemStateChanged
-        // TODO add your handling code here:
+
         cmbStudentClass.removeAllItems();
         for (ClassSchool i : p1.getClasses()) {
             if (i.getYear().equals(cmbStudentGrade.getSelectedItem().toString())) {

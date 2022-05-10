@@ -252,7 +252,7 @@ public class ModifyTeacherView extends javax.swing.JFrame {
 
         cmbGradeYear.removeAllItems();
         cmbClassID.removeAllItems();
-        
+
         cmbGradeYear.addItem("one");
         cmbGradeYear.addItem("two");
         cmbGradeYear.addItem("three");
@@ -260,13 +260,13 @@ public class ModifyTeacherView extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowOpened
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+
         new PrincipleView(p).setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void chbAddTeacherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chbAddTeacherActionPerformed
-        // TODO add your handling code here:
+
         if (chbAddTeacher.isSelected()) {
 
             txtName.setVisible(true);
@@ -305,7 +305,7 @@ public class ModifyTeacherView extends javax.swing.JFrame {
     }//GEN-LAST:event_chbAddTeacherActionPerformed
 
     private void btnAddTeacherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddTeacherActionPerformed
-        
+
         if (txtUsername.getText().isEmpty() || txtPassword.getText().isEmpty()) {
 
             JOptionPane.showMessageDialog(null, "Please Add Teacher Information First");
@@ -319,9 +319,9 @@ public class ModifyTeacherView extends javax.swing.JFrame {
                     newTeacher.setSubjectEnrolled(s);
                 }
             }
-            
+
             for (ClassSchool i : Principle.getPrinciple().getClasses()) {
-                if (Integer.parseInt(cmbClassID.getSelectedItem().toString()) == i.getClassID()&&cmbGradeYear.getSelectedItem().toString().equals(i.getYear())) {
+                if (Integer.parseInt(cmbClassID.getSelectedItem().toString()) == i.getClassID() && cmbGradeYear.getSelectedItem().toString().equals(i.getYear())) {
                     newTeacher.getAssignedClasses().add(i);
                 }
             }
@@ -334,7 +334,7 @@ public class ModifyTeacherView extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAddTeacherActionPerformed
 
     private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
-        // TODO add your handling code here:
+
         Teacher teacher;
 
         for (int i = 0; i < p.getTeachers().size(); i++) {
@@ -350,7 +350,6 @@ public class ModifyTeacherView extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEditActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
-        // TODO add your handling code here:
 
         Teacher teacher;
 
@@ -370,7 +369,7 @@ public class ModifyTeacherView extends javax.swing.JFrame {
     }//GEN-LAST:event_btnDeleteActionPerformed
 
     private void cmbGradeYearItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbGradeYearItemStateChanged
-        // TODO add your handling code here:
+
         cmbClassID.removeAllItems();
         for (ClassSchool i : p.getClasses()) {
             if (i.getYear().equals(cmbGradeYear.getSelectedItem().toString())) {

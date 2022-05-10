@@ -1,4 +1,3 @@
-
 package Accessibility.GuiFiles;
 
 import Accessibility.*;
@@ -7,19 +6,17 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 import javax.swing.table.DefaultTableModel;
 
-
 public class ViewTeacherSchedule extends javax.swing.JFrame {
 
     Teacher ourTeacher;
-    
+
     public ViewTeacherSchedule(Teacher t) {
         ourTeacher = t;
         initComponents();
-        Toolkit toolKit=getToolkit();
-        Dimension size=toolKit.getScreenSize();
-        setLocation(size.width/2-getWidth()/2,size.height/2-getHeight()/2);
+        Toolkit toolKit = getToolkit();
+        Dimension size = toolKit.getScreenSize();
+        setLocation(size.width / 2 - getWidth() / 2, size.height / 2 - getHeight() / 2);
 
-        
     }
 
     @SuppressWarnings("unchecked")
@@ -104,12 +101,12 @@ public class ViewTeacherSchedule extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        DefaultTableModel model = (DefaultTableModel)tblTeacherSchedule.getModel();
-        
-        for(ClassSchool i: ourTeacher.getAssignedClasses()){
+        DefaultTableModel model = (DefaultTableModel) tblTeacherSchedule.getModel();
+
+        for (ClassSchool i : ourTeacher.getAssignedClasses()) {
             i.getSchedule().forEach((k, v) -> {
-                if(v.equals(ourTeacher.getSubjectEnrolled().getName())){
-                    model.addRow(new Object[]{k,v});
+                if (v.equals(ourTeacher.getSubjectEnrolled().getName())) {
+                    model.addRow(new Object[]{k, v});
                 }
             });
         }

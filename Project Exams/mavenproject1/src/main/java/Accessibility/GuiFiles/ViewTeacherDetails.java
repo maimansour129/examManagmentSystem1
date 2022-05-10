@@ -34,7 +34,7 @@ public class ViewTeacherDetails extends javax.swing.JFrame {
             rowData[0] = teacher.get(i).getName();
             rowData[1] = teacher.get(i).getSubjectEnrolled().getName();
             rowData[2] = tmp;
-            rowData[3] = teacher.get(i).getAssignedClasses().get(0).getYear();
+            rowData[3] = teacher.get(i).getSubjectEnrolled().getGradeYear();
             model.addRow(rowData);
         }
     }
@@ -126,10 +126,6 @@ public class ViewTeacherDetails extends javax.swing.JFrame {
         new PrincipleView(p).setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

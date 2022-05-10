@@ -235,7 +235,7 @@ public class EditExamForm extends javax.swing.JFrame {
         // TODO add your handling code here:
         if (evt.getStateChange() == java.awt.event.ItemEvent.SELECTED) {
             cmbExamId.removeAllItems();
-            for (Exam i : ourTeacher.getSubjectEnrolled().getExamList().get(cmbGrade.getSelectedItem().toString())) {
+            for (Exam i : ourTeacher.getSubjectEnrolled().getExamList()) {
                 cmbExamId.addItem(i.getId());
             }
         }

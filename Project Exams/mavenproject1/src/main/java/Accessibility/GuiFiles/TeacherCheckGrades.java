@@ -183,10 +183,10 @@ public class TeacherCheckGrades extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowOpened
 
     private void cmbGradeYearItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbGradeYearItemStateChanged
-        // TODO add your handling code here:
+
         if (evt.getStateChange() == java.awt.event.ItemEvent.SELECTED) {
             cmbExamId.removeAllItems();
-            for (Exam i : ourTeacher.getSubjectEnrolled().getExamList().get(cmbGradeYear.getSelectedItem().toString())) {
+            for (Exam i : ourTeacher.getSubjectEnrolled().getExamList()) {
                 if(i.isAssignedStatus()){
                     cmbExamId.addItem(i.getId());
                 }

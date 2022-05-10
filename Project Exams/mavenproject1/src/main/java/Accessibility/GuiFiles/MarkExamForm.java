@@ -78,7 +78,7 @@ public class MarkExamForm extends javax.swing.JFrame {
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.Integer.class
             };
             boolean[] canEdit = new boolean [] {
                 false, true
@@ -281,7 +281,7 @@ public class MarkExamForm extends javax.swing.JFrame {
         if (evt.getStateChange() == java.awt.event.ItemEvent.SELECTED) {
             cmbExamId.removeAllItems();
 
-            for (Exam i : ourTeacher.getSubjectEnrolled().getExamList().get(cmbGrade.getSelectedItem().toString())) {
+            for (Exam i : ourTeacher.getSubjectEnrolled().getExamList()) {
                 cmbExamId.addItem(i.getId());
             }
 
@@ -323,7 +323,7 @@ public class MarkExamForm extends javax.swing.JFrame {
                            E=x;
                         }
                     }
-                    grade=Integer.parseInt((String)model.getValueAt(y, 1));
+                    grade=(int) (model.getValueAt(y, 1));
                     y++;
                     report=new Report( E.getDueDate(), grade, txtcomment.getText(),cmbExamId.getSelectedItem().toString());
                     j.getIssueReport().put(ourTeacher.getSubjectEnrolled().getName(), report);

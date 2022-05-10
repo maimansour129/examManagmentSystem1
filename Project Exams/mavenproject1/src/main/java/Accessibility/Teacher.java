@@ -21,16 +21,13 @@ public class Teacher extends User implements Serializable {
 
     public void addExam(String gradeYear,Exam exam){
       //  subjectEnrolled.addToExamList(gradeYear, exam);
-      subjectEnrolled.getExamList().get(gradeYear).add(exam);
+      subjectEnrolled.getExamList().add(exam);
       
     }
 
     public boolean editExam(String gradeYear,String ExamID,int choice,LocalDateTime date) {
 
-      /*  boolean editResult=subjectEnrolled.editExam(gradeYear, ExamID, choice, date);
-        
-        return editResult;*/
-      for(Exam i:subjectEnrolled.getExamList().get(gradeYear)){
+      for(Exam i:subjectEnrolled.getExamList()){
             if(i.getId().equals(ExamID)){
                 if(choice==1){
                     i.setStartDate(date);
@@ -47,9 +44,9 @@ public class Teacher extends User implements Serializable {
     }
 
     public boolean deleteExam(String gradeYear,String ExamID) {
-        for(Exam i:subjectEnrolled.getExamList().get(gradeYear)){
+        for(Exam i:subjectEnrolled.getExamList()){
             if(i.getId().equals(ExamID)){
-                subjectEnrolled.getExamList().get(gradeYear).remove(i);
+                subjectEnrolled.getExamList().remove(i);
                 return true;
             }
         }
@@ -144,7 +141,7 @@ public class Teacher extends User implements Serializable {
     
     public void assignExam(String gradeYear,String examID)throws CloneNotSupportedException{
         Exam tmpExam=null;
-        for(Exam x:subjectEnrolled.getExamList().get(gradeYear)){
+        for(Exam x:subjectEnrolled.getExamList()){
             if(x.getId().equals(examID)){
                x.setAssignedStatus(true);
                tmpExam=x;
