@@ -6,7 +6,7 @@ import Accessibility.*;
 
 public class SetSchedule extends javax.swing.JFrame {
 
-    int classID;
+    //int classID;
     String gradeYear;
     Principle p = Principle.getPrinciple();
 
@@ -14,10 +14,10 @@ public class SetSchedule extends javax.swing.JFrame {
 
         initComponents();
 
-        cmbSubjects.removeAllItems();
-        for (int i = 0; i < p.getTeachers().size(); i++) {
-            cmbSubjects.addItem(p.getTeachers().get(i).getSubjectEnrolled().getName());
-        }
+//        cmbSubjects.removeAllItems();
+//        for (int i = 0; i < p.getTeachers().size(); i++) {
+//            cmbSubjects.addItem(p.getTeachers().get(i).getSubjectEnrolled().getName());
+//        }
 
     }
 
@@ -277,11 +277,16 @@ public class SetSchedule extends javax.swing.JFrame {
         btnAddDay.setVisible(false);
 
         cmbGradeYear.removeAllItems();
-        cmbClassId.removeAllItems();
-        for (ClassSchool i : p.getClasses()) {
-            cmbGradeYear.addItem(i.getYear());
-            cmbClassId.addItem(Integer.toString(i.getClassID()));
-        }
+        cmbGradeYear.addItem("one");
+        cmbGradeYear.addItem("two");
+        cmbGradeYear.addItem("three");
+        cmbGradeYear.addItem("four");
+        
+//        cmbClassId.removeAllItems();
+//        for (ClassSchool i : p.getClasses()) {
+//            cmbGradeYear.addItem(i.getYear());
+//            cmbClassId.addItem(Integer.toString(i.getClassID()));
+//        }
 
         cmbDay.removeAllItems();
         cmbDay.addItem("Saturday");
@@ -300,7 +305,7 @@ public class SetSchedule extends javax.swing.JFrame {
 
     private void cmbClassIdItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbClassIdItemStateChanged
 
-        this.classID = Integer.parseInt(cmbClassId.getSelectedItem().toString());
+        //this.classID = Integer.parseInt(cmbClassId.getSelectedItem().toString());
         if (chbAddSchedule.isSelected()) {
 
             DefaultTableModel model = (DefaultTableModel) tblSchedule.getModel();
@@ -320,6 +325,18 @@ public class SetSchedule extends javax.swing.JFrame {
     private void cmbGradeYearItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbGradeYearItemStateChanged
 
         this.gradeYear = cmbGradeYear.getSelectedItem().toString();
+        cmbClassId.removeAllItems();
+        
+        for(ClassSchool c:p.getClasses()){
+            if(c.getYear().equals(gradeYear)){
+                cmbClassId.addItem(Integer.toString(c.getClassID()));
+            }
+        }
+        
+        cmbSubjects.removeAllItems();
+        for(Subject s:p.getSubjects().get(gradeYear)){
+            cmbSubjects.addItem(s.getName());
+        }
     }//GEN-LAST:event_cmbGradeYearItemStateChanged
 
     private void chbAddScheduleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chbAddScheduleActionPerformed
