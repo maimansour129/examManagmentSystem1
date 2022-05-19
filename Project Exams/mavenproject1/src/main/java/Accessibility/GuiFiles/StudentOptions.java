@@ -24,14 +24,10 @@ public class StudentOptions extends javax.swing.JFrame {
     private void initComponents() {
 
         jButton2 = new javax.swing.JButton();
-        btn_sendmessage = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        txtAreanoteToPrinciple = new javax.swing.JTextArea();
+        btn_messagePrinciple = new javax.swing.JButton();
         cmb_subjectname = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
         btn_gotosubject = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
         btn_back = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         btnShowReport = new javax.swing.JButton();
@@ -44,52 +40,42 @@ public class StudentOptions extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
-        jButton2.setText("Edit Data");
+        jButton2.setFont(new java.awt.Font("Segoe UI", 3, 16)); // NOI18N
+        jButton2.setText("Edit Personal Data");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
 
-        btn_sendmessage.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
-        btn_sendmessage.setText("Send");
-        btn_sendmessage.addMouseListener(new java.awt.event.MouseAdapter() {
+        btn_messagePrinciple.setFont(new java.awt.Font("Segoe UI", 3, 16)); // NOI18N
+        btn_messagePrinciple.setText("Message Principle");
+        btn_messagePrinciple.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                btn_sendmessageMousePressed(evt);
+                btn_messagePrincipleMousePressed(evt);
             }
         });
-        btn_sendmessage.addActionListener(new java.awt.event.ActionListener() {
+        btn_messagePrinciple.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_sendmessageActionPerformed(evt);
+                btn_messagePrincipleActionPerformed(evt);
             }
         });
-
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel1.setText("Write a note to the Principle :");
-
-        txtAreanoteToPrinciple.setColumns(20);
-        txtAreanoteToPrinciple.setRows(5);
-        jScrollPane1.setViewportView(txtAreanoteToPrinciple);
 
         cmb_subjectname.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         cmb_subjectname.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jLabel2.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
-        jLabel2.setText("Choose subject");
+        jLabel2.setFont(new java.awt.Font("Dialog", 3, 16)); // NOI18N
+        jLabel2.setText("Choose Subject");
 
-        btn_gotosubject.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
-        btn_gotosubject.setText("Go to Subject");
+        btn_gotosubject.setFont(new java.awt.Font("Dialog", 3, 16)); // NOI18N
+        btn_gotosubject.setText("Go To Subject");
         btn_gotosubject.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_gotosubjectActionPerformed(evt);
             }
         });
 
-        jLabel3.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
-        jLabel3.setText("Press to edit data");
-
-        btn_back.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        btn_back.setFont(new java.awt.Font("Segoe UI", 3, 16)); // NOI18N
         btn_back.setText("Back");
         btn_back.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -97,23 +83,23 @@ public class StudentOptions extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
-        jButton1.setText("Save & Exit");
+        jButton1.setFont(new java.awt.Font("Segoe UI", 3, 16)); // NOI18N
+        jButton1.setText("Save And Exit");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
 
-        btnShowReport.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
-        btnShowReport.setText("Show reports");
+        btnShowReport.setFont(new java.awt.Font("Segoe UI", 3, 16)); // NOI18N
+        btnShowReport.setText("Show Reports");
         btnShowReport.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnShowReportActionPerformed(evt);
             }
         });
 
-        btnViewSchedule.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        btnViewSchedule.setFont(new java.awt.Font("Segoe UI", 3, 16)); // NOI18N
         btnViewSchedule.setText("View Schedule");
         btnViewSchedule.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -128,68 +114,53 @@ public class StudentOptions extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(63, 63, 63)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(53, 53, 53)
+                        .addComponent(cmb_subjectname, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(64, 64, 64)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btn_sendmessage, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnShowReport)
-                                .addGap(139, 139, 139))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(54, 54, 54)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(cmb_subjectname, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(62, 62, 62))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(158, 158, 158)))
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(btn_gotosubject, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(btnViewSchedule, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addComponent(btn_gotosubject, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(50, 50, 50)
-                        .addComponent(btn_back, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(41, Short.MAX_VALUE))
+                        .addGap(239, 239, 239)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 41, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(132, 132, 132)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btn_messagePrinciple, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(30, 30, 30)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnViewSchedule, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnShowReport, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addComponent(btn_back, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(21, 21, 21)
-                .addComponent(btn_back, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btn_back, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(37, 37, 37)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cmb_subjectname, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmb_subjectname, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_gotosubject, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jButton2)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE))
-                    .addComponent(btnViewSchedule, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(30, 30, 30)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(84, 84, 84)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_sendmessage)
-                    .addComponent(btnShowReport))
-                .addContainerGap(33, Short.MAX_VALUE))
+                    .addComponent(btnViewSchedule, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(42, 42, 42)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnShowReport, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_messagePrinciple, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(73, 73, 73)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(76, 76, 76))
         );
 
         pack();
@@ -223,14 +194,15 @@ public class StudentOptions extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btn_backActionPerformed
 
-    private void btn_sendmessageMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_sendmessageMousePressed
+    private void btn_messagePrincipleMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_messagePrincipleMousePressed
 
-    }//GEN-LAST:event_btn_sendmessageMousePressed
+    }//GEN-LAST:event_btn_messagePrincipleMousePressed
 
-    private void btn_sendmessageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_sendmessageActionPerformed
-        ourStudent.setNoteToPrinciple(txtAreanoteToPrinciple.getText());
-        System.out.println(ourStudent.getNoteToPrinciple());
-    }//GEN-LAST:event_btn_sendmessageActionPerformed
+    private void btn_messagePrincipleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_messagePrincipleActionPerformed
+        
+        new MessagePrinciple(ourStudent).setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btn_messagePrincipleActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         Principle p = Principle.getPrinciple();
@@ -256,14 +228,10 @@ public class StudentOptions extends javax.swing.JFrame {
     private javax.swing.JButton btnViewSchedule;
     private javax.swing.JButton btn_back;
     private javax.swing.JButton btn_gotosubject;
-    private javax.swing.JButton btn_sendmessage;
+    private javax.swing.JButton btn_messagePrinciple;
     private javax.swing.JComboBox<String> cmb_subjectname;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea txtAreanoteToPrinciple;
     // End of variables declaration//GEN-END:variables
 }
