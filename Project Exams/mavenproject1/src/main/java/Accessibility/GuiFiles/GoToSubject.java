@@ -181,7 +181,7 @@ public class GoToSubject extends javax.swing.JFrame {
                     cmb_examIDs.addItem(i.getId());
                 }
                 if (i.isMarkedStatus()) {
-                addRowToTable(new Object[]{i.getId(), i.getGrading()}, tbl_subjectGrade);
+                addRowToTable(new Object[]{i.getId(), i.getStudentGrade()}, tbl_subjectGrade);
                 }
             }
             

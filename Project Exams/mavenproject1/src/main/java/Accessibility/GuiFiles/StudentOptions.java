@@ -10,6 +10,7 @@ import java.awt.Toolkit;
 public class StudentOptions extends javax.swing.JFrame {
     
     Student ourStudent;
+    Principle ourPrinciple;
 
     public StudentOptions(Student student) {
         initComponents();

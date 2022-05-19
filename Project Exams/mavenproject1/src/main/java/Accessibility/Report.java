@@ -14,12 +14,16 @@ public class Report implements Serializable{
     private int grade;
     private String comment;
     private String examId;
+    private String subject; 
+    //public static final long serialVersionUID = 3170408122144110067L;
+    public static final long serialVersionUID = -4265844872645070847L;
 
-    public Report(LocalDateTime date, int grade, String comment,String examId) {
+    public Report(LocalDateTime date, int grade, String comment,String subject,String examId) {
         this.date = date;
         this.grade = grade;
         this.comment = comment;
-        this.examId = examId;
+        this.subject = subject;
+        this.examId=examId;
     }
 
    

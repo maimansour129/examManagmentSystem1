@@ -11,6 +11,7 @@ public class Principle extends User {
     private ArrayList<Teacher> teachers;
     private ArrayList<Student> students;
     private ArrayList<ClassSchool> classes;
+    private ArrayList<String> studMessages;
     private HashMap<String, ArrayList<Subject>> subjects;
     private static final long serialVersionUID = 8824058496069985728L;
 
@@ -61,6 +62,7 @@ public class Principle extends User {
         students = new ArrayList<>();
         classes = new ArrayList<>();
         subjects = new HashMap<>();
+        studMessages=new ArrayList<>();
 
         /*//subjects for grade 1
         yearOneSub.add(Math1);
@@ -165,5 +167,17 @@ public class Principle extends User {
     public HashMap<String, ArrayList<Subject>> getSubjects() {
         return subjects;
     }
+
+ 
+    public ArrayList<String> getStudMessages() {
+        return studMessages;
+    }
+    public void notify(String message)
+    {
+        System.out.println("test1");
+        studMessages.add(message);
+        System.out.println("test2");
+    }
+    
 
 }

@@ -93,12 +93,22 @@ public class StudentReport extends javax.swing.JFrame {
         DefaultTableModel model = (DefaultTableModel) tblReport.getModel();
         model.addRow(dataRow);}
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+            ourStudent.getIssueReport().forEach((k, v) -> {
+            System.out.println(v.getExamId()+" "+v.getGrade()+" "+v.getComment()+'\n');
+            
+    // addRowToTable(new Object[]{v.getExamId(),DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm").format(v.getDate()),v.getGrade(),v.getComment()});
 
+            
+        });
         System.out.println("Ana hna ahoooooooooo he5a ya 3mna");
         System.out.println(ourStudent.getIssueReport().size());
-        ourStudent.getIssueReport().forEach((k, v) -> {System.out.println(v.getExamId());
-            addRowToTable(new Object[]{v.getExamId(),DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm").format(v.getDate()),v.getGrade(),v.getComment()});});
-
+        ourStudent.getIssueReport().forEach((k, v) -> {
+            System.out.println(v.getExamId());
+            
+     addRowToTable(new Object[]{v.getExamId(),DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm").format(v.getDate()),v.getGrade(),v.getComment()});
+            
+        });
+    
     }//GEN-LAST:event_formWindowOpened
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed

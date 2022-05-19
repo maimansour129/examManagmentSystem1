@@ -117,6 +117,16 @@ public class MarkExamForm extends javax.swing.JFrame {
         });
 
         cmbExamId.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmbExamId.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cmbExamIdItemStateChanged(evt);
+            }
+        });
+        cmbExamId.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbExamIdActionPerformed(evt);
+            }
+        });
 
         jLabel2.setText("Class  ID");
 
@@ -271,6 +281,11 @@ public class MarkExamForm extends javax.swing.JFrame {
             }
 
         }
+         DefaultTableModel model = (DefaultTableModel) tableStudents.getModel();
+        for (int i = 0; i <model.getRowCount(); i++) {
+                model.removeRow(0);
+            }
+        
     }//GEN-LAST:event_cmbClassIDItemStateChanged
 
     private void cmbGradeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbGradeActionPerformed
@@ -286,6 +301,10 @@ public class MarkExamForm extends javax.swing.JFrame {
                 }
             }
         }
+         DefaultTableModel model = (DefaultTableModel) tableStudents.getModel();
+        for (int i = 0; i <model.getRowCount(); i++) {
+                model.removeRow(0);
+            }
     }//GEN-LAST:event_cmbGradeItemStateChanged
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -317,13 +336,16 @@ public class MarkExamForm extends javax.swing.JFrame {
                     
                     comment = (String) model.getValueAt(y, 2);
                     System.out.println("Comment : "+comment);
-                    System.out.println(y);
-                    y++;
+                   // System.out.println(y);
                     
-                    report=new Report( E.getDueDate(), grade, comment,cmbExamId.getSelectedItem().toString());
+                    System.out.println("okkkkkkkkk");
+                    report=new Report( E.getDueDate(), grade, comment,ourTeacher.getSubjectEnrolled().getName(),cmbExamId.getSelectedItem().toString());
+                    System.out.println("la2aaaaaaaa ");
                     E.setStudentGrade(grade);
-                    j.getIssueReport().put(ourTeacher.getSubjectEnrolled().getName(), report);
-                    
+                    System.out.println("ya mosahel");
+                    j.getIssueReport().put(cmbExamId.getSelectedItem().toString(), report);
+                    System.out.println("size ahooo"+ j.getIssueReport().size());
+                    y++;
                     
                 }
             }
@@ -334,6 +356,18 @@ public class MarkExamForm extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void cmbExamIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbExamIdActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbExamIdActionPerformed
+
+    private void cmbExamIdItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbExamIdItemStateChanged
+        // TODO add your handling code here:
+         DefaultTableModel model = (DefaultTableModel) tableStudents.getModel();
+        for (int i = 0; i <model.getRowCount(); i++) {
+                model.removeRow(0);
+            }
+    }//GEN-LAST:event_cmbExamIdItemStateChanged
 
     /**
      * @param args the command line arguments
