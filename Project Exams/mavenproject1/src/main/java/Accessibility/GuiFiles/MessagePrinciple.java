@@ -19,6 +19,7 @@ public class MessagePrinciple extends javax.swing.JFrame {
      * Creates new form MessagePrinciple
      */
     Student ourStudent;
+    
 
     public MessagePrinciple(Student student) {
 
@@ -126,8 +127,8 @@ public class MessagePrinciple extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,"Please Write Your Message First");
             return;
         }
-        ourStudent.setNoteToPrinciple(messageToPrinciple.getText());
-        System.out.println(ourStudent.getNoteToPrinciple());
+        
+        Principle.notify(ourStudent.getName()+" : "+messageToPrinciple.getText());
 
         JOptionPane.showMessageDialog(null, "Message Send Successfully!");
 

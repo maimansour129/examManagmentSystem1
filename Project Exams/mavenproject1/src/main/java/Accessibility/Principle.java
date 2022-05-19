@@ -11,7 +11,7 @@ public class Principle extends User {
     private ArrayList<Teacher> teachers;
     private ArrayList<Student> students;
     private ArrayList<ClassSchool> classes;
-    private ArrayList<String> studMessages;
+    private static ArrayList<String> studMessages;
     private HashMap<String, ArrayList<Subject>> subjects;
     private static final long serialVersionUID = 8824058496069985728L;
 
@@ -172,7 +172,7 @@ public class Principle extends User {
     public ArrayList<String> getStudMessages() {
         return studMessages;
     }
-    public void notify(String message)
+    public static void notify(String message)
     {
         System.out.println("test1");
         studMessages.add(message);
