@@ -172,12 +172,16 @@ public class GoToSubject extends javax.swing.JFrame {
         
         cmb_examIDs.removeAllItems();
         for (Exam i : ourStudent.getAllExams()) {
-            if (subject.equals(i.getSubjectName())) {
-                cmb_examIDs.addItem(i.getId());
-            }
-            if (i.isMarkedStatus()) {
+            if (subject.equals(i.getSubjectName())){
+                if(i.isTakenStatus()==false){
+                    cmb_examIDs.addItem(i.getId());
+                }
+                if (i.isMarkedStatus()) {
                 addRowToTable(new Object[]{i.getId(), i.getGrading()}, tbl_subjectGrade);
+                }
             }
+            
+            
         }
     }//GEN-LAST:event_formWindowOpened
 
@@ -186,6 +190,7 @@ public class GoToSubject extends javax.swing.JFrame {
         for (Exam i : ourStudent.getAllExams()) {
             if (i.getId().equals(cmb_examIDs.getSelectedItem().toString())) {
                 System.out.println(i.getType());
+                i.setTakenStatus(true);
                 JOptionPane.showMessageDialog(null, "Your duedate is at: " + DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm").format(i.getDueDate()));
             }
         }

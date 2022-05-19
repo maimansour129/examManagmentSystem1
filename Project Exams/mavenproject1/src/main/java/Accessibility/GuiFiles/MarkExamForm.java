@@ -236,7 +236,9 @@ public class MarkExamForm extends javax.swing.JFrame {
                 for (Student j : i.getAllStudents()) {
                     for (Exam x : j.getAllExams()) {
                         if (cmbExamId.getSelectedItem().toString().equals(x.getId())) {
-                            addRowToTable(new Object[]{j.getName(), x.getStudentGrade()});
+                            if(x.isTakenStatus()==true && x.isMarkedStatus()==false){
+                                addRowToTable(new Object[]{j.getName(), x.getStudentGrade()});
+                            }
                         }
                     }
                 }
@@ -304,13 +306,22 @@ public class MarkExamForm extends javax.swing.JFrame {
                 for (Student j : i.getAllStudents()) {
                     for (Exam x : j.getAllExams()) {
                         if (cmbExamId.getSelectedItem().toString().equals(x.getId())) {
+                           x.setMarkedStatus(true);
+                           //x.setAllowedStatus(false);
                            E=x;
                         }
                     }
+                    
                     grade =(int) (model.getValueAt(y, 1));
+                    System.out.println(grade);
+                    
                     comment = (String) model.getValueAt(y, 2);
+                    System.out.println("Comment : "+comment);
+                    System.out.println(y);
                     y++;
+                    
                     report=new Report( E.getDueDate(), grade, comment,cmbExamId.getSelectedItem().toString());
+                    E.setStudentGrade(grade);
                     j.getIssueReport().put(ourTeacher.getSubjectEnrolled().getName(), report);
                     
                     
@@ -321,7 +332,7 @@ public class MarkExamForm extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSendReportActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
