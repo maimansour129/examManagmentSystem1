@@ -172,7 +172,10 @@ public class GoToSubject extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
 
-        addRowToTable(new Object[]{ourStudent.getAssignments().get(subject)}, tbl_current_assignments);
+        for(String i: ourStudent.getAssignments().get(subject)){
+            addRowToTable(new Object[]{i}, tbl_current_assignments);
+        }
+        //addRowToTable(new Object[]{ourStudent.getAssignments().get(subject)}, tbl_current_assignments);
         
         cmb_examIDs.removeAllItems();
         for (Exam i : ourStudent.getAllExams()) {
