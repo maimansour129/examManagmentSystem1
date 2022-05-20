@@ -91,12 +91,6 @@ public class EditExamForm extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabel2.setText("Date:");
 
-        txtDate.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtDateActionPerformed(evt);
-            }
-        });
-
         cmbExamId.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         btnBack.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
@@ -182,25 +176,29 @@ public class EditExamForm extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDateActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtDateActionPerformed
-
     private void btnEditExamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditExamActionPerformed
         // TODO add your handling code here:
         int choice;
+        
         if (rdBtnStartDate.isSelected()) {
             choice = 1;
-        } else {
+        } 
+        else {
             choice = 2;
         }
+        
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
         LocalDateTime dateTime=null;
+        
         try {
             dateTime = LocalDateTime.parse(txtDate.getText(), formatter);
             ourTeacher.editExam(cmbGrade.getSelectedItem().toString(), cmbExamId.getSelectedItem().toString(), choice, dateTime);
             JOptionPane.showMessageDialog(null, "Edited successfully");
-        } catch (DateTimeParseException ex) {
+            
+            new ModifyExamsForm(ourTeacher).setVisible(true);
+            this.setVisible(false);
+        } 
+        catch (DateTimeParseException ex) {
             
             JOptionPane.showMessageDialog(null, "write good format please");
 

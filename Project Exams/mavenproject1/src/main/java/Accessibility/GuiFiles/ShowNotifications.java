@@ -4,30 +4,39 @@
  */
 package Accessibility.GuiFiles;
 
-import Accessibility.Principle;
+import Accessibility.*;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author maima
+ * @author Sema Gheith
  */
-public class ShowNotes extends javax.swing.JFrame {
+public class ShowNotifications extends javax.swing.JFrame {
 
     /**
-     * Creates new form ShowNotes
+     * Creates new form ShowNotifications
      */
-    Principle p = Principle.getPrinciple();
     
-    public ShowNotes() {
+    Student ourStudent;
+
+    public ShowNotifications(Student student) {
         
+        ourStudent = student;
         initComponents();
         Toolkit toolKit = getToolkit();
         Dimension size = toolKit.getScreenSize();
         setLocation(size.width / 2 - getWidth() / 2, size.height / 2 - getHeight() / 2);
     }
 
+    
+     public void addRowToTable(Object[] dataRow) {
+
+        DefaultTableModel model = (DefaultTableModel) tblNotifications.getModel();
+        model.addRow(dataRow);
+    }
+     
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -38,8 +47,8 @@ public class ShowNotes extends javax.swing.JFrame {
     private void initComponents() {
 
         btnBack = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tblNotes = new javax.swing.JTable();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tblNotifications = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -48,6 +57,7 @@ public class ShowNotes extends javax.swing.JFrame {
             }
         });
 
+        btnBack.setFont(new java.awt.Font("Segoe UI", 3, 16)); // NOI18N
         btnBack.setText("Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -55,15 +65,33 @@ public class ShowNotes extends javax.swing.JFrame {
             }
         });
 
-        tblNotes.setModel(new javax.swing.table.DefaultTableModel(
+        tblNotifications.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Messages"
+                "Notifications"
             }
-        ));
-        jScrollPane1.setViewportView(tblNotes);
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(tblNotifications);
+        if (tblNotifications.getColumnModel().getColumnCount() > 0) {
+            tblNotifications.getColumnModel().getColumn(0).setResizable(false);
+        }
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -72,45 +100,40 @@ public class ShowNotes extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(btnBack))
+                        .addGap(17, 17, 17)
+                        .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(64, 64, 64)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(73, Short.MAX_VALUE))
+                        .addGap(47, 47, 47)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(64, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(18, 18, 18)
                 .addComponent(btnBack)
-                .addGap(54, 54, 54)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(61, Short.MAX_VALUE))
+                .addGap(88, 88, 88)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(96, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public void addRowToTable(Object[] dataRow) {
-
-        DefaultTableModel model = (DefaultTableModel) tblNotes.getModel();
-        model.addRow(dataRow);
-    }
-    
-    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-       // System.out.println("kam message "+p.getStudMessages().size());
-        for(int i=0;i<p.getStudMessages().size();i++){
-           
-            addRowToTable(new Object[]{p.getStudMessages().get(i)});
-        }
-    }//GEN-LAST:event_formWindowOpened
-
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         // TODO add your handling code here:
-       new PrincipleView(p).setVisible(true);
-       this.setVisible(false);
+        new StudentOptions(ourStudent).setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_btnBackActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        // TODO add your handling code here:
+        for(int i = 0 ; i < ourStudent.getNotifications().size() ; i++){
+            
+            addRowToTable(new Object[]{ourStudent.getNotifications().get(i)});
+        }
+        
+    }//GEN-LAST:event_formWindowOpened
 
     /**
      * @param args the command line arguments
@@ -129,27 +152,27 @@ public class ShowNotes extends javax.swing.JFrame {
 //                }
 //            }
 //        } catch (ClassNotFoundException ex) {
-//            java.util.logging.Logger.getLogger(ShowNotes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//            java.util.logging.Logger.getLogger(ShowNotifications.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 //        } catch (InstantiationException ex) {
-//            java.util.logging.Logger.getLogger(ShowNotes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//            java.util.logging.Logger.getLogger(ShowNotifications.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 //        } catch (IllegalAccessException ex) {
-//            java.util.logging.Logger.getLogger(ShowNotes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//            java.util.logging.Logger.getLogger(ShowNotifications.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 //        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-//            java.util.logging.Logger.getLogger(ShowNotes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//            java.util.logging.Logger.getLogger(ShowNotifications.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 //        }
 //        //</editor-fold>
 //
 //        /* Create and display the form */
 //        java.awt.EventQueue.invokeLater(new Runnable() {
 //            public void run() {
-//                new ShowNotes().setVisible(true);
+//                new ShowNotifications().setVisible(true);
 //            }
 //        });
 //    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tblNotes;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable tblNotifications;
     // End of variables declaration//GEN-END:variables
 }

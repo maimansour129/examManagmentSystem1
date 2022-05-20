@@ -91,7 +91,10 @@ public class AssignExamForm extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(121, 121, 121)
+                        .addContainerGap()
+                        .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(93, 93, 93)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -100,19 +103,16 @@ public class AssignExamForm extends javax.swing.JFrame {
                             .addComponent(cmbGrade, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(cmbExamID, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(193, 193, 193)
-                        .addComponent(btnAssign, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(121, Short.MAX_VALUE))
+                        .addGap(153, 153, 153)
+                        .addComponent(btnAssign, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(98, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(btnBack)
-                .addGap(43, 43, 43)
+                .addGap(55, 55, 55)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cmbGrade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
@@ -120,9 +120,9 @@ public class AssignExamForm extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cmbExamID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
-                .addGap(64, 64, 64)
+                .addGap(60, 60, 60)
                 .addComponent(btnAssign)
-                .addContainerGap(135, Short.MAX_VALUE))
+                .addContainerGap(78, Short.MAX_VALUE))
         );
 
         pack();
@@ -136,13 +136,22 @@ public class AssignExamForm extends javax.swing.JFrame {
                 ourTeacher.assignExam(cmbGrade.getSelectedItem().toString(), cmbExamID.getSelectedItem().toString());
                 JOptionPane.showMessageDialog(null, "Assigned Successfully");
                 cmbExamID.remove(cmbExamID.getSelectedIndex());
-            } catch (CloneNotSupportedException ex) {
+                
+                //ourTeacher.getSubjectEnrolled().getExamList();
+                
+//                new TeacherViewForm(ourTeacher).setVisible(true);
+//                this.setVisible(false);
+            } 
+            catch (CloneNotSupportedException ex) {
                 Logger.getLogger(AssignExamForm.class.getName()).log(Level.SEVERE, null, ex);
             }
-        } else {
+        } 
+        else {
             JOptionPane.showMessageDialog(null, "Choose Exam Please");
         }
 
+                new TeacherViewForm(ourTeacher).setVisible(true);
+                this.setVisible(false);
     }//GEN-LAST:event_btnAssignActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened

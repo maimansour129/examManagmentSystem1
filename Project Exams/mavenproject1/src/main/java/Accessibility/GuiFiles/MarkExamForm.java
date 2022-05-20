@@ -9,6 +9,7 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.time.LocalDateTime;
 import java.util.Date;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -39,7 +40,6 @@ public class MarkExamForm extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tableStudents = new javax.swing.JTable();
@@ -60,15 +60,7 @@ public class MarkExamForm extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
-        jButton1.setText("Save");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
         jLabel1.setText("Mark Exams");
 
         tableStudents.setModel(new javax.swing.table.DefaultTableModel(
@@ -128,10 +120,13 @@ public class MarkExamForm extends javax.swing.JFrame {
             }
         });
 
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 3, 16)); // NOI18N
         jLabel2.setText("Class  ID");
 
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 3, 16)); // NOI18N
         jLabel3.setText("Exam ID");
 
+        btnShowStudents.setFont(new java.awt.Font("Segoe UI", 3, 16)); // NOI18N
         btnShowStudents.setText("Show Students");
         btnShowStudents.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -151,9 +146,10 @@ public class MarkExamForm extends javax.swing.JFrame {
             }
         });
 
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 3, 16)); // NOI18N
         jLabel4.setText("Grade year");
 
-        btnSendReport.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        btnSendReport.setFont(new java.awt.Font("Segoe UI", 3, 16)); // NOI18N
         btnSendReport.setText("Send Report");
         btnSendReport.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -166,15 +162,19 @@ public class MarkExamForm extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(262, 262, 262)
-                .addComponent(jLabel1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jButton2)
+                        .addGap(217, 217, 217)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(285, 285, 285)
+                        .addComponent(btnShowStudents)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 38, Short.MAX_VALUE)
+                .addGap(0, 17, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 557, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(15, 15, 15))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel4)
                         .addGap(32, 32, 32)
@@ -186,30 +186,26 @@ public class MarkExamForm extends javax.swing.JFrame {
                         .addGap(53, 53, 53)
                         .addComponent(jLabel3)
                         .addGap(46, 46, 46)
-                        .addComponent(cmbExamId, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(222, 222, 222)
-                        .addComponent(btnShowStudents)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 243, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(30, 30, 30))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(148, 148, 148)
-                .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnSendReport)
-                .addGap(109, 109, 109))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(40, 40, 40)
-                    .addComponent(jButton2)
-                    .addContainerGap(557, Short.MAX_VALUE)))
+                        .addComponent(cmbExamId, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(30, 30, 30))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 557, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(61, 61, 61))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(btnSendReport, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(267, 267, 267))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jButton2)
+                        .addGap(42, 42, 42))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cmbExamId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3)
@@ -217,20 +213,13 @@ public class MarkExamForm extends javax.swing.JFrame {
                     .addComponent(jLabel2)
                     .addComponent(cmbGrade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
-                .addGap(22, 22, 22)
-                .addComponent(btnShowStudents, javax.swing.GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
+                .addGap(29, 29, 29)
+                .addComponent(btnShowStudents, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(30, 30, 30)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(48, 48, 48)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnSendReport, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
-                .addGap(66, 66, 66))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(28, 28, 28)
-                    .addComponent(jButton2)
-                    .addContainerGap(453, Short.MAX_VALUE)))
+                .addGap(31, 31, 31)
+                .addComponent(btnSendReport)
+                .addGap(62, 62, 62))
         );
 
         pack();
@@ -241,6 +230,12 @@ public class MarkExamForm extends javax.swing.JFrame {
     }//GEN-LAST:event_cmbClassIDActionPerformed
 
     private void btnShowStudentsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowStudentsActionPerformed
+        
+        if(cmbExamId.getItemCount() ==0 || cmbClassID.getItemCount() == 0){
+            
+            JOptionPane.showMessageDialog(null,"You Must Choose The Class Id and Exam ID First.");
+            return;
+        }
         for (ClassSchool i : ourTeacher.getAssignedClasses()) {
             if (cmbClassID.getSelectedItem().toString().equals(Integer.toString(i.getClassID()))) {
                 for (Student j : i.getAllStudents()) {
@@ -353,10 +348,6 @@ public class MarkExamForm extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnSendReportActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
-    }//GEN-LAST:event_jButton1ActionPerformed
-
     private void cmbExamIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbExamIdActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cmbExamIdActionPerformed
@@ -410,7 +401,6 @@ public class MarkExamForm extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cmbClassID;
     private javax.swing.JComboBox<String> cmbExamId;
     private javax.swing.JComboBox<String> cmbGrade;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

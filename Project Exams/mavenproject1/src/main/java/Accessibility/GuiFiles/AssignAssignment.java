@@ -161,6 +161,9 @@ public class AssignAssignment extends javax.swing.JFrame {
             
             ourTeacher.assignAssignment(txtAssignment.getText(),Integer.parseInt(cmbClassID.getSelectedItem().toString()), duedateTime);
             JOptionPane.showMessageDialog(null, "Assigned successfully");
+            
+            new TeacherViewForm(ourTeacher).setVisible(true);
+            this.setVisible(false);
 
         } catch (DateTimeParseException ex) {
 

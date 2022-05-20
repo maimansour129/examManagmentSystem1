@@ -21,20 +21,21 @@ public class TeacherCheckGrades extends javax.swing.JFrame {
     /**
      * Creates new form ShowGrades
      */
-     Teacher ourTeacher;
-    
+    Teacher ourTeacher;
+
     public TeacherCheckGrades(Teacher ourTeacher) {
-        
+
         initComponents();
-        Toolkit toolKit=getToolkit();
-        Dimension size=toolKit.getScreenSize();
-        setLocation(size.width/2-getWidth()/2,size.height/2-getHeight()/2);
+        Toolkit toolKit = getToolkit();
+        Dimension size = toolKit.getScreenSize();
+        setLocation(size.width / 2 - getWidth() / 2, size.height / 2 - getHeight() / 2);
         this.ourTeacher = ourTeacher;
     }
 
     private TeacherCheckGrades() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -96,6 +97,11 @@ public class TeacherCheckGrades extends javax.swing.JFrame {
         jLabel2.setText("Grade:");
 
         cmbExamId.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmbExamId.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cmbExamIdItemStateChanged(evt);
+            }
+        });
 
         cmbGradeYear.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cmbGradeYear.addItemListener(new java.awt.event.ItemListener() {
@@ -175,7 +181,7 @@ public class TeacherCheckGrades extends javax.swing.JFrame {
         // TODO add your handling code here:
         cmbGradeYear.removeAllItems();
         cmbExamId.removeAllItems();
-        
+
         cmbGradeYear.addItem("one");
         cmbGradeYear.addItem("two");
         cmbGradeYear.addItem("three");
@@ -187,7 +193,7 @@ public class TeacherCheckGrades extends javax.swing.JFrame {
         if (evt.getStateChange() == java.awt.event.ItemEvent.SELECTED) {
             cmbExamId.removeAllItems();
             for (Exam i : ourTeacher.getSubjectEnrolled().getExamList()) {
-                if(i.isAssignedStatus()){
+                if (i.isAssignedStatus()) {
                     cmbExamId.addItem(i.getId());
                 }
             }
@@ -197,25 +203,25 @@ public class TeacherCheckGrades extends javax.swing.JFrame {
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
         // TODO add your handling code here:
         tblGrades.removeAll();
-        
-        if(cmbExamId.getSelectedItem() != null){
-            
-           for(ClassSchool i: ourTeacher.getAssignedClasses()){
-            
-            if(i.getYear().equals(cmbGradeYear.getSelectedItem().toString())){
-                
-                for(Student j: i.getAllStudents()){
-                    
-                    for(Exam x: j.getAllExams()){
-                    
-                        if(x.getId().equals(cmbExamId.getSelectedItem().toString())){
-                         
-                            addRowToTable(new Object[]{j.getName(), x.getGrading()});
+
+        if (cmbExamId.getSelectedItem() != null) {
+
+            for (ClassSchool i : ourTeacher.getAssignedClasses()) {
+
+                if (i.getYear().equals(cmbGradeYear.getSelectedItem().toString())) {
+
+                    for (Student j : i.getAllStudents()) {
+
+                        for (Exam x : j.getAllExams()) {
+
+                            if (x.getId().equals(cmbExamId.getSelectedItem().toString())) {
+
+                                addRowToTable(new Object[]{j.getName(), x.getStudentGrade()});
+                            }
                         }
                     }
                 }
             }
-         }
         }
     }//GEN-LAST:event_btnSearchActionPerformed
 
@@ -225,9 +231,18 @@ public class TeacherCheckGrades extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_btnBackActionPerformed
 
-     public void addRowToTable(Object[] dataRow){
+    private void cmbExamIdItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbExamIdItemStateChanged
+        // TODO add your handling code here:
+        DefaultTableModel model = (DefaultTableModel) tblGrades.getModel();
         
-        DefaultTableModel model = (DefaultTableModel)tblGrades.getModel();
+        for (int i = 0; i < model.getRowCount(); i++) {
+            model.removeRow(0);
+        }
+    }//GEN-LAST:event_cmbExamIdItemStateChanged
+
+    public void addRowToTable(Object[] dataRow) {
+
+        DefaultTableModel model = (DefaultTableModel) tblGrades.getModel();
         model.addRow(dataRow);
     }
     /**

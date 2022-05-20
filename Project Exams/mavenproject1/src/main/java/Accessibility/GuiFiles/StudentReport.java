@@ -91,7 +91,9 @@ public class StudentReport extends javax.swing.JFrame {
  public void addRowToTable(Object[] dataRow) {
 
         DefaultTableModel model = (DefaultTableModel) tblReport.getModel();
-        model.addRow(dataRow);}
+        model.addRow(dataRow);
+    }
+ 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
             ourStudent.getIssueReport().forEach((k, v) -> {
             System.out.println(v.getExamId()+" "+v.getGrade()+" "+v.getComment()+'\n');

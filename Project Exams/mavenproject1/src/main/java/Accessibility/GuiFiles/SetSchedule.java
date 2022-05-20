@@ -3,6 +3,8 @@ package Accessibility.GuiFiles;
 import javax.swing.table.DefaultTableModel;
 
 import Accessibility.*;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 
 public class SetSchedule extends javax.swing.JFrame {
 
@@ -13,6 +15,9 @@ public class SetSchedule extends javax.swing.JFrame {
     public SetSchedule() {
 
         initComponents();
+        Toolkit toolKit = getToolkit();
+        Dimension size = toolKit.getScreenSize();
+        setLocation(size.width / 2 - getWidth() / 2, size.height / 2 - getHeight() / 2);
 
 //        cmbSubjects.removeAllItems();
 //        for (int i = 0; i < p.getTeachers().size(); i++) {

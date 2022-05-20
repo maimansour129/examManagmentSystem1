@@ -53,10 +53,10 @@ public class Teacher extends User implements Serializable {
         return false;
     }
 
-    public void sendNotification(int className , String text){
+    public void sendNotification(int classID , String text){
         
        for(ClassSchool i:assignedClasses){
-           if(className==i.getClassID()){
+           if(classID == i.getClassID()){
                for(Student j:i.getAllStudents()){
                     j.getNotifications().push(text);
                }
@@ -67,10 +67,11 @@ public class Teacher extends User implements Serializable {
 
     public boolean assignAssignment(String assignment,int classID,LocalDateTime date) {
         
-        String notify=assignment+" has been released and will be delivered before "+date;
+        String notify= "Assignment Name: " + assignment +" has been released and it's Due Date will be  "+date;
         for(ClassSchool i:assignedClasses){
            if(classID==i.getClassID()){
               for(Student s:i.getAllStudents()){
+                  
                   if(s.getAssignments().containsKey(subjectEnrolled.getName())){
                      s.getAssignments().get(subjectEnrolled.getName()).add(assignment); 
                   }
@@ -118,10 +119,9 @@ public class Teacher extends User implements Serializable {
     }
 
     public HashMap<String, Report> IssueReport(Student student) {
-        HashMap<String, Report> fReport = new HashMap<>();
-
-        return fReport;
         
+        HashMap<String, Report> fReport = new HashMap<>();
+        return fReport;   
     }
     public Subject getSubjectEnrolled() {
         return subjectEnrolled;
@@ -140,18 +140,34 @@ public class Teacher extends User implements Serializable {
     }
     
     public void assignExam(String gradeYear,String examID)throws CloneNotSupportedException{
+       
+        
         Exam tmpExam=null;
+        String type = null;
+        LocalDateTime date = null;
+        
         for(Exam x:subjectEnrolled.getExamList()){
+            
             if(x.getId().equals(examID)){
-               x.setAssignedStatus(true);
+               
+                x.setAssignedStatus(true);
                tmpExam=x;
+               type = tmpExam.getType();
+               date = tmpExam.getDueDate();
                break;
             }
         }
+        
+        String notify = "a " + type + " has been released and it's Due Date will be  " + date;
+        
         for(ClassSchool i:assignedClasses){
+            
             if(i.getYear().equals(gradeYear)){
+                
                 for(Student j:i.getAllStudents()){
+                    
                     j.getAllExams().add((Exam)tmpExam.clone());
+                    sendNotification(i.getClassId(), notify);
                 }
             }
         }

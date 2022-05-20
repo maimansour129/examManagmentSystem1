@@ -156,7 +156,11 @@ public class DeleteExamForm extends javax.swing.JFrame {
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
         ourTeacher.deleteExam(cmbGrade.getSelectedItem().toString(), cmbExamId.getSelectedItem().toString());
+        
         JOptionPane.showMessageDialog(null, "Deleted successfully");
+        
+        new ModifyExamsForm(ourTeacher).setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_btnDeleteActionPerformed
 
     /**

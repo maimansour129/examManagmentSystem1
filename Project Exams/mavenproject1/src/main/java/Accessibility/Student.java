@@ -114,19 +114,5 @@ public class Student extends User implements Serializable {
     public void setReport(Report report) {
         this.report = report;
     }
-    
-    public void ViewFinalGrades(){
-        
-    }
-    public void CalculateFinalGrade(){
-        
-    }
-    public void ShowExamGrades(){
-        
-    }
-    
-    public void ShowReport(){
-        
-    }
    
 }
