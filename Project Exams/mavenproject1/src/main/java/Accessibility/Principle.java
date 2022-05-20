@@ -24,8 +24,8 @@ public class Principle extends User {
     ArrayList<Subject> yearFourSub = new ArrayList<>();
         
 
-      /** 
-        Subject Math1 = new Subject("Math 1","one");
+
+       /* Subject Math1 = new Subject("Math 1","one");
         Subject Arabic1 = new Subject("Arabic 1","one");
         Subject English1 = new Subject("English 1","one");
         
@@ -51,8 +51,7 @@ public class Principle extends User {
         Subject Biology4 = new Subject("Biology 4","four");
         Subject Chemistry4 = new Subject("Chemistry 4","four");
         Subject Physics4 = new Subject("Phyiscs 4","four");
-        Subject computerScience = new Subject("Computer Science","four");
-        */
+        Subject computerScience = new Subject("Computer Science","four");*/
         
     private Principle(String name, String username, String password, String role) {
 
@@ -64,7 +63,7 @@ public class Principle extends User {
         subjects = new HashMap<>();
         studMessages=new ArrayList<>();
 
-        /*//subjects for grade 1
+       /* //subjects for grade 1
         yearOneSub.add(Math1);
         yearOneSub.add(English1);
         yearOneSub.add(Arabic1);
@@ -93,8 +92,8 @@ public class Principle extends User {
         yearFourSub.add(Biology4);
         yearFourSub.add(geometry4);
         yearFourSub.add(algebra4);
-        yearFourSub.add(computerScience);
-         */
+        yearFourSub.add(computerScience);*/
+        
         subjects.put("one", yearOneSub);
         subjects.put("two", yearTwoSub);
         subjects.put("three", yearThreeSub);

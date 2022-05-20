@@ -2,6 +2,7 @@ package Accessibility;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.*;
 
@@ -22,10 +23,9 @@ public class Teacher extends User implements Serializable {
     public void addExam(String gradeYear,Exam exam){
       //  subjectEnrolled.addToExamList(gradeYear, exam);
       subjectEnrolled.getExamList().add(exam);
-      
     }
 
-    public boolean editExam(String gradeYear,String ExamID,int choice,LocalDateTime date) {
+    public boolean editExam(String ExamID,int choice,LocalDateTime date) {
 
       for(Exam i:subjectEnrolled.getExamList()){
             if(i.getId().equals(ExamID)){
@@ -65,13 +65,12 @@ public class Teacher extends User implements Serializable {
 
     }
 
-    public boolean assignAssignment(String assignment,int classID,LocalDateTime date) {
+    public void assignAssignment(String assignment,int classID,LocalDateTime date) {
         
-        String notify= "Assignment Name: " + assignment +" has been released and it's Due Date will be  "+date;
+        String notify= assignment +" has been released and it's Due Date will be  "+DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm").format(date);
         for(ClassSchool i:assignedClasses){
            if(classID==i.getClassID()){
               for(Student s:i.getAllStudents()){
-                  
                   if(s.getAssignments().containsKey(subjectEnrolled.getName())){
                      s.getAssignments().get(subjectEnrolled.getName()).add(assignment); 
                   }
@@ -81,22 +80,10 @@ public class Teacher extends User implements Serializable {
                       s.getAssignments().get(subjectEnrolled.getName()).add(assignment);
                   }
                   sendNotification(classID, notify);
-                  return true;
               }
            }
        }
-        return false;
 
-    }
-
-    public void checkStudentGrade(int classID){
-        ArrayList<Student> classStudents;
-         for(ClassSchool i:assignedClasses){
-           if(classID==i.getClassID()){
-             classStudents=i.getAllStudents();
-            //not Done yet 
-           }
-       }
     }
     
     public void markGrades(String username,int classID, String examID,int grade){
@@ -139,16 +126,17 @@ public class Teacher extends User implements Serializable {
         this.assignedClasses = assignedClasses;
     }
     
-    public void assignExam(String gradeYear,String examID)throws CloneNotSupportedException{
+    public boolean assignExam(String gradeYear,String examID)throws CloneNotSupportedException{
        
         
         Exam tmpExam=null;
         String type = null;
         LocalDateTime date = null;
+        LocalDateTime now=LocalDateTime.now();
         
         for(Exam x:subjectEnrolled.getExamList()){
             
-            if(x.getId().equals(examID)){
+            if(x.getId().equals(examID)&& now.isBefore(x.getDueDate())){
                
                 x.setAssignedStatus(true);
                tmpExam=x;
@@ -156,9 +144,13 @@ public class Teacher extends User implements Serializable {
                date = tmpExam.getDueDate();
                break;
             }
+            else {
+                return true;
+            }
         }
         
-        String notify = "a " + type + " has been released and it's Due Date will be  " + date;
+        String notify = "a " + type + " has been released and it's Due Date will be  " +DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm").format(date);
+        
         
         for(ClassSchool i:assignedClasses){
             
@@ -166,10 +158,15 @@ public class Teacher extends User implements Serializable {
                 
                 for(Student j:i.getAllStudents()){
                     
-                    j.getAllExams().add((Exam)tmpExam.clone());
+                    Exam exam=(Exam)tmpExam.clone();
+                    
+                    j.getAllExams().add(exam);
+                    
                     sendNotification(i.getClassId(), notify);
                 }
             }
         }
+        
+        return false;
     }
 }

@@ -212,6 +212,13 @@ public class LoginForm extends javax.swing.JFrame {
         
         allstudents = p1.getStudents();
         allteacher = p1.getTeachers();
+        
+        for(ClassSchool c:p1.getClasses()){
+            System.out.println("Class id: "+c.getClassID());
+            for(Student s:c.getAllStudents()){
+                System.out.println("name: "+ s.getName());
+            }
+        }
 
 
         /* Set the Nimbus look and feel */

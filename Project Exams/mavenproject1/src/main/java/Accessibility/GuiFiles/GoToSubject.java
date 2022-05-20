@@ -4,6 +4,7 @@ import Accessibility.Exam;
 import Accessibility.Student;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -172,14 +173,16 @@ public class GoToSubject extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
 
-        for(String i: ourStudent.getAssignments().get(subject)){
+        if(ourStudent.getAssignments().containsKey(subject)){
+            for(String i: ourStudent.getAssignments().get(subject)){
             addRowToTable(new Object[]{i}, tbl_current_assignments);
         }
-        //addRowToTable(new Object[]{ourStudent.getAssignments().get(subject)}, tbl_current_assignments);
+        }
         
         cmb_examIDs.removeAllItems();
         for (Exam i : ourStudent.getAllExams()) {
             if (subject.equals(i.getSubjectName())){
+                
                 if(i.isTakenStatus()==false){
                     cmb_examIDs.addItem(i.getId());
                 }
@@ -194,6 +197,7 @@ public class GoToSubject extends javax.swing.JFrame {
 
     private void btn_takeExamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_takeExamActionPerformed
 
+        LocalDateTime now=LocalDateTime.now();
         if(cmb_examIDs.getItemCount() ==0){
             
             JOptionPane.showMessageDialog(null,"Please Choose an Exam or Wait til an Exam Assign!");
@@ -201,6 +205,14 @@ public class GoToSubject extends javax.swing.JFrame {
         }
         for (Exam i : ourStudent.getAllExams()) {
             if (i.getId().equals(cmb_examIDs.getSelectedItem().toString())) {
+                if(now.isAfter(i.getDueDate())){
+                    JOptionPane.showMessageDialog(null, "Sorry You Passed the Deadline");
+                    return;
+                }
+                if(now.isBefore(i.getStartDate())){
+                    JOptionPane.showMessageDialog(null, "The exam not allowed yet\n Will be Available at : "+DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm").format(i.getStartDate()));
+                    return;
+                }
                 System.out.println(i.getType());
                 i.setTakenStatus(true);
                 JOptionPane.showMessageDialog(null, "Your duedate is at: " + DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm").format(i.getDueDate()));

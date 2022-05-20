@@ -16,6 +16,7 @@ public abstract class Exam implements Cloneable, Serializable {
     protected int maxGrading;
     private int studentGrade;
     protected String type;
+    public static final long serialVersionUID = 6128721624794559541l; 
     
 
     public Exam(String id, LocalDateTime startDate, LocalDateTime dueDate, String subjectName) {
@@ -83,7 +84,7 @@ public abstract class Exam implements Cloneable, Serializable {
         return subjectName;
     }
 
-    public int getGrading() {
+    public int getMaxGrading() {
         return maxGrading;
     }
 
@@ -126,8 +127,5 @@ public abstract class Exam implements Cloneable, Serializable {
     public String getType() {
         return type;
     }
-    
-    
-       
     
 }
