@@ -320,7 +320,7 @@ public class MarkExamForm extends javax.swing.JFrame {
         DefaultTableModel model = (DefaultTableModel) tableStudents.getModel();
         
         for(int i=0;i<model.getRowCount();i++){
-            if(maxGrading<(int) (model.getValueAt(y, 1))){
+            if(maxGrading<(int) (model.getValueAt(i, 1))){
                 JOptionPane.showMessageDialog(null,"Please Don't Exceed MAX Grade which is:( "+maxGrading+" )");
                 return;
             }
@@ -339,16 +339,16 @@ public class MarkExamForm extends javax.swing.JFrame {
                     System.out.println(grade);
                     
                     comment = (String) model.getValueAt(y, 2);
-                    System.out.println("Comment : "+comment);
-                   // System.out.println(y);
                     
-                    System.out.println("okkkkkkkkk");
+                    
+                    
                     report=new Report( E.getDueDate(), grade, comment,ourTeacher.getSubjectEnrolled().getName(),cmbExamId.getSelectedItem().toString());
-                    System.out.println("la2aaaaaaaa ");
+                    
                     E.setStudentGrade(grade);
-                    System.out.println("ya mosahel");
+                   
                     j.getIssueReport().put(cmbExamId.getSelectedItem().toString(), report);
-                    System.out.println("size ahooo"+ j.getIssueReport().size());
+                    j.getNotifications().push(E.getId()+" Marked Go to check your Grade");
+                    
                     y++;
                     
                 }

@@ -21,7 +21,7 @@ public class ViewTeacherDetails extends javax.swing.JFrame {
 
         DefaultTableModel model = (DefaultTableModel) tableTeacher.getModel();
 
-        Object rowData[] = new Object[4];
+        Object rowData[] = new Object[5];
 
         for (int i = 0; i < teacher.size(); i++) {
 
@@ -35,6 +35,7 @@ public class ViewTeacherDetails extends javax.swing.JFrame {
             rowData[1] = teacher.get(i).getSubjectEnrolled().getName();
             rowData[2] = tmp;
             rowData[3] = teacher.get(i).getSubjectEnrolled().getGradeYear();
+            rowData[4]=  teacher.get(i).getSalary();
             model.addRow(rowData);
         }
     }
@@ -60,11 +61,11 @@ public class ViewTeacherDetails extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Name", "Subject", "Class", "Grade Year"
+                "Name", "Subject", "Class", "Grade Year", "Salary"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class
             };
 
             public Class getColumnClass(int columnIndex) {

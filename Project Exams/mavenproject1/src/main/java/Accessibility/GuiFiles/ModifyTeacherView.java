@@ -3,15 +3,19 @@ package Accessibility.GuiFiles;
 import Accessibility.*;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 public class ModifyTeacherView extends javax.swing.JFrame {
 
     Principle p = Principle.getPrinciple();
+    ArrayList<String> classes;
 
     public ModifyTeacherView() {
 
         initComponents();
+
+        classes = new ArrayList<>();
 
         Toolkit toolKit = getToolkit();
         Dimension size = toolKit.getScreenSize();
@@ -46,6 +50,9 @@ public class ModifyTeacherView extends javax.swing.JFrame {
         cmbGradeYear = new javax.swing.JComboBox<>();
         jLabel7 = new javax.swing.JLabel();
         cmbSubject = new javax.swing.JComboBox<>();
+        btnAddClass = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
+        txtSalary = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -133,6 +140,19 @@ public class ModifyTeacherView extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel7.setText("Select Teacher:");
 
+        btnAddClass.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
+        btnAddClass.setText("Add Class");
+        btnAddClass.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddClassActionPerformed(evt);
+            }
+        });
+
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        jLabel8.setText("Teacher Salary:");
+
+        txtSalary.setFont(new java.awt.Font("Segoe UI", 2, 14)); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -140,18 +160,31 @@ public class ModifyTeacherView extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(204, 204, 204)
-                        .addComponent(btnAddTeacher))
-                    .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jButton1))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(171, 171, 171)
+                        .addGap(172, 172, 172)
                         .addComponent(chbAddTeacher, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(192, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(0, 60, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel6))
+                        .addGap(32, 32, 32)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(cmbGradeYear, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cmbClassID, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cmbSubject, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnAddClass))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(144, 144, 144)
+                        .addComponent(btnAddTeacher)
+                        .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -164,21 +197,16 @@ public class ModifyTeacherView extends javax.swing.JFrame {
                         .addGap(103, 103, 103))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel5)
                             .addComponent(jLabel3)
-                            .addComponent(jLabel4)
                             .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel1)
-                            .addComponent(jLabel6))
+                            .addComponent(jLabel8))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cmbGradeYear, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(txtName, javax.swing.GroupLayout.DEFAULT_SIZE, 131, Short.MAX_VALUE)
-                                .addComponent(txtPassword, javax.swing.GroupLayout.DEFAULT_SIZE, 131, Short.MAX_VALUE)
-                                .addComponent(cmbClassID, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(txtUsername, javax.swing.GroupLayout.DEFAULT_SIZE, 131, Short.MAX_VALUE)
-                                .addComponent(cmbSubject, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtName, javax.swing.GroupLayout.DEFAULT_SIZE, 131, Short.MAX_VALUE)
+                            .addComponent(txtPassword, javax.swing.GroupLayout.DEFAULT_SIZE, 131, Short.MAX_VALUE)
+                            .addComponent(txtUsername, javax.swing.GroupLayout.DEFAULT_SIZE, 131, Short.MAX_VALUE)
+                            .addComponent(txtSalary, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addGap(83, 83, 83))))
         );
         layout.setVerticalGroup(
@@ -194,7 +222,7 @@ public class ModifyTeacherView extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnDelete)
                     .addComponent(btnEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 6, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(chbAddTeacher, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -208,6 +236,10 @@ public class ModifyTeacherView extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtSalary, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel8))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
@@ -215,17 +247,15 @@ public class ModifyTeacherView extends javax.swing.JFrame {
                 .addGap(4, 4, 4)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cmbClassID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(11, 11, 11)
-                        .addComponent(jLabel4))
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cmbSubject, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jLabel5)
+                    .addComponent(btnAddClass, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(5, 5, 5)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(cmbSubject, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(12, 12, 12)
                 .addComponent(btnAddTeacher, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(19, 19, 19))
+                .addContainerGap())
         );
 
         pack();
@@ -237,6 +267,7 @@ public class ModifyTeacherView extends javax.swing.JFrame {
         txtName.setVisible(false);
         txtUsername.setVisible(false);
         txtPassword.setVisible(false);
+        txtSalary.setVisible(false);
         cmbSubject.setVisible(false);
         cmbClassID.setVisible(false);
         cmbGradeYear.setVisible(false);
@@ -272,6 +303,7 @@ public class ModifyTeacherView extends javax.swing.JFrame {
             txtName.setVisible(true);
             txtUsername.setVisible(true);
             txtPassword.setVisible(true);
+            txtSalary.setVisible(true);
             cmbSubject.setVisible(true);
             cmbClassID.setVisible(true);
             cmbGradeYear.setVisible(true);
@@ -289,6 +321,7 @@ public class ModifyTeacherView extends javax.swing.JFrame {
             txtName.setVisible(false);
             txtUsername.setVisible(false);
             txtPassword.setVisible(false);
+            txtSalary.setVisible(false);
             cmbSubject.setVisible(false);
             cmbClassID.setVisible(false);
             cmbGradeYear.setVisible(false);
@@ -306,11 +339,18 @@ public class ModifyTeacherView extends javax.swing.JFrame {
 
     private void btnAddTeacherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddTeacherActionPerformed
 
-        if (txtUsername.getText().isEmpty() || txtPassword.getText().isEmpty()) {
+        if(classes.isEmpty()){
+            
+            JOptionPane.showMessageDialog(null, "Add Classes please");
+            return;
+            
+        }
+        
+        if (txtUsername.getText().isEmpty() || txtPassword.getText().isEmpty()||txtName.getText().isEmpty()||txtSalary.getText().isEmpty()) {
 
             JOptionPane.showMessageDialog(null, "Please Add Teacher Information First");
         } else {
-            Teacher newTeacher = new Teacher(txtName.getText(), txtUsername.getText(), txtPassword.getText(), "Teacher");
+            Teacher newTeacher = new Teacher(txtName.getText(), txtUsername.getText(), txtPassword.getText(), "Teacher",Integer.parseInt(txtSalary.getText().toString()));
 
             p.AddTeacher(newTeacher);
 
@@ -320,9 +360,11 @@ public class ModifyTeacherView extends javax.swing.JFrame {
                 }
             }
 
-            for (ClassSchool i : Principle.getPrinciple().getClasses()) {
-                if (Integer.parseInt(cmbClassID.getSelectedItem().toString()) == i.getClassID() && cmbGradeYear.getSelectedItem().toString().equals(i.getYear())) {
-                    newTeacher.getAssignedClasses().add(i);
+            for (String classID : classes) {
+                for (ClassSchool i : Principle.getPrinciple().getClasses()) {
+                    if (Integer.parseInt(classID) == i.getClassID() && cmbGradeYear.getSelectedItem().toString().equals(i.getYear())) {
+                        newTeacher.getAssignedClasses().add(i);
+                    }
                 }
             }
 
@@ -330,6 +372,12 @@ public class ModifyTeacherView extends javax.swing.JFrame {
 
             new PrincipleView(p).setVisible(true);
             this.setVisible(false);
+            
+            for(ClassSchool c:newTeacher.getAssignedClasses()){
+                System.out.println("class: "+c.getClassID());
+            }
+            
+        
         }
     }//GEN-LAST:event_btnAddTeacherActionPerformed
 
@@ -383,8 +431,18 @@ public class ModifyTeacherView extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_cmbGradeYearItemStateChanged
 
+    private void btnAddClassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddClassActionPerformed
+        // TODO add your handling code here:
+
+        int idx = cmbClassID.getSelectedIndex();
+        classes.add(cmbClassID.getSelectedItem().toString());
+        cmbClassID.removeItemAt(idx);
+
+    }//GEN-LAST:event_btnAddClassActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAddClass;
     private javax.swing.JButton btnAddTeacher;
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnEdit;
@@ -401,8 +459,10 @@ public class ModifyTeacherView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JTextField txtName;
     private javax.swing.JTextField txtPassword;
+    private javax.swing.JTextField txtSalary;
     private javax.swing.JTextField txtUsername;
     // End of variables declaration//GEN-END:variables
 }

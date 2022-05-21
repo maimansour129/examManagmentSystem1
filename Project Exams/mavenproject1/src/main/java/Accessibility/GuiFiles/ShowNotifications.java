@@ -128,6 +128,7 @@ public class ShowNotifications extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
+        System.out.println(ourStudent.getNotifications().size());
         for(int i = 0 ; i < ourStudent.getNotifications().size() ; i++){
             
             addRowToTable(new Object[]{ourStudent.getNotifications().get(i)});
