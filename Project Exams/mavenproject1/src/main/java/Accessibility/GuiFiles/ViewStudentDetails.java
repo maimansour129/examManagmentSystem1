@@ -111,10 +111,11 @@ public class ViewStudentDetails extends javax.swing.JFrame {
             
         DefaultTableModel model = (DefaultTableModel) tbl_studs.getModel();
         Object rowData[] = new Object[4];
-        String x=" ";
+        String x;
         
         for (Student i :p.getStudents()) {
 
+            x="";
             rowData[0] = i.getName();
             rowData[1] = i.getUsername();
             rowData[2]=i.getYearGrade();
