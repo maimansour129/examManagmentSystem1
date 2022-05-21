@@ -28,6 +28,7 @@ public class PrincipleView extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         btnMessage = new javax.swing.JButton();
         btnViewConductedExams = new javax.swing.JButton();
+        btnStudDetails = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -95,6 +96,14 @@ public class PrincipleView extends javax.swing.JFrame {
             }
         });
 
+        btnStudDetails.setFont(new java.awt.Font("Dialog", 3, 18)); // NOI18N
+        btnStudDetails.setText("View Student's Details");
+        btnStudDetails.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnStudDetailsActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -112,7 +121,8 @@ public class PrincipleView extends javax.swing.JFrame {
                     .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnViewConductedExams, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnViewConductedExams, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnStudDetails, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(167, 167, 167))
         );
         layout.setVerticalGroup(
@@ -134,7 +144,9 @@ public class PrincipleView extends javax.swing.JFrame {
                 .addComponent(btnMessage)
                 .addGap(18, 18, 18)
                 .addComponent(btnViewConductedExams)
-                .addContainerGap(32, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(btnStudDetails)
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
         pack();
@@ -185,11 +197,18 @@ public class PrincipleView extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_btnViewConductedExamsActionPerformed
 
+    private void btnStudDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStudDetailsActionPerformed
+        // TODO add your handling code here:
+        new ViewStudentDetails().setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnStudDetailsActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnMessage;
     private javax.swing.JButton btnRegStud;
+    private javax.swing.JButton btnStudDetails;
     private javax.swing.JButton btnViewConductedExams;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
