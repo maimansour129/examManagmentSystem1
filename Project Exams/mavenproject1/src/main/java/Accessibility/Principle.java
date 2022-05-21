@@ -24,8 +24,8 @@ public class Principle extends User {
     ArrayList<Subject> yearFourSub = new ArrayList<>();
         
 
-
-       /* Subject Math1 = new Subject("Math 1","one");
+/*
+        Subject Math1 = new Subject("Math 1","one");
         Subject Arabic1 = new Subject("Arabic 1","one");
         Subject English1 = new Subject("English 1","one");
         
@@ -63,36 +63,36 @@ public class Principle extends User {
         subjects = new HashMap<>();
         studMessages=new ArrayList<>();
 
-       /* //subjects for grade 1
-        yearOneSub.add(Math1);
-        yearOneSub.add(English1);
-        yearOneSub.add(Arabic1);
-        
-        //subjects for grade 2
-        yearTwoSub.add(Arabic2);
-        yearTwoSub.add(English2);
-        yearTwoSub.add(algebra2);
-        yearTwoSub.add(geometry2);
-        yearTwoSub.add(Science);
-        
-        //subjects for grade 3
-        yearThreeSub.add(Arabic3);
-        yearThreeSub.add(English3);
-        yearThreeSub.add(Physics3);
-        yearThreeSub.add(Chemistry3);
-        yearThreeSub.add(Biology3);
-        yearThreeSub.add(algebra3);
-        yearThreeSub.add(geometry3);
-        
-        //subjects for grade 4
-        yearFourSub.add(English4);
-        yearFourSub.add(Arabic4);
-        yearFourSub.add(Physics4);
-        yearFourSub.add(Chemistry4);
-        yearFourSub.add(Biology4);
-        yearFourSub.add(geometry4);
-        yearFourSub.add(algebra4);
-        yearFourSub.add(computerScience);*/
+//       //subjects for grade 1
+//        yearOneSub.add(Math1);
+//        yearOneSub.add(English1);
+//        yearOneSub.add(Arabic1);
+//        
+//        //subjects for grade 2
+//        yearTwoSub.add(Arabic2);
+//        yearTwoSub.add(English2);
+//        yearTwoSub.add(algebra2);
+//        yearTwoSub.add(geometry2);
+//        yearTwoSub.add(Science);
+//        
+//        //subjects for grade 3
+//        yearThreeSub.add(Arabic3);
+//        yearThreeSub.add(English3);
+//        yearThreeSub.add(Physics3);
+//        yearThreeSub.add(Chemistry3);
+//        yearThreeSub.add(Biology3);
+//        yearThreeSub.add(algebra3);
+//        yearThreeSub.add(geometry3);
+//        
+//        //subjects for grade 4
+//        yearFourSub.add(English4);
+//        yearFourSub.add(Arabic4);
+//        yearFourSub.add(Physics4);
+//        yearFourSub.add(Chemistry4);
+//        yearFourSub.add(Biology4);
+//        yearFourSub.add(geometry4);
+//        yearFourSub.add(algebra4);
+//        yearFourSub.add(computerScience);
         
         subjects.put("one", yearOneSub);
         subjects.put("two", yearTwoSub);
