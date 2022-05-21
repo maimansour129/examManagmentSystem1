@@ -98,28 +98,21 @@ public class conductedExams extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
 
-DefaultTableModel model = (DefaultTableModel) tblExam.getModel();
-
-      
-  
-
-
-
-//        DefaultTableModel model = (DefaultTableModel) tblExam.getModel();
-//        Object rowData[] = new Object[5];
-//        
-//       p.getSubjects().forEach((key, value)->{
-//               rowData[0] =key ;
-//               for(Subject i:value){
-//                   rowData[1] = i.getName();
-//                   for(Exam x:i.getExamList()){
-//                       rowData[2] = x.getId();
-//                       rowData[3] = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm").format(x.getStartDate());
-//                       rowData[4] = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm").format(x.getDueDate());
-//                       model.addRow(rowData);
-//                   }
-//               }
-//       } );
+       DefaultTableModel model = (DefaultTableModel) tblExam.getModel();
+        Object rowData[] = new Object[5];
+        
+       p.getSubjects().forEach((key, value)->{
+               rowData[0] =key ;
+               for(Subject i:value){
+                   rowData[1] = i.getName();
+                   for(Exam x:i.getExamList()){
+                       rowData[2] = x.getId();
+                       rowData[3] = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm").format(x.getStartDate());
+                       rowData[4] = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm").format(x.getDueDate());
+                       model.addRow(rowData);
+                   }
+               }
+       } );
         
     }//GEN-LAST:event_formWindowOpened
 
